@@ -1,0 +1,14 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    display: flex;
+}
+
+.content {
+    flex: 1;
+    background-color: var(--content-background-color);
+    min-height: 1000px;
+}

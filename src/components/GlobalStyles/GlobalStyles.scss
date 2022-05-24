@@ -7,8 +7,15 @@
     --black-color: #000;
     --text-primary-color: #030303;
     --content-background-color: #f9f9f9;
+    --main-srcollbar-thumb-color: #555;
+    --main-scrollbar-thumb-hover-color: #888;
 
     --font-family: 'Roboto', 'Arial', sans-serif;
+
+    // Default Layout
+    --default-layout-header-height: 56px;
+    --default-layout-header-horizontal-spacer: 16px;
+    --sidebar-width: 240px;
 }
 
 * {
@@ -60,4 +67,25 @@ input {
 
 button {
     cursor: pointer;
+}
+
+// Scrollbar
+html::-webkit-scrollbar {
+    width: 14px;
+}
+
+html::-webkit-scrollbar-track {
+    background-color: var(--content-background-color);
+}
+
+html::-webkit-scrollbar-thumb {
+    height: 56px;
+    border-radius: 8px;
+    border: 3px solid transparent;
+    background-clip: content-box;
+    background-color: var(--main-srcollbar-thumb-color);
+}
+
+html::-webkit-scrollbar-thumb:hover {
+    background-color: var(--main-scrollbar-thumb-hover-color);
 }
