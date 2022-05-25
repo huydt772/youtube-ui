@@ -27,15 +27,23 @@ function Header() {
                 </div>
                 <div className={cx('wrap-between')}>
                     <div className={cx('search')}>
-                        <span className={cx('search-icon')}>
-                            <SearchIcon width="2rem" height="2rem" />
-                        </span>
+                        <div className={cx('wrap-search')}>
+                            <span className={cx('search-icon')}>
+                                <SearchIcon width="2rem" height="2rem" />
+                            </span>
 
-                        <input type="text" className={cx('input')} />
+                            <div className={cx('wrap-input')}>
+                                <input
+                                    type="text"
+                                    placeholder="Search"
+                                    className={cx('input')}
+                                />
+                                <button className={cx('close-btn')}>
+                                    <CloseIcon />
+                                </button>
+                            </div>
+                        </div>
 
-                        <button className={cx('close-btn')}>
-                            <CloseIcon />
-                        </button>
                         <button className={cx('search-btn')}>
                             <SearchIcon />
                         </button>

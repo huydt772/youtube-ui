@@ -5,10 +5,11 @@
 
 .container {
     display: flex;
+    margin-top: var(--default-layout-header-height);
 }
 
 .content {
     flex: 1;
-    background-color: var(--content-background-color);
+    background-color: var(--general-background-color);
     min-height: 1000px;
 }

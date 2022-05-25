@@ -2,14 +2,32 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
 
 :root {
+    // Colors
     --primary-color: #ff0000;
     --white-color: #fff;
     --black-color: #000;
+    --general-background-color: #f9f9f9;
+
+    // Text colors
     --text-primary-color: #030303;
-    --content-background-color: #f9f9f9;
+
+    // Scrollbar colors
     --main-srcollbar-thumb-color: #555;
     --main-scrollbar-thumb-hover-color: #888;
 
+    // Header colors
+    --header-background-color: rgba(255, 255, 255, 0.98);
+
+    // Search colors
+    --searchbox-box-shadow-color: #eee;
+    --searchbox-border-color: #ccc;
+    --searchbox-text-color: #111;
+    --searchbox-button-border-color: #d3d3d3;
+    --searchbox-button-color: #f8f8f8;
+    --searchbox-button-hover-border-color: #c6c6c6;
+    --searchbox-button-hover-color: #f0f0f0;
+
+    // Fonts
     --font-family: 'Roboto', 'Arial', sans-serif;
 
     // Default Layout
@@ -75,7 +93,7 @@ html::-webkit-scrollbar {
 }
 
 html::-webkit-scrollbar-track {
-    background-color: var(--content-background-color);
+    background-color: var(--general-background-color);
 }
 
 html::-webkit-scrollbar-thumb {
