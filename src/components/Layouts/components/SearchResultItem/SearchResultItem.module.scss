@@ -1,0 +1,42 @@
+.wrapper {
+    --search-result-item-hover-color: rgba(3, 3, 3, 0.08);
+
+    display: flex;
+    align-items: center;
+    padding: 0 24px 0 10px;
+
+    &:hover {
+        background-color: var(--search-result-item-hover-color);
+    }
+}
+
+.item {
+    border: none;
+    border-radius: unset;
+    width: 100%;
+    height: 32px;
+    padding: 0 8px 0 0;
+    justify-content: flex-start;
+    background-color: transparent;
+    font-weight: 500;
+    font-size: 1.6rem;
+
+    + .wrapper {
+        margin-left: 0;
+    }
+
+    & > span:last-child {
+        margin-left: 10px;
+    }
+}
+
+.remove-btn {
+    font-size: 13px;
+    padding-right: 3px;
+    color: #36c;
+    cursor: pointer;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}

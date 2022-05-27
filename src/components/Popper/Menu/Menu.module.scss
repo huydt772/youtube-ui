@@ -1,0 +1,32 @@
+// Menu list
+.menu-list {
+    --menu-item-hover-background-color: rgba(3, 3, 3, 0.05);
+
+    .menu-popper {
+        padding: 8px 0;
+    }
+}
+
+// Menu item
+.menu-item {
+    border: none;
+    border-radius: unset;
+    width: 100%;
+    padding: 0 16px;
+    line-height: 1.7rem;
+    font-weight: 400;
+    background-color: transparent;
+    justify-content: flex-start;
+
+    + .menu-item {
+        margin-left: 0;
+    }
+
+    span:last-child {
+        margin-left: 16px;
+    }
+
+    &:hover {
+        background-color: var(--menu-item-hover-background-color);
+    }
+}
