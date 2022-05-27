@@ -19,6 +19,10 @@
     & + .wrapper {
         margin-left: 12px;
     }
+
+    span:first-child {
+        margin-right: 8px;
+    }
 }
 
 // Button types
@@ -62,9 +66,4 @@
 .icon {
     display: flex;
     align-items: center;
-}
-
-.icon + .title,
-.title + .icon {
-    margin-left: 8px;
 }

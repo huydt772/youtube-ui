@@ -2,12 +2,43 @@
 .menu-list {
     --menu-item-hover-background-color: rgba(3, 3, 3, 0.05);
 
+    max-height: 90vh;
+    overflow-y: auto;
+
     .menu-popper {
         padding: 8px 0;
+    }
+
+    &::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: rgba(255, 255, 255, 0.98);
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: transparent;
+    }
+
+    &:hover::-webkit-scrollbar-thumb {
+        background-color: #909090;
     }
 }
 
 // Menu item
+.wrap-menu-item {
+    position: relative;
+
+    .right-icon {
+        display: flex;
+        position: absolute;
+        right: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+
 .menu-item {
     border: none;
     border-radius: unset;
@@ -22,8 +53,8 @@
         margin-left: 0;
     }
 
-    span:last-child {
-        margin-left: 16px;
+    span:first-child {
+        margin-right: 16px;
     }
 
     &:hover {

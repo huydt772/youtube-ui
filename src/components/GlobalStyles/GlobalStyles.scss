@@ -121,7 +121,7 @@ body {
         top: -8px;
     }
 
-    .search-global #tippy-2 {
+    .search-global [data-tippy-root] {
         right: 63px !important;
     }
 }

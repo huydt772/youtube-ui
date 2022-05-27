@@ -7,8 +7,11 @@ import 'tippy.js/dist/tippy.css';
 import { images } from '~/assets/images';
 import Button from '~/components/Button';
 import {
+    AccountIcon,
     AppsIcon,
+    ArrowIcon,
     BarsIcon,
+    ChannelIcon,
     CloseIcon,
     CreateIcon,
     DataIcon,
@@ -16,18 +19,23 @@ import {
     HelpIcon,
     KeyboardIcon,
     LanguageIcon,
+    LiveIcon,
     LocationIcon,
     MenuIcon,
     MicroPhoneIcon,
     NotifyIcon,
+    PurchasesIcon,
     SearchIcon,
     SettingsIcon,
+    SignOutIcon,
     ThemeIcon,
+    UploadIcon,
     UserIcon,
     YoutubeArtistsIcon,
     YoutubeKidsIcon,
     YoutubeMusicIcon,
     YoutubeTvIcon,
+    YtStudioIcon,
 } from '~/components/Icons';
 import Image from '~/components/Image';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
@@ -41,14 +49,17 @@ const SETTING_ITEMS = [
     {
         icon: <ThemeIcon />,
         title: 'Appearance: Device theme',
+        rightIcon: <ArrowIcon />,
     },
     {
         icon: <LanguageIcon />,
         title: 'Language: English',
+        rightIcon: <ArrowIcon />,
     },
     {
         icon: <LocationIcon />,
-        title: 'Vietnam',
+        title: 'Location: Vietnam',
+        rightIcon: <ArrowIcon />,
     },
     {
         icon: <SettingsIcon />,
@@ -71,34 +82,82 @@ const SETTING_ITEMS = [
         icon: <KeyboardIcon />,
         title: 'Keyboard shortcuts',
     },
+    {
+        rightIcon: <ArrowIcon />,
+        title: 'Restricted Mode: Off',
+    },
+];
+
+const SETTING_LOGIN_ITEMS = [
+    {
+        icon: <ChannelIcon />,
+        title: 'Your channel',
+        to: '/channel',
+    },
+    {
+        icon: <PurchasesIcon />,
+        title: 'Purchases and memberships',
+        to: '/paid_memberships',
+    },
+    {
+        icon: <YtStudioIcon />,
+        title: 'YouTube Studio',
+    },
+    {
+        icon: <AccountIcon />,
+        title: 'Switch account',
+        rightIcon: <ArrowIcon />,
+    },
+    {
+        icon: <SignOutIcon />,
+        title: 'Sign out',
+    },
+    ...SETTING_ITEMS,
 ];
 
 const APP_ITEMS = [
     {
         icon: <YoutubeTvIcon />,
         title: 'YouTube TV',
+        href: 'https://tv.youtube.com/',
     },
     {
         icon: <YoutubeMusicIcon />,
         title: 'YouTube Music',
+        href: 'https://music.youtube.com/',
     },
     {
         icon: <YoutubeKidsIcon />,
         title: 'YouTube Kids',
+        href: 'https://www.youtubekids.com/',
     },
     {
         icon: <YoutubeArtistsIcon />,
         title: 'YouTube for Artists',
+        href: 'https://artists.youtube.com/',
+    },
+];
+
+const CREATE_ITEMS = [
+    {
+        icon: <UploadIcon />,
+        title: 'Upload video',
+        to: '/upload',
+    },
+    {
+        icon: <LiveIcon />,
+        title: 'Go live',
+        to: '/golive',
     },
 ];
 
 function Header() {
     const [searchResult, setSearchResult] = useState([]);
-    const currentUser = false;
+    const currentUser = true;
 
     useEffect(() => {
         setTimeout(() => {
-            setSearchResult([]);
+            setSearchResult(['Huy']);
         }, 0);
     }, []);
 
@@ -174,27 +233,49 @@ function Header() {
                 <div className={cx('wrap-right')}>
                     {currentUser ? (
                         <>
-                            <Tippy content="Create">
-                                <button className={cx('action-btn')}>
-                                    <CreateIcon />
-                                </button>
-                            </Tippy>
-                            <Tippy content="YouTube apps">
-                                <button className={cx('action-btn')}>
-                                    <AppsIcon />
-                                </button>
-                            </Tippy>
+                            <Menu
+                                width="179px"
+                                placement="bottom-start"
+                                items={CREATE_ITEMS}
+                            >
+                                <Tippy content="Create">
+                                    <button className={cx('action-btn')}>
+                                        <CreateIcon />
+                                    </button>
+                                </Tippy>
+                            </Menu>
+                            <Menu
+                                width="218px"
+                                placement="bottom-end"
+                                items={APP_ITEMS}
+                                split={[1, 2, 1]}
+                            >
+                                <Tippy content="YouTube apps">
+                                    <button className={cx('action-btn')}>
+                                        <AppsIcon />
+                                    </button>
+                                </Tippy>
+                            </Menu>
                             <Tippy content="Notifications">
                                 <button className={cx('action-btn')}>
                                     <span className={cx('badge')}>9+</span>
                                     <NotifyIcon />
                                 </button>
                             </Tippy>
-                            <Image
-                                className={cx('user')}
-                                src="https://yt3.ggpht.com/yti/APfAmoEiqTDD0tVCf541rMgwlZ_uCo4BRuFg7xflPOfAEw=s88-c-k-c0x00ffffff-no-rj-mo"
-                                alt="Nguyen Van Huy"
-                            />
+                            <Menu
+                                className={cx('menu-user')}
+                                width="300px"
+                                placement="bottom-end"
+                                offset={[-46, -36]}
+                                split={[5, 8, 1]}
+                                items={SETTING_LOGIN_ITEMS}
+                            >
+                                <Image
+                                    className={cx('user')}
+                                    src="https://yt3.ggpht.com/yti/APfAmoEiqTDD0tVCf541rMgwlZ_uCo4BRuFg7xflPOfAEw=s88-c-k-c0x00ffffff-no-rj-mo"
+                                    alt="Nguyen Van Huy"
+                                />
+                            </Menu>
                         </>
                     ) : (
                         <>
@@ -203,7 +284,6 @@ function Header() {
                                 placement="bottom-end"
                                 items={APP_ITEMS}
                                 split={[1, 2, 1]}
-                                className={cx('apps-popper')}
                             >
                                 <Tippy content="YouTube apps">
                                     <button className={cx('action-btn')}>
@@ -216,6 +296,7 @@ function Header() {
                                 width="298px"
                                 placement="bottom-end"
                                 items={SETTING_ITEMS}
+                                split={[8, 1]}
                             >
                                 <Tippy content="Settings">
                                     <button className={cx('action-btn')}>

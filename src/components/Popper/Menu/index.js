@@ -7,7 +7,15 @@ import { useEffect, useState } from 'react';
 
 const cx = classNames.bind(styles);
 
-function Menu({ width, placement, children, split, items = [] }) {
+function Menu({
+    width,
+    placement,
+    offset = [0],
+    children,
+    split,
+    className,
+    items = [],
+}) {
     const [menuItems, setMenuItems] = useState();
 
     useEffect(() => {
@@ -33,11 +41,11 @@ function Menu({ width, placement, children, split, items = [] }) {
         <HeadlessTippy
             trigger="click"
             interactive
-            offset={[0]}
+            offset={offset}
             placement={placement}
             render={(attrs) => (
                 <div
-                    className={cx('menu-list')}
+                    className={cx('menu-list', className)}
                     style={{ width: width }}
                     tabIndex="-1"
                     {...attrs}
