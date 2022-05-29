@@ -2,11 +2,12 @@
 .menu-list {
     --menu-item-hover-background-color: rgba(3, 3, 3, 0.05);
 
-    max-height: 90vh;
     overflow-y: auto;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
 
     .menu-popper {
         padding: 8px 0;
+        border-right: none;
     }
 
     &::-webkit-scrollbar {
@@ -36,6 +37,11 @@
         right: 16px;
         top: 50%;
         transform: translateY(-50%);
+        cursor: pointer;
+    }
+
+    &:hover {
+        background-color: var(--menu-item-hover-background-color);
     }
 }
 
@@ -55,9 +61,5 @@
 
     span:first-child {
         margin-right: 16px;
-    }
-
-    &:hover {
-        background-color: var(--menu-item-hover-background-color);
     }
 }

@@ -4,7 +4,7 @@ import Button from '~/components/Button';
 
 const cx = classNames.bind(styles);
 
-function MenuItem({ data }) {
+function MenuItem({ data, onClick }) {
     const props = {
         to: data.to,
         href: data.href,
@@ -15,7 +15,7 @@ function MenuItem({ data }) {
     }
 
     return (
-        <div className={cx('wrap-menu-item')}>
+        <div className={cx('wrap-menu-item')} onClick={onClick}>
             <Button {...props} leftIcon={data.icon} className={cx('menu-item')}>
                 {data.title}
             </Button>

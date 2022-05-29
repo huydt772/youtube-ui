@@ -1,0 +1,23 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    background-color: var(--white-color);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-top: none;
+    border-right: none;
+    height: 49px;
+}
+
+.icon {
+    display: flex;
+    padding: 8px;
+    margin: 0 4px;
+    align-items: center;
+    cursor: pointer;
+}
+
+.title {
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+    font-weight: 400;
+}

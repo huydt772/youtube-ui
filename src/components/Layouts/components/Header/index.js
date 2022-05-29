@@ -12,6 +12,7 @@ import {
     ArrowIcon,
     BarsIcon,
     ChannelIcon,
+    CheckIcon,
     CloseIcon,
     CreateIcon,
     DataIcon,
@@ -50,16 +51,91 @@ const SETTING_ITEMS = [
         icon: <ThemeIcon />,
         title: 'Appearance: Device theme',
         rightIcon: <ArrowIcon />,
+        children: {
+            title: 'Appearance',
+            data: [
+                {
+                    icon: <CheckIcon />,
+                    title: 'Use device theme',
+                },
+                {
+                    title: 'Dark theme',
+                },
+                {
+                    title: 'Light theme',
+                },
+            ],
+        },
     },
     {
         icon: <LanguageIcon />,
         title: 'Language: English',
         rightIcon: <ArrowIcon />,
+        children: {
+            title: 'Choose your language',
+            data: [
+                {
+                    icon: <CheckIcon />,
+                    title: 'English (US)',
+                },
+                {
+                    title: 'Tiếng Việt',
+                },
+                {
+                    title: 'Türkçe',
+                },
+                {
+                    title: 'Português',
+                },
+                {
+                    title: 'Français',
+                },
+                {
+                    title: 'Español (España)',
+                },
+                {
+                    title: '中文 (简体)',
+                },
+                {
+                    title: '한국어',
+                },
+            ],
+        },
     },
     {
         icon: <LocationIcon />,
         title: 'Location: Vietnam',
         rightIcon: <ArrowIcon />,
+        children: {
+            title: 'Choose your location',
+            data: [
+                {
+                    icon: <CheckIcon />,
+                    title: 'Vietnam',
+                },
+                {
+                    title: 'Australia',
+                },
+                {
+                    title: 'South Korea',
+                },
+                {
+                    title: 'Russia',
+                },
+                {
+                    title: 'Japan',
+                },
+                {
+                    title: 'France',
+                },
+                {
+                    title: 'Canada',
+                },
+                {
+                    title: 'Thailand',
+                },
+            ],
+        },
     },
     {
         icon: <SettingsIcon />,
@@ -263,7 +339,7 @@ function Header() {
                                 </button>
                             </Tippy>
                             <Menu
-                                className={cx('menu-user')}
+                                userLogin={currentUser}
                                 width="300px"
                                 placement="bottom-end"
                                 offset={[-46, -36]}
@@ -293,7 +369,7 @@ function Header() {
                             </Menu>
 
                             <Menu
-                                width="298px"
+                                width="300px"
                                 placement="bottom-end"
                                 items={SETTING_ITEMS}
                                 split={[8, 1]}
