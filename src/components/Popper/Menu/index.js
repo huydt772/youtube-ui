@@ -24,8 +24,6 @@ function Menu({
 
     const current = history[history.length - 1];
 
-    console.log(current);
-
     useEffect(() => {
         const handleResizeHeight = () => {
             setResizeHeight(window.innerHeight);

@@ -1,7 +1,5 @@
 import Tippy from '@tippyjs/react';
-import HeadlessTippy from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
-import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import 'tippy.js/dist/tippy.css';
 import { images } from '~/assets/images';
@@ -13,7 +11,6 @@ import {
     BarsIcon,
     ChannelIcon,
     CheckIcon,
-    CloseIcon,
     CreateIcon,
     DataIcon,
     FeedbackIcon,
@@ -23,10 +20,8 @@ import {
     LiveIcon,
     LocationIcon,
     MenuIcon,
-    MicroPhoneIcon,
     NotifyIcon,
     PurchasesIcon,
-    SearchIcon,
     SettingsIcon,
     SignOutIcon,
     ThemeIcon,
@@ -39,9 +34,8 @@ import {
     YtStudioIcon,
 } from '~/components/Icons';
 import Image from '~/components/Image';
-import { Wrapper as PopperWrapper } from '~/components/Popper';
 import Menu from '~/components/Popper/Menu';
-import SearchResultItem from '../SearchResultItem';
+import Search from '../Search';
 import styles from './Header.module.scss';
 
 const cx = classNames.bind(styles);
@@ -228,14 +222,7 @@ const CREATE_ITEMS = [
 ];
 
 function Header() {
-    const [searchResult, setSearchResult] = useState([]);
     const currentUser = true;
-
-    useEffect(() => {
-        setTimeout(() => {
-            setSearchResult(['Huy']);
-        }, 0);
-    }, []);
 
     return (
         <header className={cx('wrapper')}>
@@ -248,64 +235,9 @@ function Header() {
                         <img src={images.logo} alt="YouTube" />
                     </Link>
                 </div>
-                <div className={cx('wrap-between')}>
-                    <div className={cx('search', 'search-global')}>
-                        <HeadlessTippy
-                            visible={searchResult.length > 0}
-                            interactive
-                            offset={[0]}
-                            placement="bottom-start"
-                            render={(attrs) => (
-                                <div
-                                    className={cx('search-result')}
-                                    tabIndex="-1"
-                                    {...attrs}
-                                >
-                                    <PopperWrapper className={cx('search-popper')}>
-                                        <SearchResultItem
-                                            content="f8 sơn đặng"
-                                            searched
-                                        />
-                                        <SearchResultItem
-                                            content="code music player"
-                                            searched
-                                        />
-                                        <SearchResultItem content="có không giữ mất đừng tìm trúc nhân" />
-                                        <SearchResultItem content="đám cưới nha" />
-                                    </PopperWrapper>
-                                </div>
-                            )}
-                        >
-                            <div className={cx('wrap-search')}>
-                                <span className={cx('search-icon')}>
-                                    <SearchIcon width="2rem" height="2rem" />
-                                </span>
 
-                                <div className={cx('wrap-input')}>
-                                    <input
-                                        type="text"
-                                        placeholder="Search"
-                                        className={cx('input')}
-                                    />
-                                    <button className={cx('close-btn')}>
-                                        <CloseIcon />
-                                    </button>
-                                </div>
-                            </div>
-                        </HeadlessTippy>
+                <Search />
 
-                        <Tippy content="Search">
-                            <button className={cx('search-btn')}>
-                                <SearchIcon />
-                            </button>
-                        </Tippy>
-                    </div>
-                    <Tippy content="Search with your voice">
-                        <button className={cx('miro-btn')}>
-                            <MicroPhoneIcon />
-                        </button>
-                    </Tippy>
-                </div>
                 <div className={cx('wrap-right')}>
                     {currentUser ? (
                         <>
