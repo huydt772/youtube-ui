@@ -9,6 +9,8 @@ import UserHeaderMenu from './UserHeaderMenu';
 
 const cx = classNames.bind(styles);
 
+const defaultFn = function () {};
+
 function Menu({
     width,
     userLogin,
@@ -17,6 +19,7 @@ function Menu({
     children,
     split,
     items = [],
+    onClickOutside = defaultFn,
 }) {
     const [history, setHistory] = useState([{ data: items }]);
     const [menuItems, setMenuItems] = useState();
@@ -79,7 +82,6 @@ function Menu({
             interactive
             offset={offset}
             placement={placement}
-            onHide={handleMenuHide}
             render={(attrs) => (
                 <div
                     style={{ width: width, maxHeight: resizeHeight - 8 }}
@@ -101,9 +103,11 @@ function Menu({
                             }
                         />
                     )}
-                    {menuItems}
+                    <div className={cx('menu-body')}>{menuItems}</div>
                 </div>
             )}
+            onHide={handleMenuHide}
+            onClickOutside={onClickOutside}
         >
             {children}
         </HeadlessTippy>

@@ -82,7 +82,10 @@ function Search() {
                     onClickOutside={handleHideResult}
                 >
                     <div className={cx('wrap-search')}>
-                        <span className={cx('search-icon')}>
+                        <span
+                            className={cx('search-icon')}
+                            onMouseDown={(e) => e.preventDefault()}
+                        >
                             <SearchIcon width="2rem" height="2rem" />
                         </span>
 
@@ -91,6 +94,7 @@ function Search() {
                                 ref={inputRef}
                                 value={searchValue}
                                 type="text"
+                                spellCheck={false}
                                 placeholder="Search"
                                 className={cx('input')}
                                 onChange={handleChange}

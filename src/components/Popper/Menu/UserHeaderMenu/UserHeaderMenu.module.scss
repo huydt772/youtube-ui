@@ -1,16 +1,10 @@
 .wrapper {
-    position: fixed;
-    z-index: 10;
     width: 100%;
     display: flex;
     padding: 16px;
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-top: none;
     background-color: var(--white-color);
-
-    & + div {
-        margin-top: 83px;
-    }
 }
 
 .image {
@@ -18,9 +12,6 @@
     height: 40px;
     margin-right: 16px;
     border-radius: 100rem;
-}
-
-.info {
 }
 
 .name {
