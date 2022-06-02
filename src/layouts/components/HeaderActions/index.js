@@ -176,7 +176,7 @@ const SETTING_LOGIN_ITEMS = [
 ];
 
 function HeaderActions() {
-    const currentUser = true;
+    const currentUser = false;
 
     return (
         <div className={cx('wrap-right')}>
@@ -210,7 +210,7 @@ function HeaderActions() {
                         items={SETTING_ITEMS}
                         split={[8, 1]}
                     >
-                        <Tippy content="Settings">
+                        <Tippy content="Settings" zIndex={99}>
                             <button className={cx('action-btn')}>
                                 <MenuIcon />
                             </button>

@@ -2,7 +2,7 @@
     width: 100%;
     display: flex;
     padding: 16px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--popper-border-color);
     border-top: none;
     background-color: var(--white-color);
 }

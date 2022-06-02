@@ -11,7 +11,7 @@ function Notifications() {
     const [solidIcon, setSolidIcon] = useState(false);
 
     return (
-        <Tippy content="Notifications">
+        <Tippy content="Notifications" zIndex={99}>
             <button className={cx('action-btn')} onClick={() => setSolidIcon(!solidIcon)}>
                 <span className={cx('badge')}>9+</span>
                 <NotifyIcon solidIcon={solidIcon} />

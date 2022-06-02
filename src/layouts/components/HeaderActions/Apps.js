@@ -48,7 +48,7 @@ function Apps() {
             split={[1, 2, 1]}
             onClickOutside={() => setSolidIcon(false)}
         >
-            <Tippy content="YouTube apps">
+            <Tippy content="YouTube apps" zIndex={99}>
                 <button
                     className={cx('action-btn')}
                     onClick={() => setSolidIcon(!solidIcon)}

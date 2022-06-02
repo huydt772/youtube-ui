@@ -1,9 +1,6 @@
 .wrapper {
-    --popper-background-color: rgba(255, 255, 255, 0.98);
-    --popper-border-color: rgba(0, 0, 0, 0.1);
-
     width: 100%;
-    background-color: var(--popper-background-color);
+    background-color: var(--background-white-opacity-98-color);
     border: 1px solid var(--popper-border-color);
     border-top: none;
 }

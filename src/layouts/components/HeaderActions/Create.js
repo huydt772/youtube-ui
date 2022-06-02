@@ -31,7 +31,7 @@ function Create() {
             items={CREATE_ITEMS}
             onClickOutside={() => setSolidIcon(false)}
         >
-            <Tippy content="Create">
+            <Tippy content="Create" zIndex={99}>
                 <button
                     className={cx('action-btn')}
                     onClick={() => setSolidIcon(!solidIcon)}

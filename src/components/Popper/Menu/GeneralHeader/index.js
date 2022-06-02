@@ -1,10 +1,10 @@
 import classNames from 'classnames/bind';
 import { BackIcon } from '~/components/Icons';
-import styles from './GeneralHeaderMenu.module.scss';
+import styles from './GeneralHeader.module.scss';
 
 const cx = classNames.bind(styles);
 
-function GeneralHeaderMenu({ title, onBack }) {
+function GeneralHeader({ title, onBack }) {
     return (
         <header className={cx('wrapper')}>
             <span className={cx('icon')} onClick={onBack}>
@@ -15,4 +15,4 @@ function GeneralHeaderMenu({ title, onBack }) {
     );
 }
 
-export default GeneralHeaderMenu;
+export default GeneralHeader;

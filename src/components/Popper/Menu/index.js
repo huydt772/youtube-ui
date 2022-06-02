@@ -2,10 +2,10 @@ import HeadlessTippy from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
 import { useEffect, useState } from 'react';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
-import GeneralHeaderMenu from './GeneralHeaderMenu';
+import GeneralHeaderMenu from './GeneralHeader';
 import styles from './Menu.module.scss';
 import MenuItem from './MenuItem';
-import UserHeaderMenu from './UserHeaderMenu';
+import UserHeaderMenu from './UserHeader';
 
 const cx = classNames.bind(styles);
 

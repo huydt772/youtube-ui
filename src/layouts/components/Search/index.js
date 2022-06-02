@@ -116,7 +116,7 @@ function Search() {
                 </Tippy>
             </div>
             <Tippy content="Search with your voice">
-                <button className={cx('miro-btn')}>
+                <button className={cx('micro-btn')}>
                     <MicroPhoneIcon />
                 </button>
             </Tippy>

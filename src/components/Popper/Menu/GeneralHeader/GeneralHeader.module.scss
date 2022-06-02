@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     background-color: var(--white-color);
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--popper-border-color);
     border-top: none;
     height: 49px;
 }
@@ -11,8 +11,13 @@
     display: flex;
     padding: 8px;
     margin: 0 4px;
+    border-radius: 100rem;
     align-items: center;
     cursor: pointer;
+
+    &:active {
+        background-color: var(--icon-active-color);
+    }
 }
 
 .title {

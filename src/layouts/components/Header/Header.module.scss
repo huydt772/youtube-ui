@@ -1,21 +1,8 @@
 .wrapper {
-    --header-background-color: rgba(255, 255, 255, 0.98);
-
-    --searchbox-box-shadow-color: #eee;
-    --searchbox-border-color: #ccc;
-    --searchbox-text-color: #111111;
-    --searchbox-button-border-color: #d3d3d3;
-    --searchbox-button-color: #f8f8f8;
-    --searchbox-button-hover-border-color: #c6c6c6;
-    --searchbox-button-hover-color: #f0f0f0;
-
-    --header-action-active-color: rgba(3, 3, 3, 0.1);
-    --header-badge-background-color: #c00;
-
     position: fixed;
-    z-index: 10;
+    z-index: 100;
     width: 100%;
-    background-color: var(--header-background-color);
+    background-color: var(--background-white-opacity-98-color);
 }
 
 .inner {
@@ -32,10 +19,16 @@
 
     .bars-icon {
         border: none;
+        border-radius: 100rem;
         padding: 8px;
         display: flex;
         align-items: center;
         background-color: transparent;
+        transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+        &:active {
+            background-color: var(--icon-active-color);
+        }
     }
 
     .logo {

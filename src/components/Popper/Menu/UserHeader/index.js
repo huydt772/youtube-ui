@@ -1,10 +1,10 @@
 import classNames from 'classnames/bind';
 import Image from '~/components/Image';
-import styles from './UserHeaderMenu.module.scss';
+import styles from './UserHeader.module.scss';
 
 const cx = classNames.bind(styles);
 
-function UserHeaderMenu({ image, name }) {
+function UserHeader({ image, name }) {
     return (
         <header className={cx('wrapper')}>
             <Image className={cx('image')} src={image} alt={name} />
@@ -16,4 +16,4 @@ function UserHeaderMenu({ image, name }) {
     );
 }
 
-export default UserHeaderMenu;
+export default UserHeader;

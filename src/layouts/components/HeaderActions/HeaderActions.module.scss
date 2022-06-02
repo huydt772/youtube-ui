@@ -13,7 +13,7 @@
         transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 
         &:active {
-            background-color: var(--header-action-active-color);
+            background-color: var(--icon-active-color);
         }
 
         .badge {
