@@ -77,40 +77,44 @@ function Menu({
         setHistory(history.slice(0, 1));
     };
     return (
-        <HeadlessTippy
-            trigger="click"
-            interactive
-            offset={offset}
-            placement={placement}
-            render={(attrs) => (
-                <div
-                    style={{ width: width, maxHeight: resizeHeight - 8 }}
-                    className={cx('menu-list')}
-                    tabIndex="-1"
-                    {...attrs}
-                >
-                    {userLogin && history.length < 2 && (
-                        <UserHeaderMenu
-                            image="https://yt3.ggpht.com/yti/APfAmoEiqTDD0tVCf541rMgwlZ_uCo4BRuFg7xflPOfAEw=s108-c-k-c0x00ffffff-no-rj"
-                            name="HMonster"
-                        />
-                    )}
-                    {history.length > 1 && (
-                        <GeneralHeaderMenu
-                            title={current.title}
-                            onBack={() =>
-                                setHistory(history.slice(0, history.length - 1))
-                            }
-                        />
-                    )}
-                    <div className={cx('menu-body')}>{menuItems}</div>
-                </div>
-            )}
-            onHide={handleMenuHide}
-            onClickOutside={onClickOutside}
-        >
-            {children}
-        </HeadlessTippy>
+        // Using a wrapper <div> or <span> tag around the reference element solves this
+        // by creating a new parentNode context.
+        <div>
+            <HeadlessTippy
+                trigger="click"
+                interactive
+                offset={offset}
+                placement={placement}
+                render={(attrs) => (
+                    <div
+                        style={{ width: width, maxHeight: resizeHeight - 8 }}
+                        className={cx('menu-list')}
+                        tabIndex="-1"
+                        {...attrs}
+                    >
+                        {userLogin && history.length < 2 && (
+                            <UserHeaderMenu
+                                image="https://yt3.ggpht.com/yti/APfAmoEiqTDD0tVCf541rMgwlZ_uCo4BRuFg7xflPOfAEw=s108-c-k-c0x00ffffff-no-rj"
+                                name="HMonster"
+                            />
+                        )}
+                        {history.length > 1 && (
+                            <GeneralHeaderMenu
+                                title={current.title}
+                                onBack={() =>
+                                    setHistory(history.slice(0, history.length - 1))
+                                }
+                            />
+                        )}
+                        <div className={cx('menu-body')}>{menuItems}</div>
+                    </div>
+                )}
+                onHide={handleMenuHide}
+                onClickOutside={onClickOutside}
+            >
+                {children}
+            </HeadlessTippy>
+        </div>
     );
 }
 

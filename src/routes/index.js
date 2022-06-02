@@ -1,5 +1,7 @@
+import config from '~/config';
+
 // Layouts
-import { HeaderOnly } from '~/components/Layouts';
+import { HeaderOnly } from '~/layouts';
 
 // Pages
 import Home from '~/pages/Home';
@@ -12,14 +14,14 @@ import Library from '~/pages/Library';
 import History from '~/pages/History';
 
 const publicRoutes = [
-    { path: '/', component: Home },
-    { path: '/explore', component: Explore },
-    { path: '/search', component: Search },
-    { path: '/settings', component: Settings, layout: HeaderOnly },
-    { path: '/shorts', component: Shorts },
-    { path: '/subscriptions', component: Subscriptions },
-    { path: '/library', component: Library },
-    { path: '/history', component: History },
+    { path: config.routes.home, component: Home },
+    { path: config.routes.explore, component: Explore },
+    { path: config.routes.search, component: Search },
+    { path: config.routes.settings, component: Settings, layout: HeaderOnly },
+    { path: config.routes.shorts, component: Shorts },
+    { path: config.routes.subscriptions, component: Subscriptions },
+    { path: config.routes.library, component: Library },
+    { path: config.routes.history, component: History },
 ];
 
 const privateRoutes = [];

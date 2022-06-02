@@ -29,6 +29,15 @@
     & > span:first-child {
         margin-right: 10px;
     }
+
+    & > span:nth-child(2) {
+        text-align: start;
+        max-height: 3.2rem;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+    }
 }
 
 .remove-btn {

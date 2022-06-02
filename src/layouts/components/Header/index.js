@@ -6,6 +6,7 @@ import { BarsIcon } from '~/components/Icons';
 import HeaderActions from '../HeaderActions';
 import Search from '../Search';
 import styles from './Header.module.scss';
+import config from '~/config';
 
 const cx = classNames.bind(styles);
 
@@ -17,7 +18,11 @@ function Header() {
                     <button className={cx('bars-icon')}>
                         <BarsIcon />
                     </button>
-                    <Link to="/" className={cx('logo')} title="YouTube Home">
+                    <Link
+                        to={config.routes.home}
+                        className={cx('logo')}
+                        title="YouTube Home"
+                    >
                         <img src={images.logo} alt="YouTube" />
                     </Link>
                 </div>
