@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     background-color: var(--white-color);
-    border: 1px solid var(--popper-border-color);
+    border: 1px solid var(--general-border-color);
     border-top: none;
     height: 49px;
 }
@@ -16,7 +16,7 @@
     cursor: pointer;
 
     &:active {
-        background-color: var(--icon-active-color);
+        background-color: var(--general-active-color);
     }
 }
 

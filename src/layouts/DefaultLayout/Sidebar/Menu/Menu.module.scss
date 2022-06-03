@@ -1,0 +1,48 @@
+.wrapper {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--general-border-color);
+}
+
+.block {
+    padding: 8px 0;
+}
+
+.heading {
+    font-size: 1.4rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    padding: 7px 24px 6px;
+    color: #606060;
+    text-transform: uppercase;
+}
+
+.item {
+    border: none;
+    border-radius: unset;
+    justify-content: flex-start;
+    font-weight: 400;
+    width: 100%;
+    padding: 0 24px;
+    background-color: transparent;
+
+    + .item {
+        margin-left: 0;
+    }
+
+    span:first-child {
+        margin-right: 24px;
+    }
+
+    &:hover {
+        background-color: var(--menu-item-hover-background-color);
+    }
+}
+
+.active {
+    font-weight: 500;
+    background-color: var(--general-active-color);
+
+    &:hover {
+        background-color: var(--sidebar-item-hover-color);
+    }
+}

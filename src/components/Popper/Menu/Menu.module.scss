@@ -6,7 +6,7 @@
 
 .menu-body {
     overflow-y: auto;
-    border-right: 1px solid var(--popper-border-color);
+    border-right: 1px solid var(--general-border-color);
 
     &::-webkit-scrollbar {
         width: 8px;

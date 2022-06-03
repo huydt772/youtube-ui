@@ -1,0 +1,31 @@
+.wrapper {
+    position: fixed;
+    z-index: 10;
+    top: var(--default-layout-header-height);
+    left: var(--sidebar-width);
+    right: 0;
+
+    display: flex;
+    align-items: center;
+
+    height: calc(var(--default-layout-header-height) + 2px);
+    padding: 0 24px;
+    border-width: 1px 0;
+    border-style: solid;
+    border-color: var(--general-border-color);
+    background-color: var(--background-white-opacity-98-color);
+    overflow-x: auto;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+.clicked {
+    background-color: var(--text-primary-color);
+    color: var(--white-color);
+
+    &:hover {
+        background-color: var(--text-primary-color);
+    }
+}

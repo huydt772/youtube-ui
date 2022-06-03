@@ -13,7 +13,7 @@
         transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 
         &:active {
-            background-color: var(--icon-active-color);
+            background-color: var(--general-active-color);
         }
 
         .badge {
@@ -36,5 +36,11 @@
         border-radius: 100rem;
         cursor: pointer;
         user-select: none;
+    }
+
+    .button {
+        span:last-child {
+            line-height: 1.7rem;
+        }
     }
 }

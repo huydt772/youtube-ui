@@ -217,7 +217,7 @@ function HeaderActions() {
                         </Tippy>
                     </Menu>
 
-                    <Button primary leftIcon={<UserIcon />}>
+                    <Button primary leftIcon={<UserIcon />} className={cx('button')}>
                         SIGN IN
                     </Button>
                 </>

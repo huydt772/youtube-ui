@@ -1,5 +1,8 @@
 .wrapper {
     position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     z-index: 100;
     width: 100%;
     background-color: var(--background-white-opacity-98-color);
@@ -27,7 +30,7 @@
         transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 
         &:active {
-            background-color: var(--icon-active-color);
+            background-color: var(--general-active-color);
         }
     }
 

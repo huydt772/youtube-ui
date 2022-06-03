@@ -590,7 +590,12 @@ export const UploadIcon = ({ width = '2.4rem', height = '2.4rem', className }) =
     </svg>
 );
 
-export const LiveIcon = ({ width = '2.4rem', height = '2.4rem', className }) => (
+export const LiveIcon = ({
+    width = '2.4rem',
+    height = '2.4rem',
+    className,
+    solidIcon,
+}) => (
     <svg
         className={className}
         width={width}
@@ -599,11 +604,19 @@ export const LiveIcon = ({ width = '2.4rem', height = '2.4rem', className }) => 
         fill="currentColor"
         xmlns="http://www.w3.org/2000/svg"
     >
-        <path
-            fillRule="evenodd"
-            clipRule="evenodd"
-            d="M14,12c0,1.1-0.9,2-2,2s-2-0.9-2-2s0.9-2,2-2S14,10.9,14,12z M8.48,8.45L7.77,7.75C6.68,8.83,6,10.34,6,12 s0.68,3.17,1.77,4.25l0.71-0.71C7.57,14.64,7,13.39,7,12S7.57,9.36,8.48,8.45z M16.23,7.75l-0.71,0.71C16.43,9.36,17,10.61,17,12 s-0.57,2.64-1.48,3.55l0.71,0.71C17.32,15.17,18,13.66,18,12S17.32,8.83,16.23,7.75z M5.65,5.63L4.95,4.92C3.13,6.73,2,9.24,2,12 s1.13,5.27,2.95,7.08l0.71-0.71C4.02,16.74,3,14.49,3,12S4.02,7.26,5.65,5.63z M19.05,4.92l-0.71,0.71C19.98,7.26,21,9.51,21,12 s-1.02,4.74-2.65,6.37l0.71,0.71C20.87,17.27,22,14.76,22,12S20.87,6.73,19.05,4.92z"
-        ></path>
+        {solidIcon ? (
+            <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M14,12c0,1.1-0.9,2-2,2s-2-0.9-2-2s0.9-2,2-2S14,10.9,14,12z M6.36,6.33L4.95,4.92C3.13,6.73,2,9.24,2,12 s1.13,5.27,2.95,7.08l1.41-1.41C4.9,16.22,4,14.21,4,12S4.9,7.78,6.36,6.33z M19.05,4.92l-1.41,1.41C19.1,7.78,20,9.79,20,12 s-0.9,4.22-2.36,5.67l1.41,1.41C20.87,17.27,22,14.76,22,12S20.87,6.73,19.05,4.92z M9.19,9.16L7.77,7.75C6.68,8.83,6,10.34,6,12 s0.68,3.17,1.77,4.25l1.41-1.41C8.46,14.11,8,13.11,8,12S8.46,9.89,9.19,9.16z M16.23,7.75l-1.41,1.41C15.54,9.89,16,10.89,16,12 s-0.46,2.11-1.19,2.84l1.41,1.41C17.32,15.17,18,13.66,18,12S17.32,8.83,16.23,7.75z"
+            ></path>
+        ) : (
+            <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M14,12c0,1.1-0.9,2-2,2s-2-0.9-2-2s0.9-2,2-2S14,10.9,14,12z M8.48,8.45L7.77,7.75C6.68,8.83,6,10.34,6,12 s0.68,3.17,1.77,4.25l0.71-0.71C7.57,14.64,7,13.39,7,12S7.57,9.36,8.48,8.45z M16.23,7.75l-0.71,0.71C16.43,9.36,17,10.61,17,12 s-0.57,2.64-1.48,3.55l0.71,0.71C17.32,15.17,18,13.66,18,12S17.32,8.83,16.23,7.75z M5.65,5.63L4.95,4.92C3.13,6.73,2,9.24,2,12 s1.13,5.27,2.95,7.08l0.71-0.71C4.02,16.74,3,14.49,3,12S4.02,7.26,5.65,5.63z M19.05,4.92l-0.71,0.71C19.98,7.26,21,9.51,21,12 s-1.02,4.74-2.65,6.37l0.71,0.71C20.87,17.27,22,14.76,22,12S20.87,6.73,19.05,4.92z"
+            ></path>
+        )}
     </svg>
 );
 
@@ -654,6 +667,387 @@ export const CheckIcon = ({ width = '2.4rem', height = '2.4rem', className }) =>
             fillRule="evenodd"
             clipRule="evenodd"
             d="M9,18.7l-5.4-5.4l0.7-0.7L9,17.3L20.6,5.6l0.7,0.7L9,18.7z"
+        ></path>
+    </svg>
+);
+
+export const HomeIcon = ({
+    width = '2.4rem',
+    height = '2.4rem',
+    className,
+    solidIcon,
+}) => (
+    <svg
+        className={className}
+        width={width}
+        height={height}
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        {solidIcon ? (
+            <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M4,10V21h6V15h4v6h6V10L12,3Z"
+            ></path>
+        ) : (
+            <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M12,4.33l7,6.12V20H15V14H9v6H5V10.45l7-6.12M12,3,4,10V21h6V15h4v6h6V10L12,3Z"
+            ></path>
+        )}
+    </svg>
+);
+
+export const ExploreIcon = ({
+    width = '2.4rem',
+    height = '2.4rem',
+    className,
+    solidIcon,
+}) => (
+    <svg
+        className={className}
+        width={width}
+        height={height}
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        {solidIcon ? (
+            <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M11.23,13.08c-0.29-0.21-0.48-0.51-0.54-0.86c-0.06-0.35,0.02-0.71,0.23-0.99c0.21-0.29,0.51-0.48,0.86-0.54 c0.35-0.06,0.7,0.02,0.99,0.23c0.29,0.21,0.48,0.51,0.54,0.86c0.06,0.35-0.02,0.71-0.23,0.99c-0.21,0.29-0.51,0.48-0.86,0.54 c-0.07,0.01-0.15,0.02-0.22,0.02C11.72,13.33,11.45,13.25,11.23,13.08z M22,12c0,5.52-4.48,10-10,10S2,17.52,2,12 C2,6.48,6.48,2,12,2S22,6.48,22,12z M18.03,5.97L9.8,9.8l-3.83,8.23l8.23-3.83L18.03,5.97z"
+            ></path>
+        ) : (
+            <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M9.8,9.8l-3.83,8.23l8.23-3.83l3.83-8.23L9.8,9.8z M13.08,12.77c-0.21,0.29-0.51,0.48-0.86,0.54 c-0.07,0.01-0.15,0.02-0.22,0.02c-0.28,0-0.54-0.08-0.77-0.25c-0.29-0.21-0.48-0.51-0.54-0.86c-0.06-0.35,0.02-0.71,0.23-0.99 c0.21-0.29,0.51-0.48,0.86-0.54c0.35-0.06,0.7,0.02,0.99,0.23c0.29,0.21,0.48,0.51,0.54,0.86C13.37,12.13,13.29,12.48,13.08,12.77z M12,3c4.96,0,9,4.04,9,9s-4.04,9-9,9s-9-4.04-9-9S7.04,3,12,3 M12,2C6.48,2,2,6.48,2,12s4.48,10,10,10s10-4.48,10-10S17.52,2,12,2 L12,2z"
+            ></path>
+        )}
+    </svg>
+);
+
+export const ShortsIcon = ({
+    width = '2.4rem',
+    height = '2.4rem',
+    className,
+    solidIcon,
+}) => (
+    <svg
+        className={className}
+        width={width}
+        height={height}
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        {solidIcon ? (
+            <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M17.77 10.32c-.77-.32-1.2-.5-1.2-.5L18 9.06c1.84-.96 2.53-3.23 1.56-5.06s-3.24-2.53-5.07-1.56L6 6.94c-1.29.68-2.07 2.04-2 3.49.07 1.42.93 2.67 2.22 3.25.03.01 1.2.5 1.2.5L6 14.93c-1.83.97-2.53 3.24-1.56 5.07.97 1.83 3.24 2.53 5.07 1.56l8.5-4.5c1.29-.68 2.06-2.04 1.99-3.49-.07-1.42-.94-2.68-2.23-3.25zM10 14.65v-5.3L15 12l-5 2.65z"
+            ></path>
+        ) : (
+            <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M10 14.65v-5.3L15 12l-5 2.65zm7.77-4.33c-.77-.32-1.2-.5-1.2-.5L18 9.06c1.84-.96 2.53-3.23 1.56-5.06s-3.24-2.53-5.07-1.56L6 6.94c-1.29.68-2.07 2.04-2 3.49.07 1.42.93 2.67 2.22 3.25.03.01 1.2.5 1.2.5L6 14.93c-1.83.97-2.53 3.24-1.56 5.07.97 1.83 3.24 2.53 5.07 1.56l8.5-4.5c1.29-.68 2.06-2.04 1.99-3.49-.07-1.42-.94-2.68-2.23-3.25zm-.23 5.86l-8.5 4.5c-1.34.71-3.01.2-3.72-1.14-.71-1.34-.2-3.01 1.14-3.72l2.04-1.08v-1.21l-.69-.28-1.11-.46c-.99-.41-1.65-1.35-1.7-2.41-.05-1.06.52-2.06 1.46-2.56l8.5-4.5c1.34-.71 3.01-.2 3.72 1.14.71 1.34.2 3.01-1.14 3.72L15.5 9.26v1.21l1.8.74c.99.41 1.65 1.35 1.7 2.41.05 1.06-.52 2.06-1.46 2.56z"
+            ></path>
+        )}
+    </svg>
+);
+
+export const SubsIcon = ({
+    width = '2.4rem',
+    height = '2.4rem',
+    className,
+    solidIcon,
+}) => (
+    <svg
+        className={className}
+        width={width}
+        height={height}
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        {solidIcon ? (
+            <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M20,7H4V6h16V7z M22,9v12H2V9H22z M15,15l-5-3v6L15,15z M17,3H7v1h10V3z"
+            ></path>
+        ) : (
+            <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M10,18v-6l5,3L10,18z M17,3H7v1h10V3z M20,6H4v1h16V6z M22,9H2v12h20V9z M3,10h18v10H3V10z"
+            ></path>
+        )}
+    </svg>
+);
+
+export const LibraryIcon = ({
+    width = '2.4rem',
+    height = '2.4rem',
+    className,
+    solidIcon,
+}) => (
+    <svg
+        className={className}
+        width={width}
+        height={height}
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        {solidIcon ? (
+            <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M4,20h14v1H3V6h1V20z M21,3v15H6V3H21z M17,10.5L11,7v7L17,10.5z"
+            ></path>
+        ) : (
+            <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M11,7l6,3.5L11,14V7L11,7z M18,20H4V6H3v15h15V20z M21,18H6V3h15V18z M7,17h13V4H7V17z"
+            ></path>
+        )}
+    </svg>
+);
+
+export const HistoryIcon = ({
+    width = '2.4rem',
+    height = '2.4rem',
+    className,
+    solidIcon,
+}) => (
+    <svg
+        className={className}
+        width={width}
+        height={height}
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        {solidIcon ? (
+            <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M14.97,16.95L10,13.87V7h2v5.76l4.03,2.49L14.97,16.95z M12,2C8.73,2,5.8,3.44,4,5.83V3.02H2V9h6V7H5.62 C7.08,5.09,9.36,4,12,4c4.41,0,8,3.59,8,8s-3.59,8-8,8s-8-3.59-8-8H2c0,5.51,4.49,10,10,10s10-4.49,10-10S17.51,2,12,2z"
+            ></path>
+        ) : (
+            <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M14.97,16.95L10,13.87V7h2v5.76l4.03,2.49L14.97,16.95z M22,12c0,5.51-4.49,10-10,10S2,17.51,2,12h1c0,4.96,4.04,9,9,9 s9-4.04,9-9s-4.04-9-9-9C8.81,3,5.92,4.64,4.28,7.38C4.17,7.56,4.06,7.75,3.97,7.94C3.96,7.96,3.95,7.98,3.94,8H8v1H1.96V3h1v4.74 C3,7.65,3.03,7.57,3.07,7.49C3.18,7.27,3.3,7.07,3.42,6.86C5.22,3.86,8.51,2,12,2C17.51,2,22,6.49,22,12z"
+            ></path>
+        )}
+    </svg>
+);
+
+export const VideoIcon = ({ width = '2.4rem', height = '2.4rem', className }) => (
+    <svg
+        className={className}
+        width={width}
+        height={height}
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        <path
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M10,8l6,4l-6,4V8L10,8z M21,3v18H3V3H21z M20,4H4v16h16V4z"
+        ></path>
+    </svg>
+);
+
+export const WatchIcon = ({
+    width = '2.4rem',
+    height = '2.4rem',
+    className,
+    solidIcon,
+}) => (
+    <svg
+        className={className}
+        width={width}
+        height={height}
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        {solidIcon ? (
+            <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M12,2C6.48,2,2,6.48,2,12c0,5.52,4.48,10,10,10s10-4.48,10-10C22,6.48,17.52,2,12,2z M14.97,16.95L10,13.87V7h2v5.76 l4.03,2.49L14.97,16.95z"
+            ></path>
+        ) : (
+            <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M14.97,16.95L10,13.87V7h2v5.76l4.03,2.49L14.97,16.95z M12,3c-4.96,0-9,4.04-9,9s4.04,9,9,9s9-4.04,9-9S16.96,3,12,3 M12,2c5.52,0,10,4.48,10,10s-4.48,10-10,10S2,17.52,2,12S6.48,2,12,2L12,2z"
+            ></path>
+        )}
+    </svg>
+);
+
+export const LikeIcon = ({
+    width = '2.4rem',
+    height = '2.4rem',
+    className,
+    solidIcon,
+}) => (
+    <svg
+        className={className}
+        width={width}
+        height={height}
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        {solidIcon ? (
+            <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M3,11h3v10H3V11z M18.77,11h-4.23l1.52-4.94C16.38,5.03,15.54,4,14.38,4c-0.58,0-1.14,0.24-1.52,0.65L7,11v10h10.43 c1.06,0,1.98-0.67,2.19-1.61l1.34-6C21.23,12.15,20.18,11,18.77,11z"
+            ></path>
+        ) : (
+            <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M18.77,11h-4.23l1.52-4.94C16.38,5.03,15.54,4,14.38,4c-0.58,0-1.14,0.24-1.52,0.65L7,11H3v10h4h1h9.43 c1.06,0,1.98-0.67,2.19-1.61l1.34-6C21.23,12.15,20.18,11,18.77,11z M7,20H4v-8h3V20z M19.98,13.17l-1.34,6 C18.54,19.65,18.03,20,17.43,20H8v-8.61l5.6-6.06C13.79,5.12,14.08,5,14.38,5c0.26,0,0.5,0.11,0.63,0.3 c0.07,0.1,0.15,0.26,0.09,0.47l-1.52,4.94L13.18,12h1.35h4.23c0.41,0,0.8,0.17,1.03,0.46C19.92,12.61,20.05,12.86,19.98,13.17z"
+            ></path>
+        )}
+    </svg>
+);
+
+export const ArrowDownIcon = ({ width = '2.4rem', height = '2.4rem', className }) => (
+    <svg
+        className={className}
+        width={width}
+        height={height}
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        <path
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M12,15.7L5.6,9.4l0.7-0.7l5.6,5.6l5.6-5.6l0.7,0.7L12,15.7z"
+        ></path>
+    </svg>
+);
+
+export const GamingIcon = ({
+    width = '2.4rem',
+    height = '2.4rem',
+    className,
+    solidIcon,
+}) => (
+    <svg
+        className={className}
+        width={width}
+        height={height}
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        {solidIcon ? (
+            <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M16.97,4l-4.99,2.8L6.99,4L2,6.8v7.6l9.98,5.6l9.98-5.6V6.8L16.97,4z M10,12H8v2H6v-2H4v-2h2V8h2v2h2V12z M15.5,14 c-0.83,0-1.5-0.67-1.5-1.5c0-0.83,0.67-1.5,1.5-1.5c0.83,0,1.5,0.67,1.5,1.5C17,13.33,16.33,14,15.5,14z M18.5,11 c-0.83,0-1.5-0.67-1.5-1.5C17,8.67,17.67,8,18.5,8C19.33,8,20,8.67,20,9.5C20,10.33,19.33,11,18.5,11z"
+            ></path>
+        ) : (
+            <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M10,12H8v2H6v-2H4v-2h2V8h2v2h2V12z M17,12.5c0-0.83-0.67-1.5-1.5-1.5S14,11.67,14,12.5c0,0.83,0.67,1.5,1.5,1.5 S17,13.33,17,12.5z M20,9.5C20,8.67,19.33,8,18.5,8S17,8.67,17,9.5c0,0.83,0.67,1.5,1.5,1.5S20,10.33,20,9.5z M16.97,5.15l-4.5,2.53 l-0.49,0.27l-0.49-0.27l-4.5-2.53L3,7.39v6.43l8.98,5.04l8.98-5.04V7.39L16.97,5.15 M16.97,4l4.99,2.8v7.6L11.98,20L2,14.4V6.8 L6.99,4l4.99,2.8L16.97,4L16.97,4z"
+            ></path>
+        )}
+    </svg>
+);
+
+export const TrophyIcon = ({
+    width = '2.4rem',
+    height = '2.4rem',
+    className,
+    solidIcon,
+}) => (
+    <svg
+        className={className}
+        width={width}
+        height={height}
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        {solidIcon ? (
+            <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M18 5V2H6V5H4V6V10V11H6.01C6.07 13.53 7.63 15.78 9.97 16.64C9.98 16.64 9.99 16.64 10 16.65V19H9V20H8V22H16V20H15V19H14V16.65C14.01 16.65 14.02 16.65 14.03 16.64C16.36 15.78 17.93 13.54 17.99 11H20V10V6V5H18ZM6 10H5V6H6V10ZM19 10H18V6H19V10Z"
+            ></path>
+        ) : (
+            <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M17 3V5V6V10V10.51L16.99 10.97C16.94 13.1 15.66 14.94 13.74 15.67H13.72L13.66 15.69L13 15.95V16.65V19V20H14V21H15H10V20H11V19V16.65V15.95L10.34 15.71L10.26 15.68H10.25C8.33 14.95 7.05 13.11 7 10.98V10.51V10V6V5V3H17ZM18 2H6V5H4V6V10V11H6.01C6.07 13.53 7.63 15.78 9.97 16.64C9.98 16.64 9.99 16.64 10 16.65V19H9V20H8V22H16V20H15V19H14V16.65C14.01 16.65 14.02 16.65 14.03 16.64C16.36 15.78 17.93 13.54 17.99 11H20V10V6V5H18V2ZM18 10V6H19V10H18ZM5 10V6H6V10H5Z"
+            ></path>
+        )}
+    </svg>
+);
+
+export const FlagIcon = ({
+    width = '2.4rem',
+    height = '2.4rem',
+    className,
+    solidIcon,
+}) => (
+    <svg
+        className={className}
+        width={width}
+        height={height}
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        {solidIcon ? (
+            <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M14,3H5v18h1v-9h6.6l0.4,2h7V5h-5.6L14,3L14,3z"
+            ></path>
+        ) : (
+            <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M13.18,4l0.24,1.2L13.58,6h0.82H19v7h-5.18l-0.24-1.2L13.42,11H12.6H6V4H13.18 M14,3H5v18h1v-9h6.6l0.4,2h7V5h-5.6L14,3 L14,3z"
+            ></path>
+        )}
+    </svg>
+);
+
+export const AddIcon = ({ width = '2.4rem', height = '2.4rem', className }) => (
+    <svg
+        className={className}
+        width={width}
+        height={height}
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        <path
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M17,13h-4v4h-2v-4H7v-2h4V7h2v4h4V13z M12,3c-4.96,0-9,4.04-9,9s4.04,9,9,9c4.96,0,9-4.04,9-9S16.96,3,12,3 M12,2 c5.52,0,10,4.48,10,10s-4.48,10-10,10C6.48,22,2,17.52,2,12S6.48,2,12,2L12,2z"
         ></path>
     </svg>
 );

@@ -7,6 +7,11 @@ const routes = {
     subscriptions: '/subscriptions',
     library: '/library',
     history: '/history',
+    profile: '/profile',
+    gaming: '/gaming',
+    live: '/live',
+    sports: '/sports',
+    report: '/reporthistory',
 };
 
 export default routes;

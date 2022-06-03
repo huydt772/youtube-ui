@@ -11,5 +11,6 @@
 .content {
     flex: 1;
     background-color: var(--general-background-color);
+    margin-left: var(--sidebar-width);
     min-height: 1000px;
 }

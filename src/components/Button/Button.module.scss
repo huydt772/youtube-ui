@@ -18,6 +18,17 @@
     span:first-child {
         margin-right: 8px;
     }
+
+    .title {
+        line-height: 2rem;
+    }
+
+    .image {
+        border-radius: 100rem;
+        width: 24px;
+        height: 24px;
+        margin-right: 24px;
+    }
 }
 
 // Button types
@@ -25,6 +36,15 @@
     border-color: var(--button-rounded-border-color);
     background-color: var(--button-rounded-background-color);
     border-radius: 100rem;
+    min-width: fit-content;
+
+    span:last-child {
+        margin-right: 0;
+    }
+
+    &:hover {
+        background-color: var(--general-border-color);
+    }
 }
 
 .primary {
