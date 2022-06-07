@@ -200,19 +200,22 @@ const SETTINGS = [
 const cx = classNames.bind(styles);
 
 function Sidebar() {
-    const currentUser = false;
+    const currentUser = true;
     const [active, setActive] = useState('Home');
 
     return (
         <div className={cx('wrapper')}>
             <MenuSidebar items={HOME} active={active} onActive={setActive} />
+
+            <MenuSidebar
+                items={currentUser ? LIBRARY_LOGIN : LIBRARY}
+                lessPadding={!currentUser}
+                active={active}
+                onActive={setActive}
+            />
+
             {currentUser ? (
                 <>
-                    <MenuSidebar
-                        items={LIBRARY_LOGIN}
-                        active={active}
-                        onActive={setActive}
-                    />
                     <MenuSidebar
                         items={SUBSCRIPTIONS}
                         heading="Subscriptions"
@@ -223,12 +226,6 @@ function Sidebar() {
                 </>
             ) : (
                 <>
-                    <MenuSidebar
-                        items={LIBRARY}
-                        lessPadding
-                        active={active}
-                        onActive={setActive}
-                    />
                     <div className={cx('sign-in')}>
                         <p>Sign in to like videos, comment, and subscribe.</p>
                         <Button primary leftIcon={<UserIcon />} className={cx('button')}>
@@ -250,6 +247,7 @@ function Sidebar() {
                     />
                 </>
             )}
+
             <MenuSidebar
                 items={currentUser ? MORE_FROM_YOUTUBE_LOGIN : MORE_FROM_YOUTUBE}
                 heading="More from YouTube"
@@ -257,6 +255,7 @@ function Sidebar() {
                 active={active}
                 onActive={setActive}
             />
+
             <MenuSidebar
                 items={SETTINGS}
                 lessPadding

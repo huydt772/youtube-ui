@@ -176,7 +176,7 @@ const SETTING_LOGIN_ITEMS = [
 ];
 
 function HeaderActions() {
-    const currentUser = false;
+    const currentUser = true;
 
     return (
         <div className={cx('wrap-right')}>

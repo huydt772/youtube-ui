@@ -1,4 +1,5 @@
 import classNames from 'classnames/bind';
+import Product from '~/components/Product';
 import styles from './Home.module.scss';
 import ScrollHome from './ScrollHome';
 
@@ -67,6 +68,15 @@ function Home() {
     return (
         <div className={cx('wrapper')}>
             <ScrollHome data={SCROLL_HOME_DATA} />
+            <div className={cx('products')}>
+                <div className={cx('grid')}>
+                    <div className={cx('row', 'yt-gutter')}>
+                        <div className={cx('col', 'l-3', 'm-4', 'c-12')}>
+                            <Product />
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }

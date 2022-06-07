@@ -13,7 +13,7 @@ function ScrollHome({ data }) {
             {data.map((item) => (
                 <Button
                     key={item.id}
-                    className={cx('item', {
+                    className={cx({
                         clicked: clicked === item.title,
                     })}
                     rounded
