@@ -1,4 +1,6 @@
+import axios from 'axios';
 import classNames from 'classnames/bind';
+import { useEffect, useState } from 'react';
 import Product from '~/components/Product';
 import styles from './Home.module.scss';
 import ScrollHome from './ScrollHome';
@@ -65,15 +67,39 @@ const SCROLL_HOME_DATA = [
 ];
 
 function Home() {
+    const [apiData, setApiData] = useState([]);
+
+    useEffect(() => {
+        const KEY = 'AIzaSyDfeGpdmR-o_qfGdNcUHKZfzckhWK8HdAc';
+        axios
+            .get('https://youtube.googleapis.com/youtube/v3/videos?', {
+                params: {
+                    part: 'snippet,contentDetails,statistics',
+                    chart: 'mostPopular',
+                    maxResults: 50,
+                    regionCode: 'VN',
+                    key: KEY,
+                },
+            })
+            .then((res) => {
+                setApiData(res.data.items);
+            });
+    }, []);
+
     return (
         <div className={cx('wrapper')}>
             <ScrollHome data={SCROLL_HOME_DATA} />
             <div className={cx('products')}>
                 <div className={cx('grid')}>
                     <div className={cx('row', 'yt-gutter')}>
-                        <div className={cx('col', 'l-3', 'm-4', 'c-12')}>
-                            <Product />
-                        </div>
+                        {apiData.map((item) => (
+                            <div
+                                key={item.id}
+                                className={cx('col', 'l-3', 'm-4', 'c-12')}
+                            >
+                                <Product data={item} />
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>

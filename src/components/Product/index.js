@@ -1,13 +1,82 @@
+import axios from 'axios';
 import classNames from 'classnames/bind';
-import Image from '~/components/Image';
-import { MenuIcon, TickIcon } from '~/components/Icons';
-import styles from './Product.module.scss';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { MenuIcon, TickIcon } from '~/components/Icons';
+import Image from '~/components/Image';
 import config from '~/config';
+import styles from './Product.module.scss';
 
 const cx = classNames.bind(styles);
 
-function Product({ explorePage = false }) {
+function Product({ data, explorePage = false }) {
+    const [avatar, setAvatar] = useState('');
+
+    useEffect(() => {
+        const KEY = 'AIzaSyDfeGpdmR-o_qfGdNcUHKZfzckhWK8HdAc';
+        axios
+            .get('https://www.googleapis.com/youtube/v3/channels', {
+                params: {
+                    part: 'snippet',
+                    fields: 'items/snippet/thumbnails',
+                    id: data.snippet.channelId,
+                    key: KEY,
+                },
+            })
+            .then((res) => {
+                setAvatar(res.data.items[0].snippet.thumbnails.default.url);
+            });
+    }, [data]);
+
+    const convertTime = (duration) => {
+        let match = duration.match(/PT(\d+H)?(\d+M)?(\d+S)?/);
+
+        // eslint-disable-next-line array-callback-return
+        match = match.slice(1).map((x) => {
+            if (x != null) {
+                return x.replace(/\D/, '');
+            }
+        });
+
+        const hours = parseInt(match[0]) || 0;
+        const minutes = parseInt(match[1]) || 0;
+        const seconds = parseInt(match[2]) || 0;
+
+        const checkTime = (time) => {
+            if (time < 10 && time > 0) {
+                return `0${time}`;
+            }
+            return time;
+        };
+
+        const checkHours = (hours) => {
+            if (hours === 0) {
+                return '';
+            } else {
+                return `${hours}:`;
+            }
+        };
+
+        const checkSeconds = (seconds) => {
+            if (seconds === 0) {
+                return `0${seconds}`;
+            }
+            return seconds;
+        };
+
+        return `${checkHours(hours)}${checkTime(minutes)}:${checkSeconds(
+            checkTime(seconds),
+        )}`;
+    };
+
+    const viewsFormat = (n) => {
+        if (n < 1e3) return n;
+        if (n >= 1e3 && n < 1e6) return +(n / 1e3).toFixed(0) + 'K';
+        if (n >= 1e6 && n < 1e9) return +(n / 1e6).toFixed(1) + 'M';
+        if (n >= 1e9 && n < 1e12) return +(n / 1e9).toFixed(1) + 'B';
+        if (n >= 1e12) return +(n / 1e12).toFixed(1) + 'T';
+    };
+
     return (
         <div
             className={cx('wrapper', {
@@ -21,10 +90,12 @@ function Product({ explorePage = false }) {
             >
                 <Image
                     className={cx('thumbnail')}
-                    src="https://i.ytimg.com/vi/tSEUq6Ql01Y/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCURVI7IhG1zJOst5Zk-AGde0yO8A"
-                    alt="Men's Bay"
+                    src={data.snippet.thumbnails.medium.url}
+                    alt={data.snippet.title}
                 />
-                <span className={cx('time')}>4:20</span>
+                <span className={cx('time')}>
+                    {convertTime(data.contentDetails.duration)}
+                </span>
             </div>
 
             <div className={cx('body')}>
@@ -34,11 +105,13 @@ function Product({ explorePage = false }) {
                         'explore-avatar-link': explorePage,
                     })}
                 >
-                    <Image
-                        className={cx('avatar')}
-                        src="https://yt3.ggpht.com/zBUnmMo28sCLCYtBl2vSKdKHTFgrF6wGhs2N1SsWqbWu8ERcxto3FV5WcYprDc6hIdJwGOgk3q0=s68-c-k-c0x00ffffff-no-rj"
-                        alt="Men's Bay"
-                    />
+                    {avatar && (
+                        <Image
+                            className={cx('avatar')}
+                            src={avatar}
+                            alt={data.snippet.channelTitle}
+                        />
+                    )}
                 </Link>
 
                 <div
@@ -52,8 +125,7 @@ function Product({ explorePage = false }) {
                                 'explore-title': explorePage,
                             })}
                         >
-                            5 ĐIỀU ĐÀN ÔNG THẦM KÍN MUỐN VÀ CÁCH ĐỂ CÓ ĐƯỢC CHÚNG | Men's
-                            Bay
+                            {data.snippet.title}
                         </h3>
                         <span className={cx('menu-icon')}>
                             <MenuIcon />
@@ -65,7 +137,7 @@ function Product({ explorePage = false }) {
                             'explore-wrap-name': explorePage,
                         })}
                     >
-                        <p className={cx('name')}>Men's Bay</p>
+                        <p className={cx('name')}>{data.snippet.channelTitle}</p>
                         <TickIcon width="1.4rem" height="1.4rem" />
                     </div>
 
@@ -74,18 +146,14 @@ function Product({ explorePage = false }) {
                             'explore-wrap-view': explorePage,
                         })}
                     >
-                        <p className={cx('view')}>169K views</p>
+                        <p className={cx('view')}>
+                            {viewsFormat(data.statistics.viewCount)} views
+                        </p>
                         <p>4 days ago</p>
                     </div>
 
                     {explorePage && (
-                        <p className={cx('desc')}>
-                            Rất đáng khen ngợi Thầy trò u23 VN đã chới lối đá tấn công nức
-                            lòng người hâm mộ VN.Tiếc là phòng ngự còn khá lỏng lẻo đặc
-                            biệt thủ môn Văn Toản mắc lỗi sơ đẳng, biếu không U23 TL 1 bàn
-                            dẫn đến tinh thần u23 dâng cao. Song Thái Lan với dàn cầu thủ
-                            đá cho nước ngoài cũng bình thường.
-                        </p>
+                        <p className={cx('desc')}>{data.snippet.description}</p>
                     )}
                 </div>
             </div>
