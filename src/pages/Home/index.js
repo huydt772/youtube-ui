@@ -1,6 +1,7 @@
-import axios from 'axios';
 import classNames from 'classnames/bind';
 import { useEffect, useState } from 'react';
+
+import * as videoService from '~/services/videoService';
 import Product from '~/components/Product';
 import styles from './Home.module.scss';
 import ScrollHome from './ScrollHome';
@@ -70,20 +71,12 @@ function Home() {
     const [apiData, setApiData] = useState([]);
 
     useEffect(() => {
-        const KEY = 'AIzaSyDfeGpdmR-o_qfGdNcUHKZfzckhWK8HdAc';
-        axios
-            .get('https://youtube.googleapis.com/youtube/v3/videos?', {
-                params: {
-                    part: 'snippet,contentDetails,statistics',
-                    chart: 'mostPopular',
-                    maxResults: 50,
-                    regionCode: 'VN',
-                    key: KEY,
-                },
-            })
-            .then((res) => {
-                setApiData(res.data.items);
-            });
+        const fetchApi = async () => {
+            const result = await videoService.video('mostPopular');
+            setApiData(result);
+        };
+
+        fetchApi();
     }, []);
 
     return (
