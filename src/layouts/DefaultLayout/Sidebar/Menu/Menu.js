@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import Button from '~/components/Button';
 import styles from './Menu.module.scss';
@@ -34,5 +35,13 @@ function Menu({ items, active, heading, lessPadding = false, onActive }) {
         </div>
     );
 }
+
+Menu.propTypes = {
+    items: PropTypes.array.isRequired,
+    active: PropTypes.string,
+    heading: PropTypes.string,
+    lessPadding: PropTypes.bool,
+    onActive: PropTypes.func,
+};
 
 export default Menu;

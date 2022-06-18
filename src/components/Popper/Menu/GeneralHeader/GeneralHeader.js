@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import { BackIcon } from '~/components/Icons';
 import styles from './GeneralHeader.module.scss';
@@ -14,5 +15,10 @@ function GeneralHeader({ title, onBack }) {
         </header>
     );
 }
+
+GeneralHeader.propTypes = {
+    title: PropTypes.string.isRequired,
+    onBack: PropTypes.func.isRequired,
+};
 
 export default GeneralHeader;

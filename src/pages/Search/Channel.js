@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import styles from './Search.module.scss';
 import Image from '~/components/Image';
@@ -26,5 +27,9 @@ function Channel({ data }) {
         </div>
     );
 }
+
+Channel.propTypes = {
+    data: PropTypes.object.isRequired,
+};
 
 export default Channel;

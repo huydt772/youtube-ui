@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
 import Image from '~/components/Image';
@@ -12,7 +13,7 @@ function Button({
     primary = false,
     rounded = false,
     subscribe = false,
-    small,
+    small = false,
     leftIcon,
     rightIcon,
     image,
@@ -52,5 +53,20 @@ function Button({
         </Comp>
     );
 }
+
+Button.propTypes = {
+    to: PropTypes.string,
+    href: PropTypes.string,
+    children: PropTypes.node.isRequired,
+    primary: PropTypes.bool,
+    rounded: PropTypes.bool,
+    subscribe: PropTypes.bool,
+    small: PropTypes.bool,
+    leftIcon: PropTypes.node,
+    rightIcon: PropTypes.node,
+    image: PropTypes.string,
+    className: PropTypes.string,
+    onClick: PropTypes.func,
+};
 
 export default Button;

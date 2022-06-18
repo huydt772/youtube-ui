@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import Button from '~/components/Button';
 import { PlayIcon, PlaylistIcon } from '~/components/Icons';
@@ -36,5 +37,9 @@ function Playlist({ data }) {
         </div>
     );
 }
+
+Playlist.propTypes = {
+    data: PropTypes.object.isRequired,
+};
 
 export default Playlist;

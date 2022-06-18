@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
 import Button from '~/components/Button';
@@ -6,7 +7,7 @@ import styles from './SearchResultItem.module.scss';
 
 const cx = classNames.bind(styles);
 
-function SearchResultItem({ content, searched, onClick }) {
+function SearchResultItem({ content, searched = false, onClick }) {
     return (
         <Link
             to={`/search?search_query=${content}`}
@@ -29,5 +30,11 @@ function SearchResultItem({ content, searched, onClick }) {
         </Link>
     );
 }
+
+SearchResultItem.propTypes = {
+    content: PropTypes.string.isRequired,
+    searched: PropTypes.bool,
+    onClick: PropTypes.func,
+};
 
 export default SearchResultItem;

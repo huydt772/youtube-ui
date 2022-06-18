@@ -6,6 +6,7 @@ import GeneralHeaderMenu from './GeneralHeader';
 import styles from './Menu.module.scss';
 import MenuItem from './MenuItem';
 import UserHeaderMenu from './UserHeader';
+import PropTypes from 'prop-types';
 
 const cx = classNames.bind(styles);
 
@@ -117,5 +118,16 @@ function Menu({
         </div>
     );
 }
+
+Menu.propTypes = {
+    width: PropTypes.string,
+    userLogin: PropTypes.bool,
+    placement: PropTypes.string,
+    offset: PropTypes.array,
+    children: PropTypes.node.isRequired,
+    split: PropTypes.array,
+    items: PropTypes.array.isRequired,
+    onClickOutside: PropTypes.func,
+};
 
 export default Menu;

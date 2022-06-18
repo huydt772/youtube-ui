@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import Image from '~/components/Image';
 import styles from './UserHeader.module.scss';
@@ -15,5 +16,10 @@ function UserHeader({ image, name }) {
         </header>
     );
 }
+
+UserHeader.propTypes = {
+    image: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+};
 
 export default UserHeader;

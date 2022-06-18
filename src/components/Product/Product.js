@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -189,5 +190,11 @@ function Product({ data, explorePage = false, searchPage = false }) {
         </div>
     );
 }
+
+Product.propTypes = {
+    data: PropTypes.object.isRequired,
+    explorePage: PropTypes.bool,
+    searchPage: PropTypes.bool,
+};
 
 export default Product;

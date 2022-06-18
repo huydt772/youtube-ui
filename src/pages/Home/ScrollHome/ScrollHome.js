@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import { useState } from 'react';
 import Button from '~/components/Button';
@@ -26,5 +27,9 @@ function ScrollHome({ data }) {
         </div>
     );
 }
+
+ScrollHome.propTypes = {
+    data: PropTypes.array.isRequired,
+};
 
 export default ScrollHome;
