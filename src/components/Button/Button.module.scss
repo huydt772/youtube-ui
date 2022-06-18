@@ -66,6 +66,25 @@
     }
 }
 
+.subscribe {
+    text-transform: uppercase;
+    color: var(--white-color);
+    border-radius: 3px;
+    margin: 0 3px 16px;
+    background-color: var(--subscribe-button-background-color);
+    height: 39px;
+    min-width: 112px;
+
+    .title {
+        line-height: 1.7rem;
+        letter-spacing: 0.5px;
+    }
+
+    span:first-child {
+        margin-right: 0;
+    }
+}
+
 // Button size
 .small {
     padding: 0 12px;

@@ -2,19 +2,13 @@ import * as httpRequest from '~/utils/httpRequest';
 
 const KEY = 'AIzaSyAwW14B-rUwNkw1J0ucBTDkj2w47LLqCu8';
 
-export const video = async (
-    chart,
-    part = 'snippet,contentDetails,statistics',
-    maxResults = 50,
-    regionCode = 'VN',
-) => {
+export const search = async (q, part = 'snippet', maxResults = 25) => {
     try {
-        const res = await httpRequest.get('videos', {
+        const res = await httpRequest.get('search', {
             params: {
-                chart,
+                q,
                 part,
                 maxResults,
-                regionCode,
                 key: KEY,
             },
         });

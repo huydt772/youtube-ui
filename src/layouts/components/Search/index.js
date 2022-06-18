@@ -3,6 +3,7 @@ import HeadlessTippy from '@tippyjs/react/headless';
 import axios from 'axios';
 import classNames from 'classnames/bind';
 import { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { CloseIcon, MicroPhoneIcon, SearchIcon } from '~/components/Icons';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import { useDebounce } from '~/hooks';
@@ -16,6 +17,7 @@ function Search() {
     const [searchValue, setSearchValue] = useState('');
     const [showResult, setShowResult] = useState(true);
 
+    const navigate = useNavigate();
     const inputRef = useRef();
 
     const debounced = useDebounce(searchValue, 500);
@@ -62,6 +64,23 @@ function Search() {
         setShowResult(false);
     };
 
+    const handleSearch = () => {
+        navigate(`/search?search_query=${searchValue}`);
+    };
+
+    const handleSubmit = (e) => {
+        if (e.which === 13) {
+            navigate(`/search?search_query=${searchValue}`);
+            e.target.blur();
+            setShowResult(false);
+        }
+    };
+
+    const handleClickResultItem = (result) => {
+        setSearchValue(result);
+        setShowResult(false);
+    };
+
     return (
         <div className={cx('wrap-between')}>
             <div className={cx('search', 'search-global')}>
@@ -74,7 +93,11 @@ function Search() {
                         <div className={cx('search-result')} tabIndex="-1" {...attrs}>
                             <PopperWrapper className={cx('search-popper')}>
                                 {searchResult.map((item, index) => (
-                                    <SearchResultItem key={index} content={item} />
+                                    <SearchResultItem
+                                        key={index}
+                                        content={item}
+                                        onClick={() => handleClickResultItem(item)}
+                                    />
                                 ))}
                             </PopperWrapper>
                         </div>
@@ -98,6 +121,7 @@ function Search() {
                                 placeholder="Search"
                                 className={cx('input')}
                                 onChange={handleChange}
+                                onKeyDown={handleSubmit}
                                 onFocus={() => setShowResult(true)}
                             />
                             {searchValue && (
@@ -110,7 +134,7 @@ function Search() {
                 </HeadlessTippy>
 
                 <Tippy content="Search">
-                    <button className={cx('search-btn')}>
+                    <button className={cx('search-btn')} onClick={handleSearch}>
                         <SearchIcon />
                     </button>
                 </Tippy>

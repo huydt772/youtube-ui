@@ -11,6 +11,7 @@ function Button({
     children,
     primary = false,
     rounded = false,
+    subscribe = false,
     small,
     leftIcon,
     rightIcon,
@@ -37,6 +38,7 @@ function Button({
     const classes = cx('wrapper', {
         primary,
         rounded,
+        subscribe,
         small,
         [className]: className,
     });

@@ -1068,3 +1068,33 @@ export const TickIcon = ({ width = '2.4rem', height = '2.4rem', className }) => 
         ></path>
     </svg>
 );
+
+export const FilterIcon = ({
+    width = '2.4rem',
+    height = '2.4rem',
+    className,
+    solidIcon,
+}) => (
+    <svg
+        className={className}
+        width={width}
+        height={height}
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        {solidIcon ? (
+            <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M15,17h6v2h-6V17z M11,17H3v2h8v2h2v-6h-2V17z M14,9h2V3h-2v2H3v2h11V9z M18,5v2h3V5H18z M6,15h2V9H6v2H3v2h3V15z M10,13h11 v-2H10V13z"
+            ></path>
+        ) : (
+            <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M15,17h6v1h-6V17z M11,17H3v1h8v2h1v-2v-1v-2h-1V17z M14,8h1V6V5V3h-1v2H3v1h11V8z M18,5v1h3V5H18z M6,14h1v-2v-1V9H6v2H3v1 h3V14z M10,12h11v-1H10V12z"
+            ></path>
+        )}
+    </svg>
+);

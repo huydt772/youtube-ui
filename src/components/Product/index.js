@@ -1,31 +1,24 @@
-import axios from 'axios';
 import classNames from 'classnames/bind';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { MenuIcon, TickIcon } from '~/components/Icons';
 import Image from '~/components/Image';
 import config from '~/config';
+import * as channelService from '~/services/channelService';
 import styles from './Product.module.scss';
 
 const cx = classNames.bind(styles);
 
-function Product({ data, explorePage = false }) {
+function Product({ data, explorePage = false, searchPage = false }) {
     const [avatar, setAvatar] = useState('');
 
     useEffect(() => {
-        const KEY = 'AIzaSyDfeGpdmR-o_qfGdNcUHKZfzckhWK8HdAc';
-        axios
-            .get('https://www.googleapis.com/youtube/v3/channels', {
-                params: {
-                    part: 'snippet',
-                    fields: 'items/snippet/thumbnails',
-                    id: data.snippet.channelId,
-                    key: KEY,
-                },
-            })
-            .then((res) => {
-                setAvatar(res.data.items[0].snippet.thumbnails.default.url);
-            });
+        const fetchApi = async () => {
+            const result = await channelService.channel(data.snippet.channelId);
+            setAvatar(result);
+        };
+
+        fetchApi();
     }, [data]);
 
     const convertTime = (duration) => {
@@ -81,6 +74,7 @@ function Product({ data, explorePage = false }) {
         <div
             className={cx('wrapper', {
                 'explore-wrapper': explorePage,
+                'search-wrapper': searchPage,
             })}
         >
             <div
@@ -93,26 +87,30 @@ function Product({ data, explorePage = false }) {
                     src={data.snippet.thumbnails.medium.url}
                     alt={data.snippet.title}
                 />
-                <span className={cx('time')}>
-                    {convertTime(data.contentDetails.duration)}
-                </span>
+                {searchPage || (
+                    <span className={cx('time')}>
+                        {convertTime(data.contentDetails.duration)}
+                    </span>
+                )}
             </div>
 
             <div className={cx('body')}>
-                <Link
-                    to={config.routes.profile}
-                    className={cx('avatar-link', {
-                        'explore-avatar-link': explorePage,
-                    })}
-                >
-                    {avatar && (
-                        <Image
-                            className={cx('avatar')}
-                            src={avatar}
-                            alt={data.snippet.channelTitle}
-                        />
-                    )}
-                </Link>
+                {searchPage || (
+                    <Link
+                        to={config.routes.profile}
+                        className={cx('avatar-link', {
+                            'explore-avatar-link': explorePage,
+                        })}
+                    >
+                        {avatar && (
+                            <Image
+                                className={cx('avatar')}
+                                src={avatar}
+                                alt={data.snippet.channelTitle}
+                            />
+                        )}
+                    </Link>
+                )}
 
                 <div
                     className={cx('info', {
@@ -132,27 +130,58 @@ function Product({ data, explorePage = false }) {
                         </span>
                     </div>
 
-                    <div
-                        className={cx('wrap-name', {
-                            'explore-wrap-name': explorePage,
-                        })}
-                    >
-                        <p className={cx('name')}>{data.snippet.channelTitle}</p>
-                        <TickIcon width="1.4rem" height="1.4rem" />
-                    </div>
+                    {searchPage || (
+                        <div
+                            className={cx('wrap-name', {
+                                'explore-wrap-name': explorePage,
+                            })}
+                        >
+                            <p className={cx('name')}>{data.snippet.channelTitle}</p>
+                            <TickIcon width="1.4rem" height="1.4rem" />
+                        </div>
+                    )}
 
-                    <div
-                        className={cx('wrap-view', {
-                            'explore-wrap-view': explorePage,
-                        })}
-                    >
-                        <p className={cx('view')}>
-                            {viewsFormat(data.statistics.viewCount)} views
-                        </p>
-                        <p>4 days ago</p>
-                    </div>
+                    {searchPage || (
+                        <div
+                            className={cx('wrap-view', {
+                                'explore-wrap-view': explorePage,
+                            })}
+                        >
+                            <p className={cx('view')}>
+                                {viewsFormat(data.statistics.viewCount)} views
+                            </p>
+                            <p>4 days ago</p>
+                        </div>
+                    )}
 
-                    {explorePage && (
+                    {searchPage && (
+                        <div className={cx('wrap-avatar')}>
+                            <Link
+                                to={config.routes.profile}
+                                className={cx('avatar-link', {
+                                    'explore-avatar-link': explorePage,
+                                })}
+                            >
+                                {avatar && (
+                                    <Image
+                                        className={cx('avatar')}
+                                        src={avatar}
+                                        alt={data.snippet.channelTitle}
+                                    />
+                                )}
+                            </Link>
+                            <div
+                                className={cx('wrap-name', {
+                                    'explore-wrap-name': explorePage,
+                                })}
+                            >
+                                <p className={cx('name')}>{data.snippet.channelTitle}</p>
+                                <TickIcon width="1.4rem" height="1.4rem" />
+                            </div>
+                        </div>
+                    )}
+
+                    {(explorePage || searchPage) && (
                         <p className={cx('desc')}>{data.snippet.description}</p>
                     )}
                 </div>
