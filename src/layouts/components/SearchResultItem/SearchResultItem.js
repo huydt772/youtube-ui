@@ -1,6 +1,7 @@
-import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+
 import Button from '~/components/Button';
 import { SearchedIcon, SearchIcon } from '~/components/Icons';
 import styles from './SearchResultItem.module.scss';

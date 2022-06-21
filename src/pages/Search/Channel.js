@@ -1,8 +1,8 @@
-import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
-import styles from './Search.module.scss';
-import Image from '~/components/Image';
+import PropTypes from 'prop-types';
 import Button from '~/components/Button';
+import Image from '~/components/Image';
+import styles from './Search.module.scss';
 
 const cx = classNames.bind(styles);
 

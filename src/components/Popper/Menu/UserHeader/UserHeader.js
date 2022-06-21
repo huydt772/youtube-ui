@@ -1,5 +1,6 @@
-import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
+import PropTypes from 'prop-types';
+import { memo } from 'react';
 import Image from '~/components/Image';
 import styles from './UserHeader.module.scss';
 
@@ -22,4 +23,4 @@ UserHeader.propTypes = {
     name: PropTypes.string.isRequired,
 };
 
-export default UserHeader;
+export default memo(UserHeader);

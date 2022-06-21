@@ -1,11 +1,12 @@
-import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
+import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+
 import { MenuIcon, TickIcon } from '~/components/Icons';
 import Image from '~/components/Image';
 import config from '~/config';
-import * as channelService from '~/services/channelService';
+import * as avatarService from '~/services/avatarService';
 import styles from './Product.module.scss';
 
 const cx = classNames.bind(styles);
@@ -15,12 +16,15 @@ function Product({ data, explorePage = false, searchPage = false }) {
 
     useEffect(() => {
         const fetchApi = async () => {
-            const result = await channelService.channel(data.snippet.channelId);
+            const result = await avatarService.avatar(data.snippet.channelId);
             setAvatar(result);
         };
 
-        fetchApi();
-    }, [data]);
+        if (!explorePage) {
+            fetchApi();
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     const convertTime = (duration) => {
         let match = duration.match(/PT(\d+H)?(\d+M)?(\d+S)?/);
@@ -78,11 +82,7 @@ function Product({ data, explorePage = false, searchPage = false }) {
                 'search-wrapper': searchPage,
             })}
         >
-            <div
-                className={cx('wrap-thumbnail', {
-                    'explore-wrap-thumbnail': explorePage,
-                })}
-            >
+            <div className={cx('wrap-thumbnail')}>
                 <Image
                     className={cx('thumbnail')}
                     src={data.snippet.thumbnails.medium.url}
@@ -96,13 +96,8 @@ function Product({ data, explorePage = false, searchPage = false }) {
             </div>
 
             <div className={cx('body')}>
-                {searchPage || (
-                    <Link
-                        to={config.routes.profile}
-                        className={cx('avatar-link', {
-                            'explore-avatar-link': explorePage,
-                        })}
-                    >
+                {searchPage || explorePage || (
+                    <Link to={config.routes.profile} className={cx('avatar-link')}>
                         {avatar && (
                             <Image
                                 className={cx('avatar')}
@@ -113,42 +108,24 @@ function Product({ data, explorePage = false, searchPage = false }) {
                     </Link>
                 )}
 
-                <div
-                    className={cx('info', {
-                        'explore-info': explorePage,
-                    })}
-                >
+                <div className={cx('info')}>
                     <div className={cx('wrap-title')}>
-                        <h3
-                            className={cx('title', {
-                                'explore-title': explorePage,
-                            })}
-                        >
-                            {data.snippet.title}
-                        </h3>
+                        <h3 className={cx('title')}>{data.snippet.title}</h3>
                         <span className={cx('menu-icon')}>
                             <MenuIcon />
                         </span>
                     </div>
 
                     {searchPage || (
-                        <div
-                            className={cx('wrap-name', {
-                                'explore-wrap-name': explorePage,
-                            })}
-                        >
+                        <div className={cx('wrap-name')}>
                             <p className={cx('name')}>{data.snippet.channelTitle}</p>
                             <TickIcon width="1.4rem" height="1.4rem" />
                         </div>
                     )}
 
                     {searchPage || (
-                        <div
-                            className={cx('wrap-view', {
-                                'explore-wrap-view': explorePage,
-                            })}
-                        >
-                            <p className={cx('view')}>
+                        <div className={cx('wrap-views')}>
+                            <p className={cx('views')}>
                                 {viewsFormat(data.statistics.viewCount)} views
                             </p>
                             <p>4 days ago</p>
@@ -159,9 +136,7 @@ function Product({ data, explorePage = false, searchPage = false }) {
                         <div className={cx('wrap-avatar')}>
                             <Link
                                 to={config.routes.profile}
-                                className={cx('avatar-link', {
-                                    'explore-avatar-link': explorePage,
-                                })}
+                                className={cx('avatar-link')}
                             >
                                 {avatar && (
                                     <Image
@@ -171,11 +146,7 @@ function Product({ data, explorePage = false, searchPage = false }) {
                                     />
                                 )}
                             </Link>
-                            <div
-                                className={cx('wrap-name', {
-                                    'explore-wrap-name': explorePage,
-                                })}
-                            >
+                            <div className={cx('wrap-name')}>
                                 <p className={cx('name')}>{data.snippet.channelTitle}</p>
                                 <TickIcon width="1.4rem" height="1.4rem" />
                             </div>

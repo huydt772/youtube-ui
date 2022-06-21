@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
+import PropTypes from 'prop-types';
 import { BackIcon } from '~/components/Icons';
 import styles from './GeneralHeader.module.scss';
 

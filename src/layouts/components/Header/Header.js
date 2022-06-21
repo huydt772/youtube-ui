@@ -1,12 +1,13 @@
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
 import 'tippy.js/dist/tippy.css';
+
 import { images } from '~/assets/images';
 import { BarsIcon } from '~/components/Icons';
+import config from '~/config';
 import HeaderActions from '../HeaderActions';
 import Search from '../Search';
 import styles from './Header.module.scss';
-import config from '~/config';
 
 const cx = classNames.bind(styles);
 

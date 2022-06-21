@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
+import PropTypes from 'prop-types';
 import { forwardRef, useState } from 'react';
 import { images } from '~/assets/images';
 import styles from './Image.module.scss';

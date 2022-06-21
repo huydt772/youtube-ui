@@ -1,6 +1,7 @@
-import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
+import PropTypes from 'prop-types';
 import { useState } from 'react';
+
 import Button from '~/components/Button';
 import styles from './ScrollHome.module.scss';
 

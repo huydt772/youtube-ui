@@ -1,12 +1,13 @@
 import HeadlessTippy from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
+import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
+
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import GeneralHeaderMenu from './GeneralHeader';
 import styles from './Menu.module.scss';
 import MenuItem from './MenuItem';
 import UserHeaderMenu from './UserHeader';
-import PropTypes from 'prop-types';
 
 const cx = classNames.bind(styles);
 
@@ -52,12 +53,14 @@ function Menu({
                 }}
             />
         ));
+
         const splitMenuItems = () =>
             split.map((splitItem, index) => (
                 <PopperWrapper key={index} className={cx('menu-popper')}>
                     {menuItems.splice(0, splitItem)}
                 </PopperWrapper>
             ));
+
         setMenuItems(
             split ? (
                 history.length < 2 ? (
@@ -74,9 +77,33 @@ function Menu({
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [history]);
 
-    const handleMenuHide = () => {
+    const handleReset = () => {
         setHistory(history.slice(0, 1));
     };
+
+    const handleBack = () => {
+        setHistory(history.slice(0, history.length - 1));
+    };
+
+    const renderResult = (attrs) => (
+        <div
+            style={{ width: width, maxHeight: resizeHeight - 8 }}
+            className={cx('menu-list')}
+            tabIndex="-1"
+            {...attrs}
+        >
+            {userLogin && history.length < 2 && (
+                <UserHeaderMenu
+                    image="https://yt3.ggpht.com/yti/APfAmoEiqTDD0tVCf541rMgwlZ_uCo4BRuFg7xflPOfAEw=s108-c-k-c0x00ffffff-no-rj"
+                    name="HMonster"
+                />
+            )}
+            {history.length > 1 && (
+                <GeneralHeaderMenu title={current.title} onBack={handleBack} />
+            )}
+            <div className={cx('menu-body')}>{menuItems}</div>
+        </div>
+    );
     return (
         // Using a wrapper <div> or <span> tag around the reference element solves this
         // by creating a new parentNode context.
@@ -86,31 +113,8 @@ function Menu({
                 interactive
                 offset={offset}
                 placement={placement}
-                render={(attrs) => (
-                    <div
-                        style={{ width: width, maxHeight: resizeHeight - 8 }}
-                        className={cx('menu-list')}
-                        tabIndex="-1"
-                        {...attrs}
-                    >
-                        {userLogin && history.length < 2 && (
-                            <UserHeaderMenu
-                                image="https://yt3.ggpht.com/yti/APfAmoEiqTDD0tVCf541rMgwlZ_uCo4BRuFg7xflPOfAEw=s108-c-k-c0x00ffffff-no-rj"
-                                name="HMonster"
-                            />
-                        )}
-                        {history.length > 1 && (
-                            <GeneralHeaderMenu
-                                title={current.title}
-                                onBack={() =>
-                                    setHistory(history.slice(0, history.length - 1))
-                                }
-                            />
-                        )}
-                        <div className={cx('menu-body')}>{menuItems}</div>
-                    </div>
-                )}
-                onHide={handleMenuHide}
+                render={renderResult}
+                onHide={handleReset}
                 onClickOutside={onClickOutside}
             >
                 {children}

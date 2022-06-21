@@ -1,7 +1,7 @@
 import classNames from 'classnames/bind';
-import MenuSidebar from './Menu';
-import styles from './Sidebar.module.scss';
-import config from '~/config';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import Button from '~/components/Button';
 import {
     AddIcon,
     ArrowDownIcon,
@@ -23,9 +23,9 @@ import {
     VideoIcon,
     WatchIcon,
 } from '~/components/Icons';
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import Button from '~/components/Button';
+import config from '~/config';
+import MenuSidebar from './Menu';
+import styles from './Sidebar.module.scss';
 
 const HOME = [
     {
@@ -105,7 +105,7 @@ const SUBSCRIPTIONS = [
         to: config.routes.profile,
     },
     {
-        image: 'https://yt3.ggpht.com/QLk0PHIv9cFYiq03xr6gL67shtQ0vRDaTAz5WSpwSU3IEB005aZLbOnJ4rnF732VY7fgFszKig=s88-c-k-c0x00ffffff-no-rj',
+        image: 'https://yt3.ggpht.com/UtzXAAKz-qnKPqnzX2ec9zmKgWx1yHb9cUWPj5gFcF_Imw3KgAbNBpOuXN0HZ7P1WadZyzkW=s88-c-k-c0x00ffffff-no-rj',
         title: 'evondev',
         to: config.routes.profile,
     },

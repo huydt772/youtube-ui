@@ -4,6 +4,7 @@ import axios from 'axios';
 import classNames from 'classnames/bind';
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+
 import { CloseIcon, MicroPhoneIcon, SearchIcon } from '~/components/Icons';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import { useDebounce } from '~/hooks';
@@ -15,15 +16,15 @@ const cx = classNames.bind(styles);
 function Search() {
     const [searchResult, setSearchResult] = useState([]);
     const [searchValue, setSearchValue] = useState('');
-    const [showResult, setShowResult] = useState(true);
+    const [showResult, setShowResult] = useState(false);
 
     const navigate = useNavigate();
     const inputRef = useRef();
 
-    const debounced = useDebounce(searchValue, 500);
+    const debouncedValue = useDebounce(searchValue, 500);
 
     useEffect(() => {
-        if (!debounced.trim()) {
+        if (!debouncedValue.trim()) {
             setSearchResult([]);
             return;
         }
@@ -33,7 +34,7 @@ function Search() {
                 'https://corsanywhere.herokuapp.com/http://suggestqueries.google.com/complete/search',
                 {
                     params: {
-                        q: debounced,
+                        q: debouncedValue,
                         client: 'firefox',
                         ds: 'yt',
                     },
@@ -43,7 +44,7 @@ function Search() {
         };
 
         fetchApi();
-    }, [debounced]);
+    }, [debouncedValue]);
 
     const handleChange = (e) => {
         const searchValue = e.target.value;
@@ -68,7 +69,7 @@ function Search() {
         navigate(`/search?search_query=${searchValue}`);
     };
 
-    const handleSubmit = (e) => {
+    const handleEnter = (e) => {
         if (e.which === 13) {
             navigate(`/search?search_query=${searchValue}`);
             e.target.blur();
@@ -81,6 +82,20 @@ function Search() {
         setShowResult(false);
     };
 
+    const renderResult = (attrs) => (
+        <div className={cx('search-result')} tabIndex="-1" {...attrs}>
+            <PopperWrapper className={cx('search-popper')}>
+                {searchResult.map((item, index) => (
+                    <SearchResultItem
+                        key={index}
+                        content={item}
+                        onClick={() => handleClickResultItem(item)}
+                    />
+                ))}
+            </PopperWrapper>
+        </div>
+    );
+
     return (
         <div className={cx('wrap-between')}>
             <div className={cx('search', 'search-global')}>
@@ -89,19 +104,7 @@ function Search() {
                     interactive
                     offset={[0]}
                     placement="bottom-start"
-                    render={(attrs) => (
-                        <div className={cx('search-result')} tabIndex="-1" {...attrs}>
-                            <PopperWrapper className={cx('search-popper')}>
-                                {searchResult.map((item, index) => (
-                                    <SearchResultItem
-                                        key={index}
-                                        content={item}
-                                        onClick={() => handleClickResultItem(item)}
-                                    />
-                                ))}
-                            </PopperWrapper>
-                        </div>
-                    )}
+                    render={renderResult}
                     onClickOutside={handleHideResult}
                 >
                     <div className={cx('wrap-search')}>
@@ -121,7 +124,7 @@ function Search() {
                                 placeholder="Search"
                                 className={cx('input')}
                                 onChange={handleChange}
-                                onKeyDown={handleSubmit}
+                                onKeyDown={handleEnter}
                                 onFocus={() => setShowResult(true)}
                             />
                             {searchValue && (

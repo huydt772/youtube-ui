@@ -1,8 +1,8 @@
 import classNames from 'classnames/bind';
 import { useEffect, useState } from 'react';
 
-import * as videoService from '~/services/videoService';
 import Product from '~/components/Product';
+import * as videoService from '~/services/videoService';
 import styles from './Home.module.scss';
 import ScrollHome from './ScrollHome';
 
@@ -68,12 +68,12 @@ const SCROLL_HOME_DATA = [
 ];
 
 function Home() {
-    const [apiData, setApiData] = useState([]);
+    const [homeVideo, setHomeVideo] = useState([]);
 
     useEffect(() => {
         const fetchApi = async () => {
             const result = await videoService.video('mostPopular');
-            setApiData(result);
+            setHomeVideo(result);
         };
 
         fetchApi();
@@ -85,7 +85,7 @@ function Home() {
             <div className={cx('products')}>
                 <div className={cx('grid')}>
                     <div className={cx('row', 'yt-gutter')}>
-                        {apiData.map((item) => (
+                        {homeVideo.map((item) => (
                             <div
                                 key={item.id}
                                 className={cx('col', 'l-3', 'm-4', 'c-12')}

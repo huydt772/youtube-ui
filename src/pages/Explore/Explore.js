@@ -1,11 +1,11 @@
 import classNames from 'classnames/bind';
 import { useEffect, useState } from 'react';
 
-import * as videoService from '~/services/videoService';
-import Product from '~/components/Product';
-import styles from './Explore.module.scss';
-import Image from '~/components/Image';
 import { images } from '~/assets/images';
+import Image from '~/components/Image';
+import Product from '~/components/Product';
+import * as videoService from '~/services/videoService';
+import styles from './Explore.module.scss';
 
 const EXPLORE_ACTIONS = [
     {
@@ -33,12 +33,12 @@ const EXPLORE_ACTIONS = [
 const cx = classNames.bind(styles);
 
 function Explore() {
-    const [apiData, setApiData] = useState([]);
+    const [popularVideo, setPopularVideo] = useState([]);
 
     useEffect(() => {
         const fetchApi = async () => {
             const result = await videoService.video('mostPopular');
-            setApiData(result);
+            setPopularVideo(result);
         };
         fetchApi();
     }, []);
@@ -62,7 +62,7 @@ function Explore() {
                 </div>
                 <div className={cx('row', 'no-gutters')}>
                     <h3 className={cx('heading')}>Trending videos</h3>
-                    {apiData.map((item) => (
+                    {popularVideo.map((item) => (
                         <div key={item.id} className={cx('col', 'l-10', 'm-10', 'c-12')}>
                             <Product data={item} explorePage />
                         </div>
