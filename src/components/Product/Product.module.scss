@@ -1,5 +1,6 @@
 // Home Page
 .wrapper {
+    display: block;
     margin-bottom: 40px;
 
     &:hover .menu-icon {
@@ -158,20 +159,20 @@
     .wrap-name {
         margin-right: 8px;
     }
+}
 
-    .desc {
-        color: var(--text-secondary-color);
-        margin: 8px 0;
-        font-size: 1.2rem;
-        line-height: 1.8rem;
-        font-weight: 400;
+.desc {
+    color: var(--text-secondary-color);
+    margin: 8px 0;
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+    font-weight: 400;
 
-        max-height: 3.6rem;
-        overflow: hidden;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 2;
-    }
+    max-height: 3.6rem;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
 }
 
 // Search Page

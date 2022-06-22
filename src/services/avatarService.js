@@ -1,6 +1,6 @@
 import * as httpRequest from '~/utils/httpRequest';
 
-const KEY = 'AIzaSyDfeGpdmR-o_qfGdNcUHKZfzckhWK8HdAc';
+const KEY = 'AIzaSyAjNYNCbUoaS29j72TI3Yla7y1xff-cYGE';
 
 export const avatar = async (
     id,

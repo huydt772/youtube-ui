@@ -8,6 +8,7 @@ const routes = {
     library: '/library',
     history: '/history',
     profile: '/profile',
+    watch: '/watch',
     gaming: '/gaming',
     live: '/live',
     sports: '/sports',

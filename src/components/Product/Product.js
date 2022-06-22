@@ -24,7 +24,7 @@ function Product({ data, explorePage = false, searchPage = false }) {
             fetchApi();
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [data]);
 
     const convertTime = (duration) => {
         let match = duration.match(/PT(\d+H)?(\d+M)?(\d+S)?/);
@@ -76,7 +76,8 @@ function Product({ data, explorePage = false, searchPage = false }) {
     };
 
     return (
-        <div
+        <Link
+            to={config.routes.watch}
             className={cx('wrapper', {
                 'explore-wrapper': explorePage,
                 'search-wrapper': searchPage,
@@ -158,7 +159,7 @@ function Product({ data, explorePage = false, searchPage = false }) {
                     )}
                 </div>
             </div>
-        </div>
+        </Link>
     );
 }
 
