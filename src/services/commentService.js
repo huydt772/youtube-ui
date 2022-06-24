@@ -2,14 +2,14 @@ import * as httpRequest from '~/utils/httpRequest';
 
 const KEY = 'AIzaSyAjNYNCbUoaS29j72TI3Yla7y1xff-cYGE';
 
-export const video = async (chart, part = 'snippet,contentDetails,statistics', maxResults = 50, regionCode = 'VN') => {
+export const comment = async (videoId, part = 'snippet,replies', maxResults = 50, textFormat = 'plainText') => {
     try {
-        const res = await httpRequest.get('videos', {
+        const res = await httpRequest.get('commentThreads', {
             params: {
-                chart,
+                videoId,
                 part,
                 maxResults,
-                regionCode,
+                textFormat,
                 key: KEY,
             },
         });

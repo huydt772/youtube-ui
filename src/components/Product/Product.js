@@ -11,13 +11,13 @@ import styles from './Product.module.scss';
 
 const cx = classNames.bind(styles);
 
-function Product({ data, explorePage = false, searchPage = false }) {
+function Product({ data, explorePage = false, searchPage = false, watchPage = false }) {
     const [avatar, setAvatar] = useState('');
 
     useEffect(() => {
         const fetchApi = async () => {
-            const result = await avatarService.avatar(data.snippet.channelId);
-            setAvatar(result);
+            const res = await avatarService.avatar(data.snippet.channelId);
+            setAvatar(res.snippet.thumbnails.default.url);
         };
 
         if (!explorePage) {
@@ -62,9 +62,7 @@ function Product({ data, explorePage = false, searchPage = false }) {
             return seconds;
         };
 
-        return `${checkHours(hours)}${checkTime(minutes)}:${checkSeconds(
-            checkTime(seconds),
-        )}`;
+        return `${checkHours(hours)}${checkTime(minutes)}:${checkSeconds(checkTime(seconds))}`;
     };
 
     const viewsFormat = (n) => {
@@ -75,37 +73,36 @@ function Product({ data, explorePage = false, searchPage = false }) {
         if (n >= 1e12) return +(n / 1e12).toFixed(1) + 'T';
     };
 
+    const configRoute = () => {
+        let id;
+
+        if (searchPage) {
+            id = data.id.videoId;
+        } else {
+            id = data.id;
+        }
+
+        return `${config.routes.watch}?id=${id}`;
+    };
+
     return (
         <Link
-            to={config.routes.watch}
+            to={configRoute()}
             className={cx('wrapper', {
                 'explore-wrapper': explorePage,
                 'search-wrapper': searchPage,
+                'watch-wrapper': watchPage,
             })}
         >
             <div className={cx('wrap-thumbnail')}>
-                <Image
-                    className={cx('thumbnail')}
-                    src={data.snippet.thumbnails.medium.url}
-                    alt={data.snippet.title}
-                />
-                {searchPage || (
-                    <span className={cx('time')}>
-                        {convertTime(data.contentDetails.duration)}
-                    </span>
-                )}
+                <Image className={cx('thumbnail')} src={data.snippet.thumbnails.medium.url} alt={data.snippet.title} />
+                {searchPage || <span className={cx('time')}>{convertTime(data.contentDetails.duration)}</span>}
             </div>
 
             <div className={cx('body')}>
-                {searchPage || explorePage || (
+                {searchPage || explorePage || watchPage || (
                     <Link to={config.routes.profile} className={cx('avatar-link')}>
-                        {avatar && (
-                            <Image
-                                className={cx('avatar')}
-                                src={avatar}
-                                alt={data.snippet.channelTitle}
-                            />
-                        )}
+                        {avatar && <Image className={cx('avatar')} src={avatar} alt={data.snippet.channelTitle} />}
                     </Link>
                 )}
 
@@ -126,25 +123,16 @@ function Product({ data, explorePage = false, searchPage = false }) {
 
                     {searchPage || (
                         <div className={cx('wrap-views')}>
-                            <p className={cx('views')}>
-                                {viewsFormat(data.statistics.viewCount)} views
-                            </p>
+                            <p className={cx('views')}>{viewsFormat(data.statistics.viewCount)} views</p>
                             <p>4 days ago</p>
                         </div>
                     )}
 
                     {searchPage && (
                         <div className={cx('wrap-avatar')}>
-                            <Link
-                                to={config.routes.profile}
-                                className={cx('avatar-link')}
-                            >
+                            <Link to={config.routes.noResults} className={cx('avatar-link')}>
                                 {avatar && (
-                                    <Image
-                                        className={cx('avatar')}
-                                        src={avatar}
-                                        alt={data.snippet.channelTitle}
-                                    />
+                                    <Image className={cx('avatar')} src={avatar} alt={data.snippet.channelTitle} />
                                 )}
                             </Link>
                             <div className={cx('wrap-name')}>
@@ -154,9 +142,7 @@ function Product({ data, explorePage = false, searchPage = false }) {
                         </div>
                     )}
 
-                    {(explorePage || searchPage) && (
-                        <p className={cx('desc')}>{data.snippet.description}</p>
-                    )}
+                    {(explorePage || searchPage) && <p className={cx('desc')}>{data.snippet.description}</p>}
                 </div>
             </div>
         </Link>

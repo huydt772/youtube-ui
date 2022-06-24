@@ -74,6 +74,19 @@
     margin-bottom: 8px;
 }
 
+.channel-quantities {
+    display: flex;
+}
+
+.subs-count {
+    margin-bottom: 4px;
+
+    &::after {
+        content: '•';
+        margin: 0 4px;
+    }
+}
+
 .video-count {
     margin-bottom: 4px;
 }

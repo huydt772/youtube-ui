@@ -18,6 +18,7 @@ import Gaming from '~/pages/Gaming';
 import Live from '~/pages/Live';
 import Sports from '~/pages/Sports';
 import Report from '~/pages/Report';
+import NoResults from '~/pages/NoResults';
 
 const publicRoutes = [
     { path: config.routes.home, component: Home },
@@ -34,6 +35,7 @@ const publicRoutes = [
     { path: config.routes.live, component: Live },
     { path: config.routes.sports, component: Sports },
     { path: config.routes.report, component: Report },
+    { path: config.routes.noResults, component: NoResults },
 ];
 
 const privateRoutes = [];

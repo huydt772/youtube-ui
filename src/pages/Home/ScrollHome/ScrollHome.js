@@ -10,7 +10,6 @@ const cx = classNames.bind(styles);
 
 function ScrollHome({ data }) {
     const [clicked, setClicked] = useState('All');
-    const [scroll, setScroll] = useState(false);
 
     const contentRef = useRef();
 

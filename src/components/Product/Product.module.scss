@@ -214,3 +214,31 @@
         margin: 0;
     }
 }
+
+// Watch Page
+.watch-wrapper {
+    display: flex;
+    margin-bottom: 0;
+    margin-top: 8px;
+
+    .wrap-thumbnail {
+        width: 168px;
+        flex-shrink: 0;
+        margin-right: 8px;
+    }
+
+    .info {
+        margin-top: 0;
+    }
+
+    .title {
+        margin-bottom: 4px;
+    }
+
+    .menu-icon {
+        top: 0px;
+        right: 0px;
+        width: 24px;
+        height: 24px;
+    }
+}
