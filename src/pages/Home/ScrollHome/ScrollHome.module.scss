@@ -2,7 +2,8 @@
     position: fixed;
     z-index: 10;
     top: var(--default-layout-header-height);
-    left: var(--sidebar-width);
+    // left: var(--sidebar-width);
+    left: var(--sub-sidebar-width);
     right: 0;
 
     display: flex;
@@ -41,11 +42,7 @@
         bottom: 0;
         right: 56px;
         width: 50px;
-        background: linear-gradient(
-            to left,
-            var(--background-white-opacity-98-color) 20%,
-            rgba(255, 255, 255, 0) 80%
-        );
+        background: linear-gradient(to left, var(--background-white-opacity-98-color) 20%, rgba(255, 255, 255, 0) 80%);
     }
 }
 
@@ -59,11 +56,7 @@
         bottom: 0;
         left: 56px;
         width: 50px;
-        background: linear-gradient(
-            to right,
-            var(--background-white-opacity-98-color) 20%,
-            rgba(255, 255, 255, 0) 80%
-        );
+        background: linear-gradient(to right, var(--background-white-opacity-98-color) 20%, rgba(255, 255, 255, 0) 80%);
     }
 }
 

@@ -86,11 +86,7 @@ function Search() {
         <div className={cx('search-result')} tabIndex="-1" {...attrs}>
             <PopperWrapper className={cx('search-popper')}>
                 {searchResult.map((item, index) => (
-                    <SearchResultItem
-                        key={index}
-                        content={item}
-                        onClick={() => handleClickResultItem(item)}
-                    />
+                    <SearchResultItem key={index} content={item} onClick={() => handleClickResultItem(item)} />
                 ))}
             </PopperWrapper>
         </div>
@@ -108,10 +104,7 @@ function Search() {
                     onClickOutside={handleHideResult}
                 >
                     <div className={cx('wrap-search')}>
-                        <span
-                            className={cx('search-icon')}
-                            onMouseDown={(e) => e.preventDefault()}
-                        >
+                        <span className={cx('search-icon')} onMouseDown={(e) => e.preventDefault()}>
                             <SearchIcon width="2rem" height="2rem" />
                         </span>
 
