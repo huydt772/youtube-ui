@@ -2,11 +2,12 @@ import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import moment from 'moment';
 
 import { MenuIcon, TickIcon } from '~/components/Icons';
 import Image from '~/components/Image';
 import config from '~/config';
-import * as avatarService from '~/services/avatarService';
+import * as channelService from '~/services/channelService';
 import styles from './Product.module.scss';
 
 const cx = classNames.bind(styles);
@@ -16,7 +17,7 @@ function Product({ data, explorePage = false, searchPage = false, watchPage = fa
 
     useEffect(() => {
         const fetchApi = async () => {
-            const res = await avatarService.avatar(data.snippet.channelId);
+            const res = await channelService.channel(data.snippet.channelId);
             setAvatar(res.snippet.thumbnails.default.url);
         };
 
@@ -73,6 +74,11 @@ function Product({ data, explorePage = false, searchPage = false, watchPage = fa
         if (n >= 1e12) return +(n / 1e12).toFixed(1) + 'T';
     };
 
+    const formatDate = (date) => {
+        const publishedAt = moment(date).fromNow();
+        return publishedAt;
+    };
+
     const configRoute = () => {
         let id;
 
@@ -124,7 +130,7 @@ function Product({ data, explorePage = false, searchPage = false, watchPage = fa
                     {searchPage || (
                         <div className={cx('wrap-views')}>
                             <p className={cx('views')}>{viewsFormat(data.statistics.viewCount)} views</p>
-                            <p>4 days ago</p>
+                            <p>{formatDate(data.snippet.publishedAt)}</p>
                         </div>
                     )}
 

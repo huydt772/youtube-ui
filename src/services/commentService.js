@@ -1,8 +1,8 @@
 import * as httpRequest from '~/utils/httpRequest';
 
-const KEY = 'AIzaSyAjNYNCbUoaS29j72TI3Yla7y1xff-cYGE';
+const KEY = 'AIzaSyAwW14B-rUwNkw1J0ucBTDkj2w47LLqCu8';
 
-export const comment = async (videoId, part = 'snippet,replies', maxResults = 50, textFormat = 'plainText') => {
+export const comment = async (videoId, part = 'snippet,replies', maxResults = 20, textFormat = 'plainText') => {
     try {
         const res = await httpRequest.get('commentThreads', {
             params: {

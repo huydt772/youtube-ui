@@ -11,6 +11,32 @@ export const BarsIcon = ({ width = '2.4rem', height = '2.4rem', className }) => 
     </svg>
 );
 
+export const ArrowDownSolidIcon = ({ width = '2rem', height = '2rem', className }) => (
+    <svg
+        className={className}
+        width={width}
+        height={height}
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        <path fillRule="evenodd" clipRule="evenodd" d="M18,9l-6,6L6,9H18z"></path>
+    </svg>
+);
+
+export const ArrowUpSolidIcon = ({ width = '2rem', height = '2rem', className }) => (
+    <svg
+        className={className}
+        width={width}
+        height={height}
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        <path fillRule="evenodd" clipRule="evenodd" d="M18,15H6l6-6L18,15z"></path>
+    </svg>
+);
+
 export const SearchIcon = ({ width = '2.4rem', height = '2.4rem', className }) => (
     <svg
         className={className}

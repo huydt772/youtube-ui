@@ -1,0 +1,123 @@
+.comment-block {
+    margin-bottom: 32px;
+}
+
+.header {
+    .wrap-comment-count {
+        display: flex;
+        align-items: center;
+        margin-bottom: 24px;
+    }
+
+    .comment-count {
+        font-size: 1.6rem;
+        line-height: 2.2rem;
+        font-weight: 400;
+        margin-right: 32px;
+    }
+
+    .sort-by-btn {
+        min-width: fit-content;
+        padding: 0;
+        height: unset;
+        border: none;
+        background-color: transparent;
+        border-radius: 3px;
+        transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+        span:last-child {
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        &:active {
+            background-color: var(--general-active-color);
+        }
+    }
+
+    .write-comment-block {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .wrap-input {
+        display: flex;
+    }
+
+    .user {
+        width: 40px;
+        height: 40px;
+        border-radius: 100rem;
+        margin-right: 16px;
+    }
+
+    .input {
+        flex: 1;
+        border-width: 0 0 1px 0;
+        border-color: var(--comment-input-border-color);
+        background-color: transparent;
+        margin-bottom: 8px;
+        color: var(--text-primary-color);
+
+        &::placeholder {
+            color: var(--text-secondary-color);
+            opacity: 1;
+        }
+
+        &:focus {
+            border-width: 0 0 2px 0;
+            border-color: var(--text-primary-color);
+        }
+    }
+
+    .comment-actions {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .comment-actions-btn {
+        padding: 5px 18px;
+        min-width: fit-content;
+        text-transform: uppercase;
+        background-color: transparent;
+        border: none;
+        height: 37px;
+        transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+        span:first-child {
+            margin-right: 0;
+            color: var(--text-secondary-color);
+        }
+
+        + .comment-actions-btn {
+            margin-left: 8px;
+        }
+
+        &:active {
+            background-color: var(--general-active-color);
+        }
+    }
+
+    .comment-btn-disabled {
+        background-color: var(--button-rounded-background-color);
+        pointer-events: none;
+
+        span:first-child {
+            color: var(--comment-button-disabled-type-color);
+        }
+    }
+
+    .comment-btn-primary {
+        background-color: var(--button-primary-color);
+        pointer-events: unset;
+
+        span:first-child {
+            color: var(--white-color);
+        }
+
+        &:active {
+            background-color: var(--button-primary-color);
+            opacity: 0.8;
+        }
+    }
+}

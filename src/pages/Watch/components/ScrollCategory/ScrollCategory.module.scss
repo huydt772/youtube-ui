@@ -1,0 +1,80 @@
+.scroll-category {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 48px;
+    margin-bottom: 3px;
+}
+
+.scroll-item {
+    display: flex;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+.arrow-right-btn,
+.arrow-left-btn {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 48px;
+    background-color: var(--general-background-color);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+}
+
+.arrow-right-btn {
+    right: 0;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 48px;
+        width: 32px;
+        background: linear-gradient(to left, var(--general-background-color) 20%, rgba(255, 255, 255, 0) 80%);
+    }
+}
+
+.arrow-left-btn {
+    left: 0;
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 48px;
+        width: 32px;
+        background: linear-gradient(to right, var(--general-background-color) 20%, rgba(255, 255, 255, 0) 80%);
+    }
+}
+
+.arrow-icon {
+    width: 32px;
+    height: 32px;
+    padding: 8px;
+    border-radius: 100rem;
+    transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:active {
+        background-color: var(--general-active-color);
+    }
+}
+
+.clicked {
+    color: var(--white-color);
+    background-color: var(--text-primary-color);
+
+    &:hover {
+        background-color: var(--text-primary-color);
+    }
+}

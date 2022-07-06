@@ -1,8 +1,8 @@
 import * as httpRequest from '~/utils/httpRequest';
 
-const KEY = 'AIzaSyAjNYNCbUoaS29j72TI3Yla7y1xff-cYGE';
+const KEY = 'AIzaSyAwW14B-rUwNkw1J0ucBTDkj2w47LLqCu8';
 
-export const avatar = async (id, part = 'snippet,contentDetails,statistics') => {
+export const channel = async (id, part = 'snippet,contentDetails,statistics') => {
     try {
         const res = await httpRequest.get('channels', {
             params: {
