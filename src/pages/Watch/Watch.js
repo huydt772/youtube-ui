@@ -10,9 +10,9 @@ import Image from '~/components/Image';
 import config from '~/config';
 import * as channelService from '~/services/channelService';
 import * as watchService from '~/services/watchService';
-import CommentBlock from './CommentBlock';
-import CommentList from './CommentList';
-import RelatedVideos from './RelatedVideos';
+import CommentBlock from './components/CommentBlock';
+import CommentList from './components/CommentList';
+import RelatedVideos from './components//RelatedVideos';
 import ScrollCategory from './components/ScrollCategory';
 import styles from './Watch.module.scss';
 
