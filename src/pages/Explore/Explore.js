@@ -34,27 +34,31 @@ const cx = classNames.bind(styles);
 
 function Explore() {
     const [popularVideo, setPopularVideo] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchApi = async () => {
             const result = await videoService.video('mostPopular');
             setPopularVideo(result);
+
+            setLoading(false);
         };
         fetchApi();
     }, []);
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [popularVideo]);
+
     return (
         <div className={cx('wrapper')}>
+            {loading && <div className={cx('loading')}></div>}
             <div className={cx('grid')}>
                 <div className={cx('row', 'sm-gutter')}>
                     {EXPLORE_ACTIONS.map((item, index) => (
                         <div key={index} className={cx('col', 'l-2-4', 'm-4', 'c-6')}>
                             <div className={cx('explore-action')}>
-                                <Image
-                                    className={cx('image')}
-                                    src={item.image}
-                                    alt={item.title}
-                                />
+                                <Image className={cx('image')} src={item.image} alt={item.title} />
                                 <h3 className={cx('title')}>{item.title}</h3>
                             </div>
                         </div>

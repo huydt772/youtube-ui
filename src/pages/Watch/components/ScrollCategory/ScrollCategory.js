@@ -51,6 +51,7 @@ function ScrollCategory() {
                     <Button
                         className={cx({ clicked: clicked === item.id })}
                         key={item.id}
+                        title={`${item.title}`}
                         rounded
                         small
                         onClick={() => handleClicked(item.id)}

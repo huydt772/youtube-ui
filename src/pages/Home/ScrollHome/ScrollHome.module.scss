@@ -2,8 +2,8 @@
     position: fixed;
     z-index: 10;
     top: var(--default-layout-header-height);
-    // left: var(--sidebar-width);
-    left: var(--sub-sidebar-width);
+    left: var(--sidebar-width);
+    // left: var(--sub-sidebar-width);
     right: 0;
 
     display: flex;
@@ -75,6 +75,8 @@
 .content {
     display: flex;
     overflow-x: auto;
+    scroll-behavior: smooth;
+
     &::-webkit-scrollbar {
         display: none;
     }

@@ -1,6 +1,6 @@
 import * as httpRequest from '~/utils/httpRequest';
 
-const KEY = 'AIzaSyAwW14B-rUwNkw1J0ucBTDkj2w47LLqCu8';
+const KEY = 'AIzaSyCJUlRtbO2uHmTc4FWhafdmJqNnbLRHZ3A';
 
 export const channel = async (id, part = 'snippet,contentDetails,statistics') => {
     try {

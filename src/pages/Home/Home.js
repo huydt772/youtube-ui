@@ -68,28 +68,33 @@ const SCROLL_HOME_DATA = [
 ];
 
 function Home() {
-    const [homeVideo, setHomeVideo] = useState([]);
+    const [homeVideos, setHomeVideos] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchApi = async () => {
             const result = await videoService.video('mostPopular');
-            setHomeVideo(result);
+            setHomeVideos(result);
+
+            setLoading(false);
         };
 
         fetchApi();
     }, []);
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [homeVideos]);
+
     return (
         <div className={cx('wrapper')}>
+            {loading && <div className={cx('loading')}></div>}
             <ScrollHome data={SCROLL_HOME_DATA} />
             <div className={cx('products')}>
                 <div className={cx('grid')}>
                     <div className={cx('row', 'yt-gutter')}>
-                        {homeVideo.map((item) => (
-                            <div
-                                key={item.id}
-                                className={cx('col', 'l-3', 'm-4', 'c-12')}
-                            >
+                        {homeVideos.map((item) => (
+                            <div key={item.id} className={cx('col', 'l-3', 'm-4', 'c-12')}>
                                 <Product data={item} />
                             </div>
                         ))}

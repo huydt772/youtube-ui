@@ -24,6 +24,7 @@ function Menu({ items, active, heading, lessPadding = false, onActive }) {
                             active: active === item.title,
                         })}
                         to={item.to}
+                        title={`${item.title}`}
                         leftIcon={item.icon && <Icon solidIcon={active === item.title} />}
                         image={item.image}
                         onClick={() => onActive(item.title)}

@@ -2,17 +2,16 @@ import * as httpRequest from '~/utils/httpRequest';
 
 const KEY = 'AIzaSyCJUlRtbO2uHmTc4FWhafdmJqNnbLRHZ3A';
 
-export const search = async (q, part = 'snippet', maxResults = 25) => {
+export const playlists = async (id, part = 'contentDetails') => {
     try {
-        const res = await httpRequest.get('search', {
+        const res = await httpRequest.get('playlists', {
             params: {
-                q,
                 part,
-                maxResults,
+                id,
                 key: KEY,
             },
         });
-        return res.items;
+        return res.items[0];
     } catch (error) {
         console.log(error);
     }

@@ -1,7 +1,11 @@
 import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css';
+import { Link } from 'react-router-dom';
 
+import config from '~/config';
 import Button from '~/components/Button';
 import Image from '~/components/Image';
 import * as channelService from '~/services/channelService';
@@ -31,15 +35,17 @@ function Channel({ data }) {
 
     return (
         <div className={cx('channel')}>
-            <div className={cx('wrap-channel-img')}>
+            <Link to={config.routes.profile} className={cx('wrap-channel-img')}>
                 <Image
                     className={cx('channel-img')}
                     src={data.snippet.thumbnails.medium.url}
                     alt={data.snippet.channelTitle}
                 />
-            </div>
-            <div className={cx('channel-info')}>
-                <h3 className={cx('channel-title')}>{data.snippet.channelTitle}</h3>
+            </Link>
+            <Link to={config.routes.profile} className={cx('channel-info')}>
+                <Tippy content={`${data.snippet.channelTitle}`} placement="top-start">
+                    <h3 className={cx('channel-title')}>{data.snippet.channelTitle}</h3>
+                </Tippy>
                 <div className={cx('channel-quantities')}>
                     {channel.statistics?.hiddenSubscriberCount || (
                         <p className={cx('subs-count')}>
@@ -49,7 +55,7 @@ function Channel({ data }) {
                     <p className={cx('video-count')}>{channel.statistics?.videoCount} videos</p>
                 </div>
                 <p>{data.snippet.description}</p>
-            </div>
+            </Link>
             <div className={cx('channel-actions')}>
                 <Button subscribe>Subscribe</Button>
             </div>

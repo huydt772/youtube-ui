@@ -1,8 +1,11 @@
 import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css';
 
 import { MenuIcon, TickIcon } from '~/components/Icons';
 import Image from '~/components/Image';
@@ -13,6 +16,7 @@ import styles from './Product.module.scss';
 const cx = classNames.bind(styles);
 
 function Product({ data, explorePage = false, searchPage = false, watchPage = false }) {
+    const navigate = useNavigate();
     const [avatar, setAvatar] = useState('');
 
     useEffect(() => {
@@ -29,41 +33,29 @@ function Product({ data, explorePage = false, searchPage = false, watchPage = fa
 
     const convertTime = (duration) => {
         let match = duration.match(/PT(\d+H)?(\d+M)?(\d+S)?/);
-
         // eslint-disable-next-line array-callback-return
         match = match.slice(1).map((x) => {
             if (x != null) {
                 return x.replace(/\D/, '');
             }
         });
-
         const hours = parseInt(match[0]) || 0;
         const minutes = parseInt(match[1]) || 0;
         const seconds = parseInt(match[2]) || 0;
 
-        const checkTime = (time) => {
-            if (time < 10 && time > 0) {
-                return `0${time}`;
-            }
-            return time;
-        };
-
         const checkHours = (hours) => {
-            if (hours === 0) {
-                return '';
-            } else {
-                return `${hours}:`;
-            }
+            return hours > 0 ? `${hours}:` : '';
         };
 
-        const checkSeconds = (seconds) => {
-            if (seconds === 0) {
-                return `0${seconds}`;
-            }
-            return seconds;
+        const checkMinutes = (minutes) => {
+            return minutes;
         };
 
-        return `${checkHours(hours)}${checkTime(minutes)}:${checkSeconds(checkTime(seconds))}`;
+        const checkSecond = (seconds) => {
+            return seconds > 0 ? seconds : `0${seconds}`;
+        };
+
+        return `${checkHours(hours)}${checkMinutes(minutes)}:${checkSecond(seconds)}`;
     };
 
     const viewsFormat = (n) => {
@@ -79,6 +71,15 @@ function Product({ data, explorePage = false, searchPage = false, watchPage = fa
         return publishedAt;
     };
 
+    function convertHTMLEntity(text) {
+        const span = document.createElement('span');
+
+        return text.replace(/&[#A-Za-z0-9]+;/gi, (entity, position, text) => {
+            span.innerHTML = entity;
+            return span.innerText;
+        });
+    }
+
     const configRoute = () => {
         let id;
 
@@ -91,30 +92,44 @@ function Product({ data, explorePage = false, searchPage = false, watchPage = fa
         return `${config.routes.watch}?id=${id}`;
     };
 
+    const handleNavigate = () => {
+        navigate(configRoute());
+    };
+
     return (
-        <Link
-            to={configRoute()}
+        <div
             className={cx('wrapper', {
                 'explore-wrapper': explorePage,
                 'search-wrapper': searchPage,
                 'watch-wrapper': watchPage,
             })}
+            onClick={handleNavigate}
         >
             <div className={cx('wrap-thumbnail')}>
-                <Image className={cx('thumbnail')} src={data.snippet.thumbnails.medium.url} alt={data.snippet.title} />
+                <Image
+                    className={cx('thumbnail')}
+                    src={data.snippet.thumbnails.medium.url}
+                    alt={convertHTMLEntity(data.snippet.title)}
+                />
                 {searchPage || <span className={cx('time')}>{convertTime(data.contentDetails.duration)}</span>}
             </div>
 
             <div className={cx('body')}>
                 {searchPage || explorePage || watchPage || (
-                    <Link to={config.routes.profile} className={cx('avatar-link')}>
+                    <Link
+                        to={config.routes.profile}
+                        className={cx('avatar-link')}
+                        title={`${data.snippet.channelTitle}`}
+                    >
                         {avatar && <Image className={cx('avatar')} src={avatar} alt={data.snippet.channelTitle} />}
                     </Link>
                 )}
 
                 <div className={cx('info')}>
                     <div className={cx('wrap-title')}>
-                        <h3 className={cx('title')}>{data.snippet.title}</h3>
+                        <h3 className={cx('title')} title={`${convertHTMLEntity(data.snippet.title)}`}>
+                            {convertHTMLEntity(data.snippet.title)}
+                        </h3>
                         <span className={cx('menu-icon')}>
                             <MenuIcon />
                         </span>
@@ -122,7 +137,11 @@ function Product({ data, explorePage = false, searchPage = false, watchPage = fa
 
                     {searchPage || (
                         <div className={cx('wrap-name')}>
-                            <p className={cx('name')}>{data.snippet.channelTitle}</p>
+                            <Tippy content={`${data.snippet.channelTitle}`}>
+                                <Link to={config.routes.profile} className={cx('name')}>
+                                    {data.snippet.channelTitle}
+                                </Link>
+                            </Tippy>
                             <TickIcon width="1.4rem" height="1.4rem" />
                         </div>
                     )}
@@ -142,16 +161,25 @@ function Product({ data, explorePage = false, searchPage = false, watchPage = fa
                                 )}
                             </Link>
                             <div className={cx('wrap-name')}>
-                                <p className={cx('name')}>{data.snippet.channelTitle}</p>
+                                <Tippy content={`${data.snippet.channelTitle}`}>
+                                    <Link to={config.routes.noResults} className={cx('name')}>
+                                        {data.snippet.channelTitle}
+                                    </Link>
+                                </Tippy>
+
                                 <TickIcon width="1.4rem" height="1.4rem" />
                             </div>
                         </div>
                     )}
 
-                    {(explorePage || searchPage) && <p className={cx('desc')}>{data.snippet.description}</p>}
+                    {(explorePage || searchPage) && (
+                        <Tippy content="From the video description" placement="bottom">
+                            <p className={cx('desc')}>{data.snippet.description}</p>
+                        </Tippy>
+                    )}
                 </div>
             </div>
-        </Link>
+        </div>
     );
 }
 
@@ -159,6 +187,7 @@ Product.propTypes = {
     data: PropTypes.object.isRequired,
     explorePage: PropTypes.bool,
     searchPage: PropTypes.bool,
+    watchPage: PropTypes.bool,
 };
 
 export default Product;

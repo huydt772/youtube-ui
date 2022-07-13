@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 import NumberFormat from 'react-number-format';
 import Player from 'react-player/youtube';
 import { Link, useSearchParams } from 'react-router-dom';
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css';
 
 import Button from '~/components/Button';
 import { CutIcon, DislikeIcon, LikeIcon, MenuIcon, SaveIcon, ShareIcon, TickIcon } from '~/components/Icons';
@@ -20,6 +22,7 @@ const cx = classNames.bind(styles);
 
 function Watch() {
     const [data, setData] = useState({});
+    const [loading, setLoading] = useState(true);
     const [channel, setChannel] = useState('');
     const [descFullContent, setDescFullContent] = useState(false);
     // eslint-disable-next-line no-unused-vars
@@ -28,8 +31,11 @@ function Watch() {
 
     useEffect(() => {
         const fetchApi = async () => {
+            setLoading(true);
+
             const result = await watchService.watch(idVideoValue);
             setData(result[0]);
+            setLoading(false);
 
             const getAvatar = async () => {
                 const channel = await channelService.channel(result[0].snippet.channelId);
@@ -50,6 +56,10 @@ function Watch() {
         };
     }, [data]);
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [data]);
+
     const numberFormat = (n) => {
         if (n < 1e3) return n;
         if (n >= 1e3 && n < 1e6) return +(n / 1e3).toFixed(0) + 'K';
@@ -64,6 +74,7 @@ function Watch() {
 
     return (
         <div className={cx('grid', 'wide')}>
+            {loading && <div className={cx('loading')}></div>}
             <div className={cx('row')}>
                 <div className={cx('col', 'l-8')}>
                     <div className={cx('primary')}>
@@ -126,7 +137,9 @@ function Watch() {
                                     <div>
                                         <h4 className={cx('name')}>
                                             <Link to={config.routes.profile}>
-                                                <span>{data.snippet?.channelTitle}</span>
+                                                <Tippy content={`${data.snippet?.channelTitle}`}>
+                                                    <span>{data.snippet?.channelTitle}</span>
+                                                </Tippy>
                                             </Link>
                                             <span className={cx('icon')}>
                                                 <TickIcon width="1.4rem" height="1.4rem" />

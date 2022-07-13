@@ -2,6 +2,7 @@
 .wrapper {
     display: block;
     margin-bottom: 40px;
+    cursor: pointer;
 
     &:hover .menu-icon {
         display: flex;
@@ -107,6 +108,7 @@
 
     .name {
         margin-right: 4px;
+        color: var(--text-secondary-color);
 
         max-height: 1.8rem;
         overflow: hidden;

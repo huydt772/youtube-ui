@@ -1,6 +1,6 @@
 import * as httpRequest from '~/utils/httpRequest';
 
-const KEY = 'AIzaSyAwW14B-rUwNkw1J0ucBTDkj2w47LLqCu8';
+const KEY = 'AIzaSyCJUlRtbO2uHmTc4FWhafdmJqNnbLRHZ3A';
 
 export const video = async (chart, part = 'snippet,contentDetails,statistics', maxResults = 50, regionCode = 'VN') => {
     try {
