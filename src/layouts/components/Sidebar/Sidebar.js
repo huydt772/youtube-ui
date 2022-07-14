@@ -1,5 +1,4 @@
 import classNames from 'classnames/bind';
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '~/components/Button';
 import {
@@ -201,28 +200,15 @@ const cx = classNames.bind(styles);
 
 function Sidebar() {
     const currentUser = true;
-    const [active, setActive] = useState('Home');
 
     return (
         <div className={cx('wrapper')}>
-            <MenuSidebar items={HOME} active={active} onActive={setActive} />
-
-            <MenuSidebar
-                items={currentUser ? LIBRARY_LOGIN : LIBRARY}
-                lessPadding={!currentUser}
-                active={active}
-                onActive={setActive}
-            />
+            <MenuSidebar items={HOME} />
+            <MenuSidebar items={currentUser ? LIBRARY_LOGIN : LIBRARY} lessPadding={!currentUser} />
 
             {currentUser ? (
                 <>
-                    <MenuSidebar
-                        items={SUBSCRIPTIONS}
-                        heading="Subscriptions"
-                        lessPadding
-                        active={active}
-                        onActive={setActive}
-                    />
+                    <MenuSidebar items={SUBSCRIPTIONS} heading="Subscriptions" lessPadding />
                 </>
             ) : (
                 <>
@@ -232,19 +218,8 @@ function Sidebar() {
                             SIGN IN
                         </Button>
                     </div>
-                    <MenuSidebar
-                        items={BEST_OF_YOUTUBE}
-                        heading="Best of YouTube"
-                        lessPadding
-                        active={active}
-                        onActive={setActive}
-                    />
-                    <MenuSidebar
-                        items={BROWSE_CHANNELS}
-                        lessPadding
-                        active={active}
-                        onActive={setActive}
-                    />
+                    <MenuSidebar items={BEST_OF_YOUTUBE} heading="Best of YouTube" lessPadding />
+                    <MenuSidebar items={BROWSE_CHANNELS} lessPadding />
                 </>
             )}
 
@@ -252,16 +227,9 @@ function Sidebar() {
                 items={currentUser ? MORE_FROM_YOUTUBE_LOGIN : MORE_FROM_YOUTUBE}
                 heading="More from YouTube"
                 lessPadding
-                active={active}
-                onActive={setActive}
             />
 
-            <MenuSidebar
-                items={SETTINGS}
-                lessPadding
-                active={active}
-                onActive={setActive}
-            />
+            <MenuSidebar items={SETTINGS} lessPadding />
 
             <footer className={cx('footer')}>
                 <div className={cx('links-primary')}>
@@ -277,12 +245,8 @@ function Sidebar() {
                 <div className={cx('links-secondary')}>
                     <Link to="/t/terms">Terms</Link>
                     <Link to="/t/privacy">Privacy</Link>
-                    <a href="https://www.youtube.com/about/policies/">
-                        Policy &amp; Safety
-                    </a>
-                    <a href="https://www.youtube.com/howyoutubeworks">
-                        How YouTube works
-                    </a>
+                    <a href="https://www.youtube.com/about/policies/">Policy &amp; Safety</a>
+                    <a href="https://www.youtube.com/howyoutubeworks">How YouTube works</a>
                     <Link to="/new">Test new features</Link>
                 </div>
 
