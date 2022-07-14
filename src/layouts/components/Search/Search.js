@@ -17,6 +17,7 @@ function Search() {
     const [searchResult, setSearchResult] = useState([]);
     const [searchValue, setSearchValue] = useState('');
     const [showResult, setShowResult] = useState(false);
+    const [active, setActive] = useState(-1);
 
     const navigate = useNavigate();
     const inputRef = useRef();
@@ -46,6 +47,10 @@ function Search() {
         fetchApi();
     }, [debouncedValue]);
 
+    useEffect(() => {
+        setActive(-1);
+    }, [searchResult]);
+
     const handleChange = (e) => {
         const searchValue = e.target.value;
 
@@ -74,6 +79,22 @@ function Search() {
             navigate(`/search?search_query=${searchValue}`);
             e.target.blur();
             setShowResult(false);
+        } else if (e.which === 40) {
+            setActive((prevActive) => {
+                if (prevActive > searchResult.length - 2) {
+                    return -1;
+                } else {
+                    return prevActive + 1;
+                }
+            });
+        } else if (e.which === 38) {
+            setActive((prevActive) => {
+                if (prevActive === -1) {
+                    return searchResult.length - 1;
+                } else {
+                    return prevActive - 1;
+                }
+            });
         }
     };
 
@@ -86,7 +107,12 @@ function Search() {
         <div className={cx('search-result')} tabIndex="-1" {...attrs}>
             <PopperWrapper className={cx('search-popper')}>
                 {searchResult.map((item, index) => (
-                    <SearchResultItem key={index} content={item} onClick={() => handleClickResultItem(item)} />
+                    <SearchResultItem
+                        key={index}
+                        content={item}
+                        active={active === index}
+                        onClick={() => handleClickResultItem(item)}
+                    />
                 ))}
             </PopperWrapper>
         </div>

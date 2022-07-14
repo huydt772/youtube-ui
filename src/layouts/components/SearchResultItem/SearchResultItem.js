@@ -8,22 +8,18 @@ import styles from './SearchResultItem.module.scss';
 
 const cx = classNames.bind(styles);
 
-function SearchResultItem({ content, searched = false, onClick }) {
+function SearchResultItem({ content, searched = false, active, onClick }) {
     return (
         <Link
             to={`/search?search_query=${content}`}
-            className={cx('wrapper')}
+            className={cx('wrapper', {
+                active,
+            })}
             onClick={onClick}
         >
             <Button
                 className={cx('item')}
-                leftIcon={
-                    searched ? (
-                        <SearchedIcon />
-                    ) : (
-                        <SearchIcon width="2rem" height="2rem" />
-                    )
-                }
+                leftIcon={searched ? <SearchedIcon /> : <SearchIcon width="2rem" height="2rem" />}
             >
                 {content}
             </Button>
@@ -35,6 +31,7 @@ function SearchResultItem({ content, searched = false, onClick }) {
 SearchResultItem.propTypes = {
     content: PropTypes.string.isRequired,
     searched: PropTypes.bool,
+    active: PropTypes.bool,
     onClick: PropTypes.func,
 };
 

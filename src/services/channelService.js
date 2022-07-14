@@ -1,6 +1,6 @@
 import * as httpRequest from '~/utils/httpRequest';
 
-const KEY = 'AIzaSyCJUlRtbO2uHmTc4FWhafdmJqNnbLRHZ3A';
+const KEY = process.env.REACT_APP_API_KEY;
 
 export const channel = async (id, part = 'snippet,contentDetails,statistics') => {
     try {

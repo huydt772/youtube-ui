@@ -8,6 +8,10 @@
     }
 }
 
+.active {
+    background-color: var(--search-result-item-hover-color);
+}
+
 .item {
     border: none;
     border-radius: unset;
