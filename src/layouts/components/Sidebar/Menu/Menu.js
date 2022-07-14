@@ -23,9 +23,9 @@ function Menu({ items, heading, lessPadding = false }) {
                 let Comp;
                 const props = {};
 
-                if (item.to) {
+                if (item.to || item.pathname) {
                     Comp = NavLink;
-                    props.to = item.to;
+                    props.to = item.pathname ? `/c${item.pathname}` : item.to;
                     props.className = (nav) =>
                         cx({
                             active: nav.isActive,

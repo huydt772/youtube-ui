@@ -7,7 +7,7 @@ const routes = {
     subscriptions: '/subscriptions',
     library: '/library',
     history: '/history',
-    profile: '/profile',
+    profile: '/c/:channel',
     watch: '/watch',
     gaming: '/gaming',
     live: '/live',

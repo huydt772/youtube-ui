@@ -86,32 +86,32 @@ const SUBSCRIPTIONS = [
     {
         image: 'https://yt3.ggpht.com/Y7ypZe5mKqqUxTGIAjI1Ng_DvP2_eDQDWvCWaTAfxxY4rYNtFxA5hf3PAw0YsAWfgQ_5jyPVQnA=s88-c-k-c0x00ffffff-no-rj',
         title: 'English Speeches',
-        to: config.routes.profile,
+        pathname: '/EnglishSpeeches',
     },
     {
         image: 'https://yt3.ggpht.com/wgneNTiW753q5G6XMnjyNLAzReR4TVFJryTKTpIqJefrKMyhABPwfnyNWIoT5NNGstFlva1tgw=s88-c-k-c0x00ffffff-no-rj',
         title: 'F8 Official',
-        to: config.routes.profile,
+        pathname: '/F8VNOfficial',
     },
     {
         image: 'https://yt3.ggpht.com/dgZwDRAhI3JFzmKIQFr5OPemgZ2swu5QOyn1N58eSs4bLREQ1SMQ6AIwGLwajKwAClOSZKibwg=s88-c-k-c0x00ffffff-no-rj',
         title: 'FAP TV',
-        to: config.routes.profile,
+        pathname: '/FAPtivi',
     },
     {
         image: 'https://yt3.ggpht.com/zBUnmMo28sCLCYtBl2vSKdKHTFgrF6wGhs2N1SsWqbWu8ERcxto3FV5WcYprDc6hIdJwGOgk3q0=s88-c-k-c0x00ffffff-no-rj',
         title: "Men's Bay",
-        to: config.routes.profile,
+        pathname: '/MensBay',
     },
     {
         image: 'https://yt3.ggpht.com/UtzXAAKz-qnKPqnzX2ec9zmKgWx1yHb9cUWPj5gFcF_Imw3KgAbNBpOuXN0HZ7P1WadZyzkW=s88-c-k-c0x00ffffff-no-rj',
         title: 'evondev',
-        to: config.routes.profile,
+        pathname: '/evondevfrontend',
     },
     {
         image: 'https://yt3.ggpht.com/ytc/AKedOLS0_8Eb99PwVL_DhysKXBT5zKiqbIhC5x2DnaaJmWQ=s88-c-k-c0x00ffffff-no-rj',
         title: 'Easy Frontend',
-        to: config.routes.profile,
+        pathname: '/EasyFrontend',
     },
     {
         icon: ArrowDownIcon,

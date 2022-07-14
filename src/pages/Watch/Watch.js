@@ -37,12 +37,12 @@ function Watch() {
             setData(result[0]);
             setLoading(false);
 
-            const getAvatar = async () => {
+            const getChannel = async () => {
                 const channel = await channelService.channel(result[0].snippet.channelId);
                 setChannel(channel);
             };
 
-            getAvatar();
+            getChannel();
         };
 
         fetchApi();

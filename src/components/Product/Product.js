@@ -11,6 +11,7 @@ import { MenuIcon, TickIcon } from '~/components/Icons';
 import Image from '~/components/Image';
 import config from '~/config';
 import * as channelService from '~/services/channelService';
+import * as watchService from '~/services/watchService';
 import styles from './Product.module.scss';
 
 const cx = classNames.bind(styles);
@@ -18,16 +19,29 @@ const cx = classNames.bind(styles);
 function Product({ data, explorePage = false, searchPage = false, watchPage = false }) {
     const navigate = useNavigate();
     const [avatar, setAvatar] = useState('');
+    const [watchData, setWatchData] = useState({});
 
     useEffect(() => {
+        if (watchPage || explorePage) return;
+
         const fetchApi = async () => {
             const res = await channelService.channel(data.snippet.channelId);
             setAvatar(res.snippet.thumbnails.default.url);
         };
 
-        if (!explorePage) {
-            fetchApi();
-        }
+        fetchApi();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [data]);
+
+    useEffect(() => {
+        if (!searchPage) return;
+
+        const fetchApi = async () => {
+            const res = await watchService.watch(data.id.videoId);
+            setWatchData(res[0]);
+        };
+
+        fetchApi();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [data]);
 
@@ -52,7 +66,7 @@ function Product({ data, explorePage = false, searchPage = false, watchPage = fa
         };
 
         const checkSecond = (seconds) => {
-            return seconds > 0 ? seconds : `0${seconds}`;
+            return seconds >= 10 ? seconds : `0${seconds}`;
         };
 
         return `${checkHours(hours)}${checkMinutes(minutes)}:${checkSecond(seconds)}`;
@@ -67,6 +81,8 @@ function Product({ data, explorePage = false, searchPage = false, watchPage = fa
     };
 
     const formatDate = (date) => {
+        if (!date) return;
+
         const publishedAt = moment(date).fromNow();
         return publishedAt;
     };
@@ -96,6 +112,14 @@ function Product({ data, explorePage = false, searchPage = false, watchPage = fa
         navigate(configRoute());
     };
 
+    const renderTime = () => {
+        if (data.contentDetails?.duration) {
+            return convertTime(data.contentDetails.duration);
+        } else if (watchData.contentDetails?.duration) {
+            return convertTime(watchData.contentDetails.duration);
+        }
+    };
+
     return (
         <div
             className={cx('wrapper', {
@@ -111,7 +135,7 @@ function Product({ data, explorePage = false, searchPage = false, watchPage = fa
                     src={data.snippet.thumbnails.medium.url}
                     alt={convertHTMLEntity(data.snippet.title)}
                 />
-                {searchPage || <span className={cx('time')}>{convertTime(data.contentDetails.duration)}</span>}
+                <span className={cx('time')}>{renderTime()}</span>
             </div>
 
             <div className={cx('body')}>
@@ -146,12 +170,12 @@ function Product({ data, explorePage = false, searchPage = false, watchPage = fa
                         </div>
                     )}
 
-                    {searchPage || (
-                        <div className={cx('wrap-views')}>
-                            <p className={cx('views')}>{viewsFormat(data.statistics.viewCount)} views</p>
-                            <p>{formatDate(data.snippet.publishedAt)}</p>
-                        </div>
-                    )}
+                    <div className={cx('wrap-views')}>
+                        <p className={cx('views')}>
+                            {viewsFormat(data.statistics?.viewCount || watchData.statistics?.viewCount)} views
+                        </p>
+                        <p>{formatDate(data.snippet.publishedAt)}</p>
+                    </div>
 
                     {searchPage && (
                         <div className={cx('wrap-avatar')}>
