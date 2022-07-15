@@ -17,7 +17,6 @@ const CREATE_ITEMS = [
     {
         icon: <LiveIcon />,
         title: 'Go live',
-        to: '/golive',
     },
 ];
 
@@ -25,17 +24,9 @@ function Create() {
     const [solidIcon, setSolidIcon] = useState(false);
 
     return (
-        <Menu
-            width="179px"
-            placement="bottom-start"
-            items={CREATE_ITEMS}
-            onClickOutside={() => setSolidIcon(false)}
-        >
+        <Menu width="179px" placement="bottom-start" items={CREATE_ITEMS} onClickOutside={() => setSolidIcon(false)}>
             <Tippy content="Create" zIndex={99}>
-                <button
-                    className={cx('action-btn')}
-                    onClick={() => setSolidIcon(!solidIcon)}
-                >
+                <button className={cx('action-btn')} onClick={() => setSolidIcon(!solidIcon)}>
                     <CreateIcon solidIcon={solidIcon} />
                 </button>
             </Tippy>

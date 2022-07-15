@@ -50,8 +50,8 @@ function CommentBlock({ data }) {
                     <div className={cx('wrap-input')}>
                         <Image
                             className={cx('user')}
-                            src="https://yt3.ggpht.com/yti/APfAmoEiqTDD0tVCf541rMgwlZ_uCo4BRuFg7xflPOfAEw=s48-c-k-c0x00ffffff-no-rj"
-                            alt="HMonster"
+                            src="https://avatars.githubusercontent.com/u/92105558?v=4"
+                            alt="Huy Nguyễn"
                         />
                         <input
                             ref={inputRef}

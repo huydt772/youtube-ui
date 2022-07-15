@@ -179,14 +179,14 @@ function Product({ data, explorePage = false, searchPage = false, watchPage = fa
 
                     {searchPage && (
                         <div className={cx('wrap-avatar')}>
-                            <Link to={config.routes.noResults} className={cx('avatar-link')}>
+                            <Link to={config.routes.profile} className={cx('avatar-link')}>
                                 {avatar && (
                                     <Image className={cx('avatar')} src={avatar} alt={data.snippet.channelTitle} />
                                 )}
                             </Link>
                             <div className={cx('wrap-name')}>
                                 <Tippy content={`${data.snippet.channelTitle}`}>
-                                    <Link to={config.routes.noResults} className={cx('name')}>
+                                    <Link to={config.routes.profile} className={cx('name')}>
                                         {data.snippet.channelTitle}
                                     </Link>
                                 </Tippy>

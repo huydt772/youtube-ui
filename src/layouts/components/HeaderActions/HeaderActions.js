@@ -152,12 +152,11 @@ const SETTING_LOGIN_ITEMS = [
     {
         icon: <ChannelIcon />,
         title: 'Your channel',
-        to: '/channel',
+        to: '/c/Huydt772',
     },
     {
         icon: <PurchasesIcon />,
         title: 'Purchases and memberships',
-        to: '/paid_memberships',
     },
     {
         icon: <YtStudioIcon />,
@@ -195,8 +194,8 @@ function HeaderActions() {
                     >
                         <Image
                             className={cx('user')}
-                            src="https://yt3.ggpht.com/yti/APfAmoEiqTDD0tVCf541rMgwlZ_uCo4BRuFg7xflPOfAEw=s88-c-k-c0x00ffffff-no-rj-mo"
-                            alt="Nguyen Van Huy"
+                            src="https://avatars.githubusercontent.com/u/92105558?v=4"
+                            alt="Huy Nguyễn"
                         />
                     </Menu>
                 </>
@@ -204,12 +203,7 @@ function HeaderActions() {
                 <>
                     <Apps />
 
-                    <Menu
-                        width="300px"
-                        placement="bottom-end"
-                        items={SETTING_ITEMS}
-                        split={[8, 1]}
-                    >
+                    <Menu width="300px" placement="bottom-end" items={SETTING_ITEMS} split={[8, 1]}>
                         <Tippy content="Settings" zIndex={99}>
                             <button className={cx('action-btn')}>
                                 <MenuIcon />

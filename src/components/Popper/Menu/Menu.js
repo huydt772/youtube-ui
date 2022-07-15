@@ -13,16 +13,7 @@ const cx = classNames.bind(styles);
 
 const defaultFn = function () {};
 
-function Menu({
-    width,
-    userLogin,
-    placement,
-    offset = [0],
-    children,
-    split,
-    items = [],
-    onClickOutside = defaultFn,
-}) {
+function Menu({ width, userLogin, placement, offset = [0], children, split, items = [], onClickOutside = defaultFn }) {
     const [history, setHistory] = useState([{ data: items }]);
     const [menuItems, setMenuItems] = useState();
     const [resizeHeight, setResizeHeight] = useState(window.innerHeight);
@@ -66,9 +57,7 @@ function Menu({
                 history.length < 2 ? (
                     splitMenuItems()
                 ) : (
-                    <PopperWrapper className={cx('menu-popper')}>
-                        {menuItems}
-                    </PopperWrapper>
+                    <PopperWrapper className={cx('menu-popper')}>{menuItems}</PopperWrapper>
                 )
             ) : (
                 <PopperWrapper className={cx('menu-popper')}>{menuItems}</PopperWrapper>
@@ -86,21 +75,11 @@ function Menu({
     };
 
     const renderResult = (attrs) => (
-        <div
-            style={{ width: width, maxHeight: resizeHeight - 8 }}
-            className={cx('menu-list')}
-            tabIndex="-1"
-            {...attrs}
-        >
+        <div style={{ width: width, maxHeight: resizeHeight - 8 }} className={cx('menu-list')} tabIndex="-1" {...attrs}>
             {userLogin && history.length < 2 && (
-                <UserHeaderMenu
-                    image="https://yt3.ggpht.com/yti/APfAmoEiqTDD0tVCf541rMgwlZ_uCo4BRuFg7xflPOfAEw=s108-c-k-c0x00ffffff-no-rj"
-                    name="HMonster"
-                />
+                <UserHeaderMenu image="https://avatars.githubusercontent.com/u/92105558?v=4" name="Huy Nguyễn" />
             )}
-            {history.length > 1 && (
-                <GeneralHeaderMenu title={current.title} onBack={handleBack} />
-            )}
+            {history.length > 1 && <GeneralHeaderMenu title={current.title} onBack={handleBack} />}
             <div className={cx('menu-body')}>{menuItems}</div>
         </div>
     );

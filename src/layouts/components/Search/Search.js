@@ -71,6 +71,7 @@ function Search() {
     };
 
     const handleSearch = () => {
+        if (searchValue === '') return;
         navigate(`/search?search_query=${searchValue}`);
     };
 

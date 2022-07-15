@@ -1,5 +1,5 @@
-import { useState, memo } from 'react';
 import classNames from 'classnames/bind';
+import { memo, useState, useEffect, useRef } from 'react';
 
 import Button from '~/components/Button';
 import { ArrowLeftIcon, ArrowRightIcon } from '~/components/Icons';
@@ -36,6 +36,35 @@ const cx = classNames.bind(styles);
 
 function ScrollCategory() {
     const [clicked, setClicked] = useState(1);
+    const [showArrowLeftBtn, setShowArrowLeftBtn] = useState(false);
+
+    const contentRef = useRef();
+
+    useEffect(() => {
+        const contentElement = contentRef.current;
+
+        const handleScroll = () => {
+            if (contentElement.scrollLeft > 0) {
+                setShowArrowLeftBtn(true);
+            } else {
+                setShowArrowLeftBtn(false);
+            }
+        };
+
+        contentElement.addEventListener('scroll', handleScroll);
+
+        return () => {
+            contentElement.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
+    const handleScrollLeft = () => {
+        contentRef.current.scrollLeft -= 250;
+    };
+
+    const handleScrollRight = () => {
+        contentRef.current.scrollLeft += 250;
+    };
 
     const handleClicked = (id) => {
         setClicked(id);
@@ -43,10 +72,12 @@ function ScrollCategory() {
 
     return (
         <div className={cx('scroll-category')}>
-            <div className={cx('arrow-left-btn')}>
-                <ArrowLeftIcon className={cx('arrow-icon')} />
-            </div>
-            <div className={cx('scroll-item')}>
+            {showArrowLeftBtn && (
+                <div className={cx('arrow-left-btn')} onClick={handleScrollLeft}>
+                    <ArrowLeftIcon className={cx('arrow-icon')} />
+                </div>
+            )}
+            <div ref={contentRef} className={cx('scroll-item')}>
                 {SCROLL_DATA.map((item) => (
                     <Button
                         className={cx({ clicked: clicked === item.id })}
@@ -60,7 +91,7 @@ function ScrollCategory() {
                     </Button>
                 ))}
             </div>
-            <div className={cx('arrow-right-btn')}>
+            <div className={cx('arrow-right-btn')} onClick={handleScrollRight}>
                 <ArrowRightIcon className={cx('arrow-icon')} />
             </div>
         </div>

@@ -13,7 +13,7 @@ const routes = {
     live: '/live',
     sports: '/sports',
     report: '/reporthistory',
-    noResults: '/noresults',
+    upload: '/upload',
 };
 
 export default routes;
