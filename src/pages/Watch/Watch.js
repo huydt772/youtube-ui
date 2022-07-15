@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import NumberFormat from 'react-number-format';
 import Player from 'react-player/youtube';
 import { Link, useSearchParams } from 'react-router-dom';
@@ -29,6 +29,8 @@ function Watch() {
     const [idVideo, setIdVideo] = useSearchParams();
     const idVideoValue = idVideo.get('id');
 
+    const descRef = useRef();
+
     useEffect(() => {
         const fetchApi = async () => {
             setLoading(true);
@@ -49,15 +51,8 @@ function Watch() {
     }, [idVideoValue]);
 
     useEffect(() => {
-        document.title = data.snippet?.title || 'YouTube';
-
-        return () => {
-            document.title = 'YouTube';
-        };
-    }, [data]);
-
-    useEffect(() => {
         window.scrollTo(0, 0);
+        document.title = data.snippet?.title || 'YouTube';
     }, [data]);
 
     const numberFormat = (n) => {
@@ -67,6 +62,28 @@ function Watch() {
         if (n >= 1e9 && n < 1e12) return +(n / 1e9).toFixed(1) + 'B';
         if (n >= 1e12) return +(n / 1e12).toFixed(1) + 'T';
     };
+
+    const convertDesc = (text) => {
+        if (!text) return;
+        const urlRegex = /(https?:\/\/[^\s]+)/g;
+
+        const uw = String.raw`[\p{Alphabetic}\p{Mark}\p{Decimal_Number}\p{Connector_Punctuation}\p{Join_Control}]`;
+        const hashtagRegex = new RegExp(`(?<!${uw})#(${uw}+)(?!${uw})`, 'gu');
+
+        const wrapUrlText = text.replace(urlRegex, function (url) {
+            return '<a target="_blank" href="' + url + '">' + url + '</a>';
+        });
+
+        const output = wrapUrlText.replace(hashtagRegex, function (hashtag) {
+            return `<span>${hashtag}</span>`;
+        });
+
+        return output;
+    };
+
+    useEffect(() => {
+        descRef.current.innerHTML = convertDesc(data.snippet?.description);
+    }, [data]);
 
     const handleShowDesc = () => {
         setDescFullContent(!descFullContent);
@@ -159,11 +176,12 @@ function Watch() {
                             </div>
                             <div className={cx('desc')}>
                                 <p
+                                    ref={descRef}
                                     className={cx('desc-content', {
                                         'desc-full-content': descFullContent,
                                     })}
                                 >
-                                    {data.snippet?.description}
+                                    {/* Inner HTML */}
                                 </p>
                                 <Button className={cx('show-more-btn')} onClick={handleShowDesc}>
                                     {descFullContent ? 'Show Less' : 'Show More'}

@@ -33,10 +33,6 @@ function Search() {
         };
 
         fetchApi();
-
-        return () => {
-            document.title = 'YouTube';
-        };
     }, [searchQueryValue]);
 
     useEffect(() => {

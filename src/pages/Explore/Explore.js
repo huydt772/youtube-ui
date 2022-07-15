@@ -50,6 +50,10 @@ function Explore() {
         window.scrollTo(0, 0);
     }, [popularVideo]);
 
+    useEffect(() => {
+        document.title = 'Explore - YouTube';
+    }, []);
+
     return (
         <div className={cx('wrapper')}>
             {loading && <div className={cx('loading')}></div>}

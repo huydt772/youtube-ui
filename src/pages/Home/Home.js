@@ -86,6 +86,10 @@ function Home() {
         window.scrollTo(0, 0);
     }, [homeVideos]);
 
+    useEffect(() => {
+        document.title = 'YouTube';
+    }, []);
+
     return (
         <div className={cx('wrapper')}>
             {loading && <div className={cx('loading')}></div>}

@@ -170,6 +170,12 @@
         line-height: 2rem;
         max-height: 6rem;
         overflow: hidden;
+
+        a[href],
+        span {
+            color: #065fd4;
+            cursor: pointer;
+        }
     }
 
     .desc-full-content {
