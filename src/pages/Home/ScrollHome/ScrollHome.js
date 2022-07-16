@@ -1,6 +1,7 @@
 import classNames from 'classnames/bind';
 import PropTypes from 'prop-types';
 import { useState, useEffect, useRef } from 'react';
+import { useSelector } from 'react-redux';
 
 import Button from '~/components/Button';
 import { ArrowLeftIcon, ArrowRightIcon } from '~/components/Icons';
@@ -11,6 +12,7 @@ const cx = classNames.bind(styles);
 function ScrollHome({ data }) {
     const [clicked, setClicked] = useState(1);
     const [showArrowLeftBtn, setShowArrowLeftBtn] = useState(false);
+    const isTransformSidebar = useSelector((state) => state.transformSidebar);
 
     const contentRef = useRef();
 
@@ -41,7 +43,7 @@ function ScrollHome({ data }) {
     };
 
     return (
-        <div className={cx('wrapper')}>
+        <div className={cx('wrapper', isTransformSidebar ? 'left-sub-sidebar-width' : 'left-sidebar-width')}>
             {showArrowLeftBtn && (
                 <div className={cx('arrow-left-btn')} onClick={handleScrollLeft}>
                     <ArrowLeftIcon className={cx('arrow-icon')} />

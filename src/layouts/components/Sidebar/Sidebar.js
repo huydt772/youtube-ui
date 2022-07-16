@@ -1,4 +1,5 @@
 import classNames from 'classnames/bind';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Button from '~/components/Button';
 import {
@@ -198,11 +199,11 @@ const SETTINGS = [
 
 const cx = classNames.bind(styles);
 
-function Sidebar() {
+function Sidebar({ noPosition = false }) {
     const currentUser = true;
 
     return (
-        <div className={cx('wrapper')}>
+        <div className={cx('wrapper', { 'no-position': noPosition })}>
             <MenuSidebar items={HOME} />
             <MenuSidebar items={currentUser ? LIBRARY_LOGIN : LIBRARY} lessPadding={!currentUser} />
 
@@ -255,5 +256,9 @@ function Sidebar() {
         </div>
     );
 }
+
+Sidebar.propTypes = {
+    noPosition: PropTypes.bool,
+};
 
 export default Sidebar;

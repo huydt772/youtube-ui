@@ -1,0 +1,43 @@
+.wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 120;
+    display: flex;
+    flex-direction: column;
+
+    background-color: var(--white-color);
+    transform: translateX(-100%);
+    transition: transform linear 0.15s;
+}
+
+.show-sidebar {
+    transform: translateX(0);
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    padding-left: var(--default-layout-header-horizontal-spacer);
+
+    .logo {
+        padding: 18px 15px;
+        margin-left: 1px;
+        user-select: none;
+    }
+
+    .bars-btn {
+        border: none;
+        border-radius: 100rem;
+        padding: 8px;
+        display: flex;
+        align-items: center;
+        background-color: transparent;
+        transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+        &:active {
+            background-color: var(--general-active-color);
+        }
+    }
+}

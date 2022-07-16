@@ -1,4 +1,5 @@
 .wrapper {
+    position: relative;
     display: flex;
     flex-direction: column;
 }
@@ -11,6 +12,38 @@
 .content {
     flex: 1;
     background-color: var(--general-background-color);
+    height: calc(100vh - 56px);
+}
+
+.content-sidebar {
     margin-left: var(--sidebar-width);
-    // margin-left: var(--sub-sidebar-width);
+}
+
+.content-sub-sidebar {
+    margin-left: var(--sub-sidebar-width);
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 110;
+    background-color: rgba(0, 0, 0, 0.5);
+    animation: fadeIn linear 0.15s;
+    display: none;
+}
+
+.show-overlay {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }

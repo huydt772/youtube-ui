@@ -2,8 +2,6 @@
     position: fixed;
     z-index: 10;
     top: var(--default-layout-header-height);
-    left: var(--sidebar-width);
-    // left: var(--sub-sidebar-width);
     right: 0;
 
     display: flex;
@@ -15,6 +13,14 @@
     border-style: solid;
     border-color: var(--general-border-color);
     background-color: var(--background-white-opacity-98-color);
+}
+
+.left-sidebar-width {
+    left: var(--sidebar-width);
+}
+
+.left-sub-sidebar-width {
+    left: var(--sub-sidebar-width);
 }
 
 .arrow-right-btn,

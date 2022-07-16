@@ -1,5 +1,4 @@
 import classNames from 'classnames/bind';
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { ExploreIcon, HomeIcon, LibraryIcon, ShortsIcon, SubsIcon } from '~/components/Icons';
@@ -42,25 +41,14 @@ const SIDEBAR_DATA = [
 ];
 
 function SubSidebar() {
-    const [solidIcon, setSolidIcon] = useState('Home');
-
-    const handleSolidIcon = (title) => {
-        setSolidIcon(title);
-    };
     return (
         <div className={cx('wrapper')}>
             {SIDEBAR_DATA.map((item) => {
                 const Icon = item.icon;
                 return (
-                    <Link
-                        key={item.id}
-                        className={cx('button-link')}
-                        to={item.to}
-                        title={item.title}
-                        onClick={() => handleSolidIcon(item.title)}
-                    >
+                    <Link key={item.id} className={cx('button-link')} to={item.to} title={item.title}>
                         <span className={cx('icon')}>
-                            <Icon solidIcon={solidIcon === item.title} />
+                            <Icon solidIcon={window.location.pathname === item.to} />
                         </span>
                         <span className={cx('title')}>{item.title}</span>
                     </Link>
