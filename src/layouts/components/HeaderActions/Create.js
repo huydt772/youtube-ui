@@ -2,6 +2,7 @@ import Tippy from '@tippyjs/react';
 import classNames from 'classnames/bind';
 import { useState } from 'react';
 import 'tippy.js/dist/tippy.css';
+
 import { CreateIcon, LiveIcon, UploadIcon } from '~/components/Icons';
 import Menu from '~/components/Popper/Menu';
 import styles from './HeaderActions.module.scss';

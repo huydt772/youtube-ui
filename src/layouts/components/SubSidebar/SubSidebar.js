@@ -1,5 +1,6 @@
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
+import { memo } from 'react';
 
 import { ExploreIcon, HomeIcon, LibraryIcon, ShortsIcon, SubsIcon } from '~/components/Icons';
 import config from '~/config';
@@ -58,4 +59,4 @@ function SubSidebar() {
     );
 }
 
-export default SubSidebar;
+export default memo(SubSidebar);

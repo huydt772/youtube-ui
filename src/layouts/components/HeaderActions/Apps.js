@@ -2,13 +2,8 @@ import Tippy from '@tippyjs/react';
 import classNames from 'classnames/bind';
 import { useState } from 'react';
 import 'tippy.js/dist/tippy.css';
-import {
-    AppsIcon,
-    YoutubeArtistsIcon,
-    YoutubeKidsIcon,
-    YoutubeMusicIcon,
-    YoutubeTvIcon,
-} from '~/components/Icons';
+
+import { AppsIcon, YoutubeArtistsIcon, YoutubeKidsIcon, YoutubeMusicIcon, YoutubeTvIcon } from '~/components/Icons';
 import Menu from '~/components/Popper/Menu';
 import styles from './HeaderActions.module.scss';
 
@@ -49,10 +44,7 @@ function Apps() {
             onClickOutside={() => setSolidIcon(false)}
         >
             <Tippy content="YouTube apps" zIndex={99}>
-                <button
-                    className={cx('action-btn')}
-                    onClick={() => setSolidIcon(!solidIcon)}
-                >
+                <button className={cx('action-btn')} onClick={() => setSolidIcon(!solidIcon)}>
                     <AppsIcon solidIcon={solidIcon} />
                 </button>
             </Tippy>

@@ -1,4 +1,5 @@
 import classNames from 'classnames/bind';
+import { memo } from 'react';
 import { useDispatch } from 'react-redux/es/exports';
 import { Link } from 'react-router-dom';
 import 'tippy.js/dist/tippy.css';
@@ -45,4 +46,4 @@ function Header() {
     );
 }
 
-export default Header;
+export default memo(Header);

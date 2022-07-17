@@ -1,6 +1,8 @@
 import classNames from 'classnames/bind';
+import { memo } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+
 import Button from '~/components/Button';
 import {
     AddIcon,
@@ -261,4 +263,4 @@ Sidebar.propTypes = {
     noPosition: PropTypes.bool,
 };
 
-export default Sidebar;
+export default memo(Sidebar);
