@@ -5,7 +5,7 @@ import classNames from 'classnames/bind';
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { CloseIcon, MicroPhoneIcon, SearchIcon } from '~/components/Icons';
+import { BackIcon, CloseIcon, MicroPhoneIcon, SearchIcon } from '~/components/Icons';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import { useDebounce } from '~/hooks';
 import SearchResultItem from '../SearchResultItem';
@@ -18,6 +18,8 @@ function Search() {
     const [searchValue, setSearchValue] = useState('');
     const [showResult, setShowResult] = useState(false);
     const [active, setActive] = useState(-1);
+    const [showSearchBox, setShowSearchBox] = useState(false);
+    const [resizeWidth, setResizeWidth] = useState(window.innerWidth);
 
     const navigate = useNavigate();
     const inputRef = useRef();
@@ -50,6 +52,21 @@ function Search() {
     useEffect(() => {
         setActive(-1);
     }, [searchResult]);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setResizeWidth(window.innerWidth);
+        };
+        window.addEventListener('resize', handleResize);
+
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    useEffect(() => {
+        if (resizeWidth >= 740) {
+            setShowSearchBox(false);
+        }
+    }, [resizeWidth]);
 
     const handleChange = (e) => {
         const searchValue = e.target.value;
@@ -104,6 +121,14 @@ function Search() {
         setShowResult(false);
     };
 
+    const handleShowSearchBox = () => {
+        setShowSearchBox(true);
+    };
+
+    const handleHideSearchBox = () => {
+        setShowSearchBox(false);
+    };
+
     const renderResult = (attrs) => (
         <div className={cx('search-result')} tabIndex="-1" {...attrs}>
             <PopperWrapper className={cx('search-popper')}>
@@ -120,7 +145,17 @@ function Search() {
     );
 
     return (
-        <div className={cx('wrap-between')}>
+        <div
+            className={cx('wrap-between', {
+                'mobile-search-box': showSearchBox,
+            })}
+        >
+            <Tippy content="Back">
+                <button className={cx('mobile-back-btn')} onClick={handleHideSearchBox}>
+                    <BackIcon />
+                </button>
+            </Tippy>
+
             <div className={cx('search', 'search-global')}>
                 <HeadlessTippy
                     visible={showResult && searchResult.length > 0}
@@ -162,6 +197,13 @@ function Search() {
                     </button>
                 </Tippy>
             </div>
+
+            <Tippy content="Search">
+                <button className={cx('mobile-search-btn')} onClick={handleShowSearchBox}>
+                    <SearchIcon />
+                </button>
+            </Tippy>
+
             <Tippy content="Search with your voice">
                 <button className={cx('micro-btn')}>
                     <MicroPhoneIcon />

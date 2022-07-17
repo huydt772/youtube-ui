@@ -184,3 +184,34 @@
         }
     }
 }
+
+// Mobile & Tablet
+@media (max-width: 63.9375em) {
+    .comment {
+        padding-right: 40px;
+
+        .comment-menu-btn {
+            display: flex;
+            color: #909090;
+        }
+    }
+}
+
+// Tablet
+@media (min-width: 46.25em) and (max-width: 63.9375em) {
+    .comment {
+        .comment-avatar-link {
+            margin-right: 16px;
+        }
+    }
+}
+
+// Mobile
+@media (max-width: 46.1875em) {
+    .comment {
+        .reply-avatar-link,
+        .comment-avatar-link {
+            margin-right: 12px;
+        }
+    }
+}

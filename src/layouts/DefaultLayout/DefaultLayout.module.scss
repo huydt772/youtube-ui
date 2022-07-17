@@ -12,7 +12,6 @@
 .content {
     flex: 1;
     background-color: var(--general-background-color);
-    height: calc(100vh - 56px);
 }
 
 .content-sidebar {
@@ -45,5 +44,11 @@
     }
     to {
         opacity: 1;
+    }
+}
+
+@media (max-width: 46.1875em) {
+    .content {
+        margin-left: 0;
     }
 }

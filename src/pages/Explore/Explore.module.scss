@@ -64,3 +64,21 @@
     font-weight: 500;
     margin: 24px 0;
 }
+
+// Mobile & Tablet
+@media (max-width: 63.9375em) {
+    .wrapper {
+        padding: 0 12px;
+    }
+
+    .heading {
+        margin: 12px 0;
+    }
+}
+
+// Mobile
+@media (max-width: 46.1875em) {
+    .m-display-none {
+        display: none !important;
+    }
+}

@@ -121,3 +121,35 @@
         }
     }
 }
+
+// Mobile & Tablet
+@media (max-width: 63.9375em) {
+    .comment-block {
+        padding: 0 12px;
+        margin-bottom: 16px;
+    }
+
+    .header {
+        .wrap-comment-count {
+            margin-bottom: 12px;
+        }
+    }
+}
+
+// Tablet
+@media (min-width: 46.25em) and (max-width: 63.9375em) {
+    .header {
+        .user {
+            margin-right: 16px;
+        }
+    }
+}
+
+// Mobile
+@media (max-width: 46.1875em) {
+    .header {
+        .user {
+            margin-right: 12px;
+        }
+    }
+}

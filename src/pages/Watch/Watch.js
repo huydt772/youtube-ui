@@ -25,6 +25,7 @@ function Watch() {
     const [loading, setLoading] = useState(true);
     const [channel, setChannel] = useState('');
     const [descFullContent, setDescFullContent] = useState(false);
+    const [resizeWidth, setResizeWidth] = useState(window.innerWidth);
     // eslint-disable-next-line no-unused-vars
     const [idVideo, setIdVideo] = useSearchParams();
     const idVideoValue = idVideo.get('id');
@@ -54,6 +55,15 @@ function Watch() {
         window.scrollTo(0, 0);
         document.title = data.snippet?.title || 'YouTube';
     }, [data]);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setResizeWidth(window.innerWidth);
+        };
+        window.addEventListener('resize', handleResize);
+
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     const numberFormat = (n) => {
         if (n < 1e3) return n;
@@ -90,14 +100,14 @@ function Watch() {
     };
 
     return (
-        <div className={cx('grid', 'wide')}>
+        <div className={cx('grid', { wide: resizeWidth >= 1024 })}>
             {loading && <div className={cx('loading')}></div>}
-            <div className={cx('row')}>
-                <div className={cx('col', 'l-8')}>
+            <div className={cx('row', { 'no-gutters': resizeWidth < 1024 })}>
+                <div className={cx('col', 'l-8', 'm-12', 'c-12')}>
                     <div className={cx('primary')}>
                         <Player
                             width="100%"
-                            height="432px"
+                            className={cx('player')}
                             url={`https://www.youtube.com/watch?v=${idVideoValue}`}
                             playing={true}
                             muted={true}
@@ -126,13 +136,13 @@ function Watch() {
                                     <Button className={cx('action-btn')} leftIcon={<ShareIcon />}>
                                         Share
                                     </Button>
-                                    <Button className={cx('action-btn')} leftIcon={<CutIcon />}>
+                                    <Button className={cx('action-btn', 'm-display-none')} leftIcon={<CutIcon />}>
                                         Clip
                                     </Button>
                                     <Button className={cx('action-btn')} leftIcon={<SaveIcon />}>
                                         Save
                                     </Button>
-                                    <span className={cx('menu-btn')}>
+                                    <span className={cx('menu-btn', 'm-display-none')}>
                                         <MenuIcon />
                                     </span>
                                 </div>
@@ -194,7 +204,7 @@ function Watch() {
                         <CommentList idVideoValue={idVideoValue} />
                     </div>
                 </div>
-                <div className={cx('col', 'l-4')}>
+                <div className={cx('col', 'l-4', 'm-0', 'c-0')}>
                     <div className={cx('secondary')}>
                         <span className={cx('button-top')}>Show Chat Replay</span>
 

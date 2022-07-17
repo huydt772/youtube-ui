@@ -35,6 +35,7 @@ const cx = classNames.bind(styles);
 function Explore() {
     const [popularVideo, setPopularVideo] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [resizeWidth, setResizeWidth] = useState(window.innerWidth);
 
     useEffect(() => {
         const fetchApi = async () => {
@@ -44,6 +45,15 @@ function Explore() {
             setLoading(false);
         };
         fetchApi();
+    }, []);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setResizeWidth(window.innerWidth);
+        };
+        window.addEventListener('resize', handleResize);
+
+        return () => window.removeEventListener('resize', handleResize);
     }, []);
 
     useEffect(() => {
@@ -58,7 +68,7 @@ function Explore() {
         <div className={cx('wrapper')}>
             {loading && <div className={cx('loading')}></div>}
             <div className={cx('grid')}>
-                <div className={cx('row', 'sm-gutter')}>
+                <div className={cx('row', 'sm-gutter', 'm-display-none')}>
                     {EXPLORE_ACTIONS.map((item, index) => (
                         <div key={index} className={cx('col', 'l-2-4', 'm-4', 'c-6')}>
                             <div className={cx('explore-action')}>
@@ -71,8 +81,8 @@ function Explore() {
                 <div className={cx('row', 'no-gutters')}>
                     <h3 className={cx('heading')}>Trending videos</h3>
                     {popularVideo.map((item) => (
-                        <div key={item.id} className={cx('col', 'l-10', 'm-10', 'c-12')}>
-                            <Product data={item} explorePage />
+                        <div key={item.id} className={cx('col', 'l-10', 'm-12', 'c-12')}>
+                            <Product data={item} explorePage={resizeWidth >= 740} />
                         </div>
                     ))}
                 </div>

@@ -16,3 +16,15 @@
     font-weight: 400;
     margin-top: 24px;
 }
+
+// Mobile
+@media (max-width: 46.1875em) {
+    .wrapper {
+        padding: 12px;
+    }
+
+    .notify-text {
+        font-size: 2rem;
+        margin-top: 10px;
+    }
+}

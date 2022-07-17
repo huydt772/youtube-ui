@@ -230,3 +230,120 @@
         line-height: 1.8rem;
     }
 }
+
+// Mobile & Tablet
+@media (max-width: 63.9375em) {
+    .wrapper {
+        padding: 8px 12px;
+    }
+
+    .filters {
+        .filter-btn {
+            padding: 6px 12px;
+            margin-left: -12px;
+        }
+    }
+
+    // Channel results
+    .channel-info {
+        padding-bottom: 0;
+
+        & > p {
+            display: none;
+        }
+    }
+
+    .channel-quantities {
+        flex-direction: column-reverse;
+    }
+
+    .subs-count {
+        margin-bottom: 0;
+
+        &::after {
+            display: none;
+        }
+    }
+
+    .video-count {
+        margin-bottom: 0;
+    }
+
+    // Playlist results
+    .playlist-desc {
+        display: none;
+    }
+}
+
+// Tablet
+@media (min-width: 46.25em) and (max-width: 63.9375em) {
+    // Channel results
+    .channel {
+        padding-bottom: 16px;
+    }
+
+    .wrap-channel-img {
+        width: 270px;
+    }
+
+    .channel-img {
+        width: 124px;
+        height: 124px;
+    }
+
+    .channel-title {
+        margin-bottom: 4px;
+    }
+
+    // Playlist results
+    .wrap-playlist-thumbnail {
+        width: 270px;
+    }
+
+    .overlay-side {
+        width: 100px;
+    }
+}
+
+// Mobile
+@media (max-width: 46.1875em) {
+    // Channel results
+    .channel {
+        margin: 12px 0;
+        padding-bottom: 12px;
+    }
+
+    .wrap-channel-img {
+        width: 160px;
+    }
+
+    .channel-img {
+        width: 90px;
+        height: 90px;
+    }
+
+    .channel-title {
+        margin-bottom: 0;
+        font-size: 1.4rem;
+        line-height: 1.8rem;
+    }
+
+    .channel-actions {
+        display: none;
+    }
+
+    // Playlist results
+    .wrap-playlist-thumbnail {
+        width: 160px;
+    }
+
+    .playlist-title {
+        font-size: 1.4rem;
+        line-height: 1.8rem;
+        max-height: 3.6rem;
+    }
+
+    .overlay-side {
+        width: 60px;
+    }
+}

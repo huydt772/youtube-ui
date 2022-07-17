@@ -244,3 +244,55 @@
         height: 24px;
     }
 }
+
+// Mobile & Tablet
+@media (max-width: 63.9375em) {
+    .info {
+        .menu-icon {
+            display: flex;
+            color: #909090;
+        }
+    }
+
+    .desc {
+        display: none;
+    }
+}
+
+// Tablet
+@media (min-width: 46.25em) and (max-width: 63.9375em) {
+    // Search product
+    .search-wrapper {
+        .wrap-thumbnail {
+            width: 270px;
+        }
+
+        .wrap-avatar {
+            padding: 6px 0;
+        }
+    }
+}
+
+// Mobile
+@media (max-width: 46.1875em) {
+    // Search product
+    .search-wrapper {
+        .wrap-thumbnail {
+            width: 160px;
+        }
+
+        .wrap-avatar {
+            padding: 0;
+        }
+
+        .title {
+            font-size: 1.4rem;
+            line-height: 1.8rem;
+            max-height: 3.6rem;
+        }
+
+        .avatar-link {
+            display: none;
+        }
+    }
+}

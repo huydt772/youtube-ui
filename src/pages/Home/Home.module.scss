@@ -33,3 +33,10 @@
 .products {
     padding: 24px;
 }
+
+// Mobile & Tablet
+@media (max-width: 63.9375em) {
+    .products {
+        padding: 12px;
+    }
+}

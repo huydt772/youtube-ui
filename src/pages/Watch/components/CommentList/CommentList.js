@@ -1,8 +1,12 @@
 import PropTypes from 'prop-types';
+import classNames from 'classnames/bind';
 import { memo, useEffect, useState } from 'react';
 
 import CommentItem from '../CommentItem';
 import * as commentService from '~/services/commentService';
+import styles from './CommentList.module.scss';
+
+const cx = classNames.bind(styles);
 
 function CommentList({ idVideoValue }) {
     const [comments, setComments] = useState([]);
@@ -17,11 +21,11 @@ function CommentList({ idVideoValue }) {
     }, [idVideoValue]);
 
     return (
-        <>
+        <div className={cx('wrapper')}>
             {comments.map((comment, index) => {
                 return <CommentItem key={index} data={comment} />;
             })}
-        </>
+        </div>
     );
 }
 

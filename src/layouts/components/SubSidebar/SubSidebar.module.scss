@@ -37,3 +37,31 @@
         line-height: 1.4rem;
     }
 }
+
+@media (max-width: 46.1875em) {
+    .wrapper {
+        right: 0;
+        top: unset;
+        flex-direction: row;
+        height: 48px;
+        width: unset;
+        align-items: center;
+
+        .button-link {
+            flex: 1;
+            padding: 0;
+
+            &:hover {
+                background-color: unset;
+            }
+
+            &:active {
+                background-color: unset;
+            }
+        }
+
+        .icon {
+            margin-bottom: 0;
+        }
+    }
+}

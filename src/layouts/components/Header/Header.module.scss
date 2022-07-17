@@ -40,3 +40,15 @@
         user-select: none;
     }
 }
+
+@media (max-width: 46.1875em) {
+    .inner {
+        padding: 0 2px 0 0px;
+    }
+
+    .wrap-left {
+        .bars-icon {
+            display: none;
+        }
+    }
+}

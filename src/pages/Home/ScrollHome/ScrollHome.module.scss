@@ -96,3 +96,41 @@
         background-color: var(--text-primary-color);
     }
 }
+
+// Mobile & Tablet
+@media (max-width: 63.9375em) {
+    .wrapper {
+        padding: 0 12px;
+    }
+}
+
+// Tablet
+@media (min-width: 46.25em) and (max-width: 63.9375em) {
+    .wrapper {
+        left: var(--sub-sidebar-width);
+    }
+}
+
+// Mobile
+@media (max-width: 46.1875em) {
+    .wrapper {
+        left: 0;
+    }
+
+    .arrow-right-btn,
+    .arrow-left-btn {
+        width: 40px;
+    }
+
+    .arrow-left-btn {
+        &::after {
+            left: 40px;
+        }
+    }
+
+    .arrow-right-btn {
+        &::before {
+            right: 40px;
+        }
+    }
+}
