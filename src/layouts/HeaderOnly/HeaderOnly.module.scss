@@ -1,4 +1,33 @@
+.wrapper {
+    position: relative;
+}
+
 .container {
     margin-top: var(--default-layout-header-height);
     background-color: var(--general-background-color);
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 110;
+    background-color: rgba(0, 0, 0, 0.5);
+    animation: fadeIn linear 0.15s;
+    display: none;
+}
+
+.show-overlay {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }

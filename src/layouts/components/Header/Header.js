@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import { memo } from 'react';
 import { useDispatch } from 'react-redux/es/exports';
@@ -15,11 +16,11 @@ import styles from './Header.module.scss';
 
 const cx = classNames.bind(styles);
 
-function Header() {
+function Header({ headerOnly = false }) {
     const dispatch = useDispatch();
 
     const handleTransformSidebar = () => {
-        if (window.innerWidth < 1024) {
+        if (window.innerWidth < 1024 || headerOnly) {
             dispatch(showSidebar());
         } else {
             dispatch(transformSidebar());
@@ -45,5 +46,9 @@ function Header() {
         </header>
     );
 }
+
+Header.propTypes = {
+    headerOnly: PropTypes.bool,
+};
 
 export default memo(Header);
