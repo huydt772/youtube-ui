@@ -129,6 +129,10 @@
         align-items: center;
     }
 
+    .avatar-link {
+        flex-shrink: 0;
+    }
+
     .avatar {
         width: 48px;
         height: 48px;
@@ -332,7 +336,7 @@
     }
 
     .desc {
-        margin-left: 52px;
+        margin-left: 0;
         padding-right: 0px;
     }
 }

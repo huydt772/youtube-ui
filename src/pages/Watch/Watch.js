@@ -153,7 +153,7 @@ function Watch() {
                             <div className={cx('channel')}>
                                 <div className={cx('owner')}>
                                     {channel && (
-                                        <Link to={config.routes.profile}>
+                                        <Link className={cx('avatar-link')} to={config.routes.profile}>
                                             <Image
                                                 className={cx('avatar')}
                                                 src={channel.snippet.thumbnails.default.url}

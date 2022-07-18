@@ -187,9 +187,11 @@
 
 // Mobile & Tablet
 @media (max-width: 63.9375em) {
+    .reply-block,
     .comment {
         padding-right: 40px;
 
+        .reply-menu-btn,
         .comment-menu-btn {
             display: flex;
             color: #909090;

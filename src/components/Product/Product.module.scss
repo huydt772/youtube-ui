@@ -117,6 +117,11 @@
         -webkit-line-clamp: 1;
     }
 
+    .tick-icon {
+        display: flex;
+        flex-shrink: 0;
+    }
+
     .views {
         &::after {
             content: '•';

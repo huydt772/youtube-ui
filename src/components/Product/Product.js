@@ -166,7 +166,7 @@ function Product({ data, explorePage = false, searchPage = false, watchPage = fa
                                     {data.snippet.channelTitle}
                                 </Link>
                             </Tippy>
-                            <TickIcon width="1.4rem" height="1.4rem" />
+                            <TickIcon className={cx('tick-icon')} width="1.4rem" height="1.4rem" />
                         </div>
                     )}
 
@@ -191,7 +191,7 @@ function Product({ data, explorePage = false, searchPage = false, watchPage = fa
                                     </Link>
                                 </Tippy>
 
-                                <TickIcon width="1.4rem" height="1.4rem" />
+                                <TickIcon className={cx('tick-icon')} width="1.4rem" height="1.4rem" />
                             </div>
                         </div>
                     )}

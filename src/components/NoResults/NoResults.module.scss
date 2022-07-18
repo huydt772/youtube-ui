@@ -21,6 +21,7 @@
 @media (max-width: 46.1875em) {
     .wrapper {
         padding: 12px;
+        height: calc(100vh - 56px - 48px);
     }
 
     .notify-text {
