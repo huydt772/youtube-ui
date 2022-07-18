@@ -1,5 +1,4 @@
 import classNames from 'classnames/bind';
-import { memo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -36,4 +35,4 @@ function SidebarOverlay() {
     );
 }
 
-export default memo(SidebarOverlay);
+export default SidebarOverlay;

@@ -1,5 +1,4 @@
 import classNames from 'classnames/bind';
-import { memo } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
@@ -263,4 +262,4 @@ Sidebar.propTypes = {
     noPosition: PropTypes.bool,
 };
 
-export default memo(Sidebar);
+export default Sidebar;
