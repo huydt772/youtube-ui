@@ -146,6 +146,15 @@ body {
     }
 }
 
+// Mobile & Tablet
+@media (max-width: 63.9375em) {
+    body {
+        .search-global [data-tippy-root] {
+            right: 0 !important;
+        }
+    }
+}
+
 // Grid system
 .grid {
     width: 100%;

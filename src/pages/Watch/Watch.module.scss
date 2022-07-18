@@ -321,6 +321,14 @@
         .avatar {
             margin-right: 12px;
         }
+
+        .name > a {
+            max-height: 2rem;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 1;
+        }
     }
 
     .desc {
