@@ -67,12 +67,15 @@
 
 // Mobile & Tablet
 @media (max-width: 63.9375em) {
-    .wrapper {
-        padding: 0 12px;
-    }
-
     .heading {
         margin: 12px 0;
+    }
+}
+
+// Tablet
+@media (min-width: 46.25em) and (max-width: 63.9375em) {
+    .wrapper {
+        padding: 0 12px;
     }
 }
 
@@ -80,5 +83,9 @@
 @media (max-width: 46.1875em) {
     .m-display-none {
         display: none !important;
+    }
+
+    .wrapper {
+        padding: 0 12px 48px;
     }
 }

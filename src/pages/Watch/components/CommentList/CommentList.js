@@ -22,8 +22,8 @@ function CommentList({ idVideoValue }) {
 
     return (
         <div className={cx('wrapper')}>
-            {comments.map((comment, index) => {
-                return <CommentItem key={index} data={comment} />;
+            {comments.map((comment) => {
+                return <CommentItem key={comment.id} data={comment} />;
             })}
         </div>
     );

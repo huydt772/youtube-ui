@@ -51,7 +51,7 @@ function Search() {
             </div>
             <div className={cx('grid')}>
                 <div className={cx('row', 'no-gutters')}>
-                    {searchResult.map((item, index) => {
+                    {searchResult.map((item) => {
                         let Result = Product;
 
                         const props = {
@@ -68,7 +68,7 @@ function Search() {
                         }
 
                         return (
-                            <div key={index} className={cx('col', 'l-12', 'm-12', 'c-12')}>
+                            <div key={item.etag} className={cx('col', 'l-12', 'm-12', 'c-12')}>
                                 <Result {...props} />
                             </div>
                         );

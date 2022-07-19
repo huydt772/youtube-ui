@@ -105,8 +105,8 @@ function CommentItem({ data }) {
 
                 {repliesData && showReplies && (
                     <div className="comment-replies">
-                        {repliesData.comments.map((reply, index) => {
-                            return <ReplyItem key={index} reply={reply} />;
+                        {repliesData.comments.map((reply) => {
+                            return <ReplyItem key={reply.id} reply={reply} />;
                         })}
                     </div>
                 )}

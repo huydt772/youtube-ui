@@ -34,9 +34,16 @@
     padding: 24px;
 }
 
-// Mobile & Tablet
-@media (max-width: 63.9375em) {
+// Tablet
+@media (min-width: 46.25em) and (max-width: 63.9375em) {
     .products {
         padding: 12px;
+    }
+}
+
+// Mobile
+@media (max-width: 46.1875em) {
+    .products {
+        padding: 12px 12px 48px;
     }
 }

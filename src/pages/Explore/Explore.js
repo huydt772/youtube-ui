@@ -9,22 +9,27 @@ import styles from './Explore.module.scss';
 
 const EXPLORE_ACTIONS = [
     {
+        id: 1,
         image: images.trending,
         title: 'Trending',
     },
     {
+        id: 2,
         image: images.music,
         title: 'Music',
     },
     {
+        id: 3,
         image: images.gaming,
         title: 'Gaming',
     },
     {
+        id: 4,
         image: images.news,
         title: 'News',
     },
     {
+        id: 5,
         image: images.sports,
         title: 'Sports',
     },
@@ -69,8 +74,8 @@ function Explore() {
             {loading && <div className={cx('loading')}></div>}
             <div className={cx('grid')}>
                 <div className={cx('row', 'sm-gutter', 'm-display-none')}>
-                    {EXPLORE_ACTIONS.map((item, index) => (
-                        <div key={index} className={cx('col', 'l-2-4', 'm-4', 'c-6')}>
+                    {EXPLORE_ACTIONS.map((item) => (
+                        <div key={item.id} className={cx('col', 'l-2-4', 'm-4', 'c-6')}>
                             <div className={cx('explore-action')}>
                                 <Image className={cx('image')} src={item.image} alt={item.title} />
                                 <h3 className={cx('title')}>{item.title}</h3>
