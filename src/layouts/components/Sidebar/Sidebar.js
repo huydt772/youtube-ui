@@ -25,6 +25,7 @@ import {
     WatchIcon,
 } from '~/components/Icons';
 import config from '~/config';
+import { signInWithGoogle } from '~/firebaseConfig';
 import MenuSidebar from './Menu';
 import styles from './Sidebar.module.scss';
 
@@ -123,28 +124,34 @@ const SUBSCRIPTIONS = [
 
 const BEST_OF_YOUTUBE = [
     {
-        image: 'https://yt3.ggpht.com/hJYteupJuM2N43U7LXb9lFLSxXwOZHlYwrv7oUwaXVvNtsDIxcZbWeHlL4erKyfJ4NMO_9wtOQ=s88-c-k-c0x00ffffff-no-rj',
+        image: 'https://yt3.ggpht.com/xsDSSLJI0qYCHlbMEsplRLtfEPprTs0vCd9enMGhPUf-0njEXP-oUXDR-9smdvw54YsIoxp5=s88-c-k-c0x00ffffff-no-rj',
         title: 'Music',
+        pathname: '/Music',
     },
     {
-        image: 'https://yt3.ggpht.com/c58SswnJjLFeXoT1Wr4g-21fj3LWsmhxniA8xjLWF_8huAzREvLWm2F0DO_nXl0gBbCzqQkJvXc=s88-c-k-c0x00ffffff-no-rj',
+        image: 'https://yt3.ggpht.com/xc70YQJtu1BAzd_Bn7r95lCz9ikZEAa8kwtoo0KokMH3K1IjWaYE1AJEaI9nNCU-gJtzWCs94zc=s88-c-k-c0x00ffffff-no-rj',
         title: 'Sports',
+        pathname: '/Sports',
     },
     {
-        image: 'https://yt3.ggpht.com/E5kOP_y7U4cD0IiEwoWDnwB_h6UXyAIF1QSs9rHMjmBTceLRh2G6YJzEs1K5kew239sLvfqZ=s88-c-k-c0x00ffffff-no-rj',
+        image: 'https://yt3.ggpht.com/Z93wWWSiz1Y1lFJT5oF3DE2juR63ImkuiQPswERpXE1hNcv_-lWbrhF7nDz7CqLSErldOHjRcA=s88-c-k-c0x00ffffff-no-rj',
         title: 'Gaming',
+        pathname: '/Gaming',
     },
     {
-        image: 'https://yt3.ggpht.com/K9BzDvWNMKeg31sN74H_WGtYXsSBWNSF0OICeXPy4XGKksJt8RxFqgO2xTL1CPE4m4NfXgkkyA=s88-c-k-c0x00ffffff-no-rj',
+        image: 'https://yt3.ggpht.com/1xQXm-F7m34BU6cvSpMQBizSeoEDZxJibXQ2bO2Qrp37hl6IIyZwPw23pH4lOUwTSp2HxQiaTw=s88-c-k-c0x00ffffff-no-rj',
         title: 'News',
+        pathname: '/News',
     },
     {
         image: 'https://yt3.ggpht.com/8D6JlsnvwDZFMdcbjqVji82kggP3aXXbO-yBD0RFrKlp4G1zNt9wcqcVTSPnAI8GuUAbDYQwsg=s88-c-k-c0x00ffffff-no-rj',
         title: 'Live',
+        pathname: '/Live',
     },
     {
-        image: 'https://yt3.ggpht.com/X-W0Y_Dde3x0AY8CL6Xv3ooxZ6f2zP2x4OD8Lcm8phN9c7APUHe3z4ThTethc5-cio93-Bgq=s88-c-k-c0x00ffffff-no-rj',
+        image: 'https://yt3.ggpht.com/jDlznW6xboPVEAS3K4SCAp5eD1McSWAXpqStyW93VCKCj3p0tjcUzQ0SXpDQ9jG8u05b7ybc=s88-c-k-c0x00ffffff-no-rj',
         title: '360° Video',
+        pathname: '/360Video',
     },
 ];
 
@@ -201,7 +208,7 @@ const SETTINGS = [
 const cx = classNames.bind(styles);
 
 function Sidebar({ noPosition = false }) {
-    const currentUser = true;
+    const currentUser = !!localStorage.getItem('name');
 
     return (
         <div className={cx('wrapper', { 'no-position': noPosition })}>
@@ -216,7 +223,7 @@ function Sidebar({ noPosition = false }) {
                 <>
                     <div className={cx('sign-in')}>
                         <p>Sign in to like videos, comment, and subscribe.</p>
-                        <Button primary leftIcon={<UserIcon />} className={cx('button')}>
+                        <Button primary leftIcon={<UserIcon />} className={cx('button')} onClick={signInWithGoogle}>
                             SIGN IN
                         </Button>
                     </div>

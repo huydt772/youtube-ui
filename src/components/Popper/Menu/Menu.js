@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 
 import { Wrapper as PopperWrapper } from '~/components/Popper';
+import { handleSignOut } from '~/firebaseConfig';
 import GeneralHeaderMenu from './GeneralHeader';
 import styles from './Menu.module.scss';
 import MenuItem from './MenuItem';
@@ -40,6 +41,8 @@ function Menu({ width, userLogin, placement, offset = [0], children, split, item
                 onClick={() => {
                     if (item.children) {
                         setHistory((prev) => [...prev, item.children]);
+                    } else if (item.title === 'Sign out') {
+                        handleSignOut();
                     }
                 }}
             />
@@ -77,7 +80,7 @@ function Menu({ width, userLogin, placement, offset = [0], children, split, item
     const renderResult = (attrs) => (
         <div style={{ width: width, maxHeight: resizeHeight - 8 }} className={cx('menu-list')} tabIndex="-1" {...attrs}>
             {userLogin && history.length < 2 && (
-                <UserHeaderMenu image="https://avatars.githubusercontent.com/u/92105558?v=4" name="Huy Nguyễn" />
+                <UserHeaderMenu image={localStorage.getItem('profilePic')} name={localStorage.getItem('name')} />
             )}
             {history.length > 1 && <GeneralHeaderMenu title={current.title} onBack={handleBack} />}
             <div className={cx('menu-body')}>{menuItems}</div>

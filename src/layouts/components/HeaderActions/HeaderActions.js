@@ -24,10 +24,11 @@ import {
 } from '~/components/Icons';
 import Image from '~/components/Image';
 import Menu from '~/components/Popper/Menu';
+import { signInWithGoogle } from '~/firebaseConfig';
 import Apps from './Apps';
 import Create from './Create';
-import Notifications from './Notifications';
 import styles from './HeaderActions.module.scss';
+import Notifications from './Notifications';
 
 const cx = classNames.bind(styles);
 
@@ -176,7 +177,7 @@ const SETTING_LOGIN_ITEMS = [
 ];
 
 function HeaderActions() {
-    const currentUser = true;
+    const currentUser = !!localStorage.getItem('name');
 
     return (
         <div className={cx('wrap-right')}>
@@ -195,8 +196,8 @@ function HeaderActions() {
                     >
                         <Image
                             className={cx('user')}
-                            src="https://avatars.githubusercontent.com/u/92105558?v=4"
-                            alt="Huy Nguyễn"
+                            src={localStorage.getItem('profilePic')}
+                            alt={localStorage.getItem('name')}
                         />
                     </Menu>
                 </>
@@ -212,7 +213,7 @@ function HeaderActions() {
                         </Tippy>
                     </Menu>
 
-                    <Button primary leftIcon={<UserIcon />} className={cx('button')}>
+                    <Button primary leftIcon={<UserIcon />} className={cx('button')} onClick={signInWithGoogle}>
                         SIGN IN
                     </Button>
                 </>
